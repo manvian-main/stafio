@@ -1,0 +1,917 @@
+/* Sidebar slot — clips translateX animation, prevents white gap */
+.sidebar {
+  flex: 0 0 255px;
+  width: 255px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.main-content5 {
+  flex-grow: 1;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  background: #eff5ff;
+}
+
+.main-content5 .topbar {
+  width: 95%;
+}
+
+/* ====================== PROFILE HEADER SECTION ====================== */
+.profile-header-card {
+  border-radius: 14px;
+  box-shadow: none;
+  margin-bottom: 1.5rem;
+  background: #e8f8fe;
+  border: none;
+}
+
+.profile-header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.profile-img-wrap {
+  position: relative;
+  top: -30px;
+  margin-bottom: -30px;
+  margin-right: 30px;
+}
+
+.profile-header-name {
+  font-size: 1.25rem;
+}
+
+.profile-id {
+  font-size: 0.93rem;
+  color: #444;
+  margin-left: 2px;
+}
+
+.profile-header-card>.card-body>div {
+  min-width: 170px;
+}
+
+/* ====================== TAB NAVIGATION DESIGN — FLAT UNDERLINE STYLE ====================== */
+/* -------- Tab Navigation Section -------- */
+.profile-tabs {
+  display: flex;
+  align-items: stretch;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  height: 15px;
+  /* height: 52px; */
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.profile-tabs .nav-item {
+  flex: 1 1 20%;
+  margin-right: 0;
+  min-width: 0;
+}
+
+.profile-tabs .nav-link {
+  padding: 0 20px;
+  /* modified padding: 0 15px;  */
+  /* height: 48px; */
+  bottom: 40px;
+  /* new css line bottom: 22px; */
+  margin-bottom: 0;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: #6A7181;
+  /* modified color: #777c82; */
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  /* modified font-size:  15px;  */
+  font-weight: 500;
+  transition: color 0.22s;
+  position: relative;
+  outline: none;
+  width: 110%;
+  /* modified width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* modified justify-content:center; */
+  text-decoration: none;
+  /* Remove default underline */
+}
+
+/* Active tab with text underline only */
+.profile-tabs .nav-link.active {
+  color: #12baf5 !important;
+  font-weight: 500;
+  /* modified font-weight: 700; */
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  z-index: 2;
+  text-decoration: underline !important;
+  text-decoration-color: #12baf5 !important;
+  text-decoration-thickness: 1.5px !important;
+  /*modified text-decoration-thickness:3px !important; */
+  text-underline-offset: 3px !important;
+  /*modified text-underline-offset: 8px !important; */
+}
+
+/* Override Bootstrap's default active state */
+.profile-tabs .nav-tabs .nav-item.show .nav-link,
+.profile-tabs .nav-tabs .nav-link.active {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.profile-tabs-card {
+  background: #f6fbfe;
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(30, 100, 180, 0.04);
+  margin: 0;
+  padding: 0 22px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .profile-tabs {
+    height: 48px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .profile-tabs .nav-item {
+    flex: none;
+    min-width: 120px;
+  }
+
+  .profile-tabs .nav-link {
+    font-size: 0.97rem;
+    padding: 0 12px;
+    height: 38px;
+  }
+}
+
+/*============ PERSONAL INFORMATION TAB--------------/*
+/* --- Header box with shadow/border, blue underline, white bg --- */
+.update-info-header-box {
+  background: #fff;
+  border-radius: 8px;
+  /* modified border-radius: 14px; */
+  border: 1.3px solid #e5eaf1;
+  box-shadow: 0 6px 20px rgba(20, 66, 110, 0.11);
+  margin: 0 0 28px 10px !important;
+  /* modified margin: 0 0 32px 0; */
+  /* new */
+  width: 93% !important;
+  /* modified */
+  /* margin-left: 20px; */
+}
+
+.tab-section-title.personal-info {
+  font-weight: 600;
+  font-size: 14px;
+  color: #223042;
+  background: transparent;
+  border-radius: 12px 12px 0 0;
+  box-shadow: none;
+  padding: 14px 32px 12px 34px;
+  /* modified padding: 23px 32px 23px 34px; */
+  min-height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+
+.tab-section-title.personal-info:after {
+  content: "";
+  position: absolute;
+  left: 34px;
+  bottom: 13px;
+  width: 200px;
+  height: 3px;
+  background: #12baf5;
+  border-radius: 2.5px;
+}
+
+/*------------PROFILE INFO TAB-------------------*/
+/* --- Main profile tab area - NO border, NO shadow, just background --- */
+.profile-tab-section.personal-info {
+  background: #f5faff;
+  border-radius: 0;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* --- Two column grid --- */
+.personal-info-form {
+  background: transparent !important;
+  /* padding: 0 38px 6px 38px !important; */
+  box-shadow: none !important;
+  border: none !important;
+  /* new */
+  margin: 2px;
+}
+
+/* --- Option boxes for Gender/Marital --- */
+.option-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1.3px solid #e5eaf1;
+  box-shadow: 0 2px 7px rgba(20, 66, 110, 0.05);
+  padding: 13px 21px 13px 18px;
+  display: flex;
+  align-items: center;
+  margin-top: -2px;
+  /* modified margin-top: 2px; */
+  margin-bottom: -12px;
+  /* modified margin-bottom: 2px; */
+  /* new */
+  width: 90%;
+}
+
+.form-label {
+  font-size: 15.5px !important;
+  /* font-size: 13.5px !important;     */
+  font-weight: 500 !important;
+  /* font-weight: 600 !important;     */
+  color: #000000 !important;
+  /* modified color: !important;     */
+  margin-bottom: -2px !important;
+  /* margin-bottom: 10px !important;     */
+  letter-spacing: 0;
+}
+
+/* --- Input updates: uniform, taller, inner shadow, rounded corners --- */
+.form-input,
+.form-control,
+.form-select {
+  background: #F8F8F8 !important;
+  border: solid #e5eaf1 !important;
+  /* modified  border: 1.4px solid #e5eaf1 !important; */
+  border-radius: 12px !important;
+  font-size: 1.0rem !important;
+  padding: 10px 20px 10px 10px !important;
+  color: #223042 !important;
+  /* box-shadow: 0 3px 12px 0 rgba(16,82,177,0.085), 0 3px 16px 0 rgba(16,82,177,0.045); */
+  height: 50px !important;
+  transition: border-color 0.2s;
+  /* new */
+  width: 90%;
+  margin-bottom: 7px !important;
+  /* modified */
+}
+
+.form-input:focus,
+.form-control:focus,
+.form-select:focus {
+  border-color: #12baf5 !important;
+  box-shadow: 0 0 0 3px #19bde91f !important;
+}
+
+/* --- Date calendar icon --- */
+.input-icon-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.input-calendar-icon {
+  position: absolute;
+  right: 60px;
+  /* right: 23px; */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #14baf6;
+  font-size: 1.23rem;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.input-icon-wrap input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* --- Radio styling --- */
+.form-radio input[type="radio"] {
+  accent-color: #12baf5;
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+.d-flex.gap-4.align-items-center {
+  gap: 32px !important;
+}
+
+.btn-save {
+  background: #12baf5 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 16.1px;
+  min-width: 114px;
+  min-height: 45px;
+  margin-left: 8px;
+  box-shadow: 0 2px 9px 0 rgba(25, 189, 232, 0.12);
+  transition: background 0.13s;
+}
+
+.btn-save:hover {
+  background: #109ed2 !important;
+}
+
+.btn-cancel {
+  background: #12baf5 !important;
+  color: #ffffff !important;
+  border: 1.7px solid #12baf5 !important;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 114px;
+  min-height: 45px;
+  box-shadow: 0 2px 8px 0 rgba(25, 189, 232, 0.08);
+  transition: background 0.13s, color 0.13s, border 0.17s;
+}
+
+.btn-cancel:hover {
+  background: #f4fbfe !important;
+  color: #119ed2 !important;
+  border-color: #119ed2 !important;
+}
+
+.btn-edit {
+  background: #12baf5 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  min-width: 95px;
+  min-height: 36px;
+  box-shadow: 0 2px 7px rgba(25, 189, 232, 0.09);
+  font-size: 15px;
+  padding: 7px 18px;
+}
+
+/* validation for personal info tab*/
+.input-error {
+  border: 1px solid #dc3545 !important;
+  background-color: #fff5f5;
+  margin-bottom: 0.2px;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+  /* margin-bottom: 2px; */
+  padding-top: 2px !important;
+}
+
+.input-error1 {
+  /*new*/
+  border: 2px solid rgb(228, 228, 228) !important;
+  background-color: #fff5f5;
+  margin-bottom: 2px !important;
+  /* modified */
+}
+
+.error-text1 {
+  /*new*/
+  color: #dc3545;
+  font-size: 14px;
+  /* margin-bottom: 2px; */
+  padding-top: 2px;
+  margin-top: -5px;
+}
+
+@media (max-width: 900px) {
+  .update-info-header-box {
+    margin: 0;
+  }
+
+  .personal-info-form {
+    padding: 0 8px 4px 8px !important;
+  }
+}
+
+
+/* ====================== EDUCATION QUALIFICATION TAB SECTION ====================== */
+.profile-tab-section.education {
+  background: #f6fbfe;
+  border-radius: 10px;
+  padding: 28px 26px;
+  margin-top: 12px;
+}
+
+.tab-section-title.education {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 22px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px 18px;
+  width: fit-content;
+  color: #223042;
+  border: 1px solid #e5eaf1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.edform-input {
+  /* new css class for education form inputs */
+  background: #F8F8F8 !important;
+  border: solid #e5eaf1 !important;
+  border-radius: 12px !important;
+  font-size: 1.0rem !important;
+  padding: 10px 20px 10px 10px !important;
+  color: #223042 !important;
+  /* box-shadow: 0 3px 12px 0 rgba(16,82,177,0.085), 0 3px 16px 0 rgba(16,82,177,0.045); */
+  /* height: 10% !important; */
+  transition: border-color 0.2s;
+  width: 90%;
+  margin-bottom: 15px;
+  /* margin-bottom: 4px; */
+  /* new */
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto
+}
+
+/* Skills for education add update delete */
+/* new */
+
+.skill-input-wrap {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.skill-input {
+  flex: 1;
+  height: 42px;
+}
+
+.skill-add-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #cae7f0;
+  background: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.skill-add-btn:hover {
+  background: #f1faff;
+}
+
+/* Pills */
+.skills-pill-wrap {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 400;
+  color: #000;
+  border: 1px solid #cae7f0;
+  font-size: 0.95rem;
+}
+
+.skill-remove {
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+.skill-remove:hover {
+  color: #ff4d4f;
+}
+
+
+.disabled-skill {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+
+
+/* ====================== PREVIOUS EXPERIENCE TAB SECTION ====================== */
+.profile-tab-section.experience {
+  background: #f6fbfe;
+  border-radius: 10px;
+  padding: 28px 26px;
+  margin-top: 12px;
+}
+
+.tab-section-title.experience {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 22px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px 18px;
+  width: fit-content;
+  color: #223042;
+  border: 1px solid #e5eaf1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.pexform-input {
+  background: #F8F8F8 !important;
+  border: solid #e5eaf1 !important;
+  border-radius: 12px !important;
+  font-size: 1.0rem !important;
+  padding: 10px 20px 10px 10px !important;
+  color: #223042 !important;
+  /* box-shadow: 0 3px 12px 0 rgba(16,82,177,0.085), 0 3px 16px 0 rgba(16,82,177,0.045); */
+  height: 50px !important;
+  transition: border-color 0.2s;
+  width: 90%;
+  margin-bottom: 22px !important;
+}
+
+.pexform-input1 {
+  resize: vertical;
+  height: 65px;
+  margin-bottom: 22px !important;
+  /* new   */
+}
+
+.pexform-input2 {
+  resize: vertical;
+  height: 80px !important;
+  /* top: 10px; */
+
+}
+
+/* ====================== BANK DETAILS TAB SECTION ====================== */
+.profile-tab-section.bank-details {
+  background: #f6fbfe;
+  border-radius: 10px;
+  padding: 28px 26px;
+  margin-top: 12px;
+}
+
+.tab-section-title.bank-details {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 22px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px 18px;
+  width: fit-content;
+  color: #223042;
+  border: 1px solid #e5eaf1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* ====================== DOCUMENTS TAB SECTION ====================== */
+.profile-tab-section.documents {
+  background: #f6fbfe;
+  border-radius: 10px;
+  padding: 28px 26px;
+  margin-top: 12px;
+}
+
+.tab-section-title.documents {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 22px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px 18px;
+  width: fit-content;
+  color: #223042;
+  border: 1px solid #e5eaf1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.doc-item {
+  background: #f7fafd;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(25, 189, 232, 0.06);
+  border: 1px solid #e2eaf0 !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+}
+
+.pdf-icon {
+  background: #FFE4E6;
+  color: #E11D48;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.doc-title {
+  font-size: 15px;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.doc-size-text {
+  font-size: 13px;
+  color: #94A3B8;
+}
+
+.status-completed-text {
+  font-size: 13px;
+  color: #10B981;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.doc-delete-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #94A3B8;
+}
+
+/* ------ Common form label style ------ */
+.form-label {
+  font-weight: 500;
+  margin-bottom: .29rem;
+  color: #223042;
+  font-size: 1rem;
+}
+
+/* Inline radio buttons and alignment for inputs */
+input[type="radio"] {
+  margin-right: 9px;
+  accent-color: #19bde8;
+}
+
+.form-check {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.form-check-input:checked {
+  background-color: #19bde8;
+  border-color: #19bde8;
+}
+
+/* ====================== INPUTS & BUTTONS ====================== */
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border: 1.3px solid #e6e6e6;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.17s;
+  background: #f3faff;
+  font-size: 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #19BDE8;
+  box-shadow: 0 0 0 2px #19bde81b;
+}
+
+.btn-primary,
+.btn-outline-info {
+  min-width: 80px;
+}
+
+/* ====================== SKILL PILLS ====================== */
+/* .skills-pill-wrap {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 6px 0 0 0;
+}
+.skill-pill {
+  display: inline-block;
+  background: #F8F8F8;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-weight: 400;
+  color: #000000;
+  border: 1px solid #cae7f0;
+  font-size: 0.98rem;
+} */
+
+/* ====================== DOCUMENTS/UPLOAD BOX ====================== */
+.doc-item {
+  background: #f7fafd;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(25, 189, 232, 0.06);
+  border: 1px solid #e2eaf0 !important;
+}
+
+.pdf-icon {
+  background: #fff3f1;
+  color: #fd776b;
+  border-radius: 5px;
+  padding: 4px 11px;
+  font-weight: 700;
+  font-size: 0.93rem;
+  margin-right: 10px;
+}
+
+.status-completed,
+.doc-done {
+  color: #27be62;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.upload-box {
+  border: 2px dashed #CBD5E1;
+  border-radius: 20px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 280px;
+  justify-content: center;
+  width: 320px;
+  margin-right: 250px;
+}
+
+.upload-box.drag-over {
+  border-color: #19BDE8;
+  background: #EFF9FF;
+}
+
+.upload-title {
+  color: #1E293B;
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.upload-hint {
+  font-size: 12px;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+.browse-file-label {
+  display: block;
+  width: 100%;
+  background: #19BDE8;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .profile-header-content {
+    flex-direction: column;
+  }
+
+  .profile-header-card>.card-body>div {
+    min-width: 0;
+  }
+
+  .profile-tabs .nav-link {
+    padding: 11px 9px;
+    font-size: 1rem;
+  }
+}
+
+/* Remove only the background, border, and shadow for all tabs except personal-info */
+.profile-tab-section.education,
+.profile-tab-section.experience,
+.profile-tab-section.bank-details,
+.profile-tab-section.documents {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* DARK MODE OVERRIDES */
+body[data-theme='dark'] .update-info-header-box {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+body[data-theme='dark'] .tab-section-title.personal-info {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .profile-id {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .profile-tabs .nav-link {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .profile-tabs .nav-link.active {
+    color: #12baf5 !important;
+}
+
+body[data-theme='dark'] .doc-item {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body[data-theme='dark'] .pdf-icon {
+  background: rgba(225, 29, 72, 0.2) !important;
+  color: #fb7185 !important;
+}
+
+body[data-theme='dark'] .doc-title {
+  color: #f8fafc !important;
+}
+
+body[data-theme='dark'] .doc-size-text {
+  color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .status-completed-text {
+  color: #34d399 !important;
+}
+
+body[data-theme='dark'] .upload-box {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+body[data-theme='dark'] .upload-box.drag-over {
+  border-color: #19BDE8 !important;
+  background: rgba(25, 189, 232, 0.1) !important;
+}
+
+body[data-theme='dark'] .upload-title {
+  color: #f8fafc !important;
+}
+
+body[data-theme='dark'] .upload-hint {
+  color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .browse-file-label {
+  background: #19BDE8 !important;
+}
+
+body[data-theme='dark'] .skill-pill {
+    background: #1e293b !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+body[data-theme='dark'] .skill-remove {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .tab-section-title.education,
+body[data-theme='dark'] .tab-section-title.experience,
+body[data-theme='dark'] .tab-section-title.bank-details,
+body[data-theme='dark'] .tab-section-title.documents {
+    background: #1e293b !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+body[data-theme='dark'] .form-label {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .option-box {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #ffffff !important;
+}
+

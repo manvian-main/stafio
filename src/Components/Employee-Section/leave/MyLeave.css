@@ -1,0 +1,497 @@
+.layout {
+	display: flex;
+	height: 100vh;
+	/* important */
+	overflow: hidden;
+	/* prevents double scroll */
+}
+
+.myleave-container {
+	flex: 1;
+	padding: 0 25px 25px 25px !important;
+	height: 100vh;
+	overflow-y: auto;
+	/* enables vertical scroll */
+}
+
+/* Page Title */
+.page-title {
+	font-size: 25px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	margin-top: 15px !important;
+	color: black;
+}
+
+/* Leave Summary Cards */
+.leave-summary {
+	display: flex;
+	width: 40% !important;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.emp-summary-card {
+	background: #ffffff;
+	flex: 1;
+	padding: 10px;
+	border-radius: 1px;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+	display: block;
+	align-items: center;
+	gap: 10px;
+}
+
+.summary-icon {
+	color: #00c853;
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+.leave-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin: 20px 0 0 0;
+}
+
+/* Left summary section */
+.leave-summary {
+	display: flex;
+	gap: 15px;
+}
+
+/* Right actions section */
+.leave-actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* pushes filter button to bottom */
+	align-items: flex-end;
+	height: 100%;
+	/* makes it stretch same as summary section */
+}
+
+.leave-actions .top-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 0px;
+}
+
+.leave-actions .bottom-button {
+	margin-top: auto;
+	/* pushes filter button to bottom */
+}
+
+.leave-actions button {
+	padding: 8px 16px;
+	margin: 5px 0;
+	border: none;
+	cursor: pointer;
+}
+
+/* Buttons */
+.leave-actions {
+	margin-top: -30px;
+	display: flex;
+	gap: 50px;
+	margin-bottom: 30px;
+}
+
+.btn-apply {
+	background: #00bcd4;
+	color: #fff;
+	border: none;
+	padding: 10px 18px;
+	border-radius: 15px 0px 0px 15px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.btn-regularization {
+	background: #fff;
+	color: #000;
+	border: 1px solid #ddd;
+	padding: 8px 18px;
+	border-radius: 0px 15px 15px 0px;
+	cursor: pointer;
+}
+
+.btn-filter {
+	color: #000000ff;
+	font-size: 15px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	background: transparent;
+	border: 1px solid #cececeff !important;
+	border-radius: 10px;
+	padding: 8px 14px;
+	transition: 0.2s;
+}
+
+/* ====== Filter Dropdown Box ====== */
+.empl-app-filter-dropdown-box {
+	position: absolute;
+	top: calc(100% + 8px);
+	/* below button with gap */
+	right: 0;
+	background: #fff;
+	width: 320px;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	z-index: 999;
+	border: 1px solid #e2e8f0;
+	padding: 16px;
+	/* 🔥 add inner spacing */
+}
+
+.empl-app-filter-popup-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-bottom: 16px;
+}
+
+.empl-app-filter-popup-header h3 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0;
+	color: #1a1a1a;
+}
+
+.empl-app-filter-popup-close {
+	position: absolute;
+	right: 0px;
+	top: -5px;
+	width: 25px;
+	height: 35px;
+	border: none;
+	background: none;
+	border-radius: 6px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+
+.empl-app-filter-popup-body {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.empl-app-filter-popup-footer {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 14px;
+	margin-top: 10px;
+	border-top: 1px solid #eee;
+}
+
+.filter-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.filter-field label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #2c3e50;
+}
+
+.filter-field input,
+.filter-field select {
+	width: 100%;
+	height: 42px;
+	border-radius: 6px;
+	border: 1px solid #d1d5db;
+	outline: none;
+	padding: 0 12px;
+	font-size: 14px;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+.filter-field input:focus,
+.filter-field select:focus {
+	border-color: #0ec8de;
+	box-shadow: 0px 0px 0px 3px rgba(14, 200, 222, 0.12);
+}
+
+.filter-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 14px;
+}
+
+
+
+/* Table */
+.leave-table table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.leave-table th,
+.leave-table td {
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+}
+
+.leave-table th {
+	background: #f9fbfd;
+	font-weight: 600;
+	border-bottom: 2px solid #eee;
+	border-top: 2px solid #eee;
+	height: 70px;
+	text-align: center;
+}
+
+.leave-table td {
+	height: 90px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.leave-table .status {
+	color: #00c853;
+	font-weight: 500;
+	margin-right: 10px;
+}
+
+.action-icons {
+	align-items: center;
+}
+
+.edit-icon {
+	color: #555555ff;
+	cursor: pointer;
+	margin-right: 10px !important;
+}
+
+.status {
+	display: block;
+	/* forces new line */
+	margin-top: 4px;
+	/* adds spacing below the date */
+	color: #00c853;
+	font-weight: 500;
+	margin-left: 10px;
+}
+
+.delete-icon {
+	color: #ff5252;
+	cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.pagination select {
+	padding: 4px 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #19bde8;
+	color: white;
+}
+
+.page-controls {
+	margin-left: auto;
+	display: flex;
+	gap: 6px;
+}
+
+.page-controls button {
+	padding: 4px 10px;
+	border: 1px solid #ddd;
+	background: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.page-controls button.active {
+	background: #19bde8;
+	color: #fff;
+	border-color: #00bcd4;
+}
+
+/* apply leave modal */
+
+.apply-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* important */
+	padding: 20px;
+}
+
+
+.apply-modal {
+	/* max-width: 95%; */
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	animation: modalFade 0.3s ease;
+	z-index: 10000;
+	max-height: 90vh;
+	/* IMPORTANT */
+	display: flex;
+	flex-direction: column;
+}
+
+.apply-modal-header {
+	background: #21b6d7;
+	color: white;
+	padding: 14px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.apply-modal-body {
+	padding: 25px;
+	overflow-y: auto;
+	/* IMPORTANT */
+}
+
+.close-btn {
+	border: none;
+	background: none;
+	color: white;
+	font-size: 22px;
+	cursor: pointer;
+}
+
+@keyframes modalFade {
+	from {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@media (max-width: 1360px) {
+	.apply-modal-body {
+		padding: 8px 25px 5px 25px;
+	}
+
+	.apply-modal-header h3 {
+		font-size: 18px;
+	}
+}
+
+/* ================================================
+   Dark Theme Support for My Leave (Employee)
+   ================================================ */
+body[data-theme='dark'] .myleave-container {
+	background-color: #0b0f1a !important;
+}
+
+body[data-theme='dark'] .page-title {
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .emp-summary-card {
+	background: #1a1f2e !important;
+	border: 1px solid #2d334a !important;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .emp-summary-card strong,
+body[data-theme='dark'] .emp-summary-card .h5 {
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .emp-summary-card p {
+	color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .btn-filter,
+body[data-theme='dark'] .btn-regularization {
+	background: #1a1f2e !important;
+	border-color: #374151 !important;
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-table table {
+	background: #1a1f2e !important;
+	border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table th {
+	background: #0f172a !important;
+	color: #cbd5e1 !important;
+	border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table td {
+	color: #e2e8f0 !important;
+	border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .page-controls button {
+	background: #1a1f2e !important;
+	color: #cbd5e1 !important;
+	border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .page-controls button.active {
+	background: #19bde8 !important;
+	color: #ffffff !important;
+	border-color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .apply-modal,
+body[data-theme='dark'] .empl-app-filter-dropdown-box {
+	background: #1a1f2e !important;
+	border: 1px solid #2d334a !important;
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .apply-modal-header {
+	background: #12acd3 !important;
+}
+
+body[data-theme='dark'] .filter-field label {
+	color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .filter-field input,
+body[data-theme='dark'] .filter-field select {
+	background: #0f172a !important;
+	border-color: #2d334a !important;
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .empl-app-filter-popup-header h3 {
+	color: #ffffff !important;
+}
+
+body[data-theme='dark'] .empl-app-filter-popup-footer {
+	border-top-color: #2d334a !important;
+}

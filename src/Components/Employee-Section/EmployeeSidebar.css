@@ -1,0 +1,436 @@
+.employee-sidebar {
+  width: 255px;
+  min-width: 255px;
+  background-color: #19BDE8;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  top: 0;
+  left: 0px;
+  padding: 6px 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1050;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.employee-sidebar.show {
+  opacity: 1;
+}
+
+/* Header */
+.employee-sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo {
+  width: 120px;
+  margin-bottom: 0px;
+  margin-top: 18px;
+}
+
+.sidebar-title {
+  font-size: 1px;
+  font-weight: 500;
+}
+
+/* Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* gap: 10px; */
+  color: #fff !important;
+  text-decoration: none;
+  padding: 22px 15px;
+  /* modified */
+  border-radius: 0px;
+  font-size: 16px;
+  transition: all 0.25s ease-in-out;
+  font-weight: 500;
+  border-top: 0.9px solid #cccaca;
+
+}
+
+.sidebar-link.active {
+  background-color: #ffffffff !important;
+  color: #000000ff !important;
+  text-decoration: none !important;
+
+}
+
+.submenu-link.active {
+  color: #19BDE8;
+  /* example: blue highlight */
+  font-weight: 500;
+
+}
+
+.submenu {
+  background: white;
+  margin: 0px !important;
+  text-align: left;
+  padding-left: 50px !important;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.sidebar-link:hover {
+  background-color: #19BDE8;
+  transform: translateX(5px);
+}
+
+.leave {
+  margin-left: 10px;
+  text-decoration: none !important;
+
+}
+
+
+/* Logout */
+.sidebar-logout {
+  margin-top: 0px;
+  padding: 18px 15px;
+  /* padding: 28px 15px; */
+  background: transparent;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 16px;
+  /* font-size: 22px; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* gap: 10px; */
+  transition: background 0.3s ease, transform 0.2s ease;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.chev-container.abs {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffffff;
+  border-radius: 50%;
+}
+
+.chev-container.abs svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  display: block;
+
+}
+
+.chev-container svg {
+  color: #ffffffff !important;
+  fill: #ffffffff;
+}
+
+.chev-container svg:hover {
+  color: #000000ff !important;
+  /* stops yellow hover */
+  fill: #000000ff;
+}
+
+.sidebar-logout:hover {
+  background: #e63946;
+
+}
+
+.employee-sidebar-footer {
+  margin-top: auto;
+  text-align: center;
+}
+
+.sidebar-logo1 {
+  width: 250px;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  /* offset 10px from the right edge */
+  height: 80%;
+  border-right: 2px dotted #000000ff;
+}
+
+.sidebar-leave-link {
+  text-decoration: none !important;
+
+}
+
+.submenu-link {
+  color: #000000ff;
+  text-decoration: none !important;
+  padding: 5px 0;
+  display: block;
+
+}
+
+.submenu-link.active {
+  color: #19bde8;
+  /* highlighted blue */
+  font-weight: 500;
+}
+
+/* ============================================================
+   MEDIA QUERIES — Professional Breakpoint Suite (EmployeeSidebar)
+   Optimized for: 13", 14", 15" Laptops & 4K
+   ============================================================
+
+   Breakpoint Map:
+   ┌─────────────────────────────────────────┐
+   │  ≤ 1280px  →  13" Laptop (HD)           │
+   │  1281–1366px → 13"–14" Laptop (HD)      │
+   │  1367–1440px → 14" Laptop (QHD/FHD)     │
+   │  1441–1536px → 15" Laptop (QHD)         │
+   │  ≥ 2560px  →  4K / UHD Monitor          │
+   └─────────────────────────────────────────┘
+   ============================================================ */
+
+/* ── 13" Laptop — 1280px and below ─────────────────────────── */
+@media screen and (max-width: 1280px) {
+  .employee-sidebar {
+    width: 220px;
+  }
+
+  .sidebar-logo {
+    width: 100px;
+    margin-top: 12px;
+  }
+
+  .sidebar-link {
+    padding: 16px 13px;
+    font-size: 13px;
+  }
+
+  .sidebar-logout {
+    padding: 14px 13px;
+    font-size: 13px;
+  }
+
+  .submenu {
+    padding-left: 40px !important;
+    padding-bottom: 20px;
+    padding-top: 8px;
+  }
+
+  .submenu-link {
+    font-size: 11.5px;
+    padding: 4px 0;
+  }
+
+  .sidebar-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .leave {
+    margin-left: 8px;
+  }
+}
+
+/* ── 13"–14" Laptop — 1281px to 1366px ─────────────────────── */
+@media screen and (min-width: 1281px) and (max-width: 1366px) {
+  .employee-sidebar {
+    width: 228px;
+  }
+
+  .sidebar-logo {
+    width: 105px;
+    margin-top: 14px;
+  }
+
+  .sidebar-link {
+    padding: 18px 13px;
+    font-size: 13.5px;
+  }
+
+  .sidebar-logout {
+    padding: 15px 13px;
+    font-size: 13.5px;
+  }
+
+  .submenu {
+    padding-left: 43px !important;
+    padding-bottom: 22px;
+    padding-top: 8px;
+  }
+
+  .submenu-link {
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  .sidebar-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .leave {
+    margin-left: 9px;
+  }
+}
+
+/* ── 14" Laptop — 1367px to 1440px ─────────────────────────── */
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+  .employee-sidebar {
+    width: 238px;
+  }
+
+  .sidebar-logo {
+    width: 110px;
+    margin-top: 15px;
+  }
+
+  .sidebar-link {
+    padding: 19px 14px;
+    font-size: 14px;
+  }
+
+  .sidebar-logout {
+    padding: 16px 14px;
+    font-size: 14px;
+  }
+
+  .submenu {
+    padding-left: 45px !important;
+    padding-bottom: 24px;
+    padding-top: 9px;
+  }
+
+  .submenu-link {
+    font-size: 12.5px;
+    padding: 4px 0;
+  }
+
+  .sidebar-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* ── 15" Laptop — 1441px to 1536px ─────────────────────────── */
+@media screen and (min-width: 1441px) and (max-width: 1536px) {
+  .employee-sidebar {
+    width: 255px;
+  }
+
+  .sidebar-logo {
+    width: 120px;
+    margin-top: 18px;
+  }
+
+  .sidebar-link {
+    padding: 22px 15px;
+    font-size: 14.5px;
+  }
+
+  .sidebar-logout {
+    padding: 18px 15px;
+    font-size: 14.5px;
+  }
+
+  .submenu {
+    padding-left: 48px !important;
+    padding-bottom: 28px;
+    padding-top: 10px;
+  }
+
+  .submenu-link {
+    font-size: 13px;
+    padding: 5px 0;
+  }
+
+  .sidebar-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* ── 4K / UHD Monitor — 2560px and above ───────────────────── */
+@media screen and (min-width: 2560px) {
+  .employee-sidebar {
+    width: 340px;
+  }
+
+  .sidebar-logo {
+    width: 170px;
+    margin-top: 26px;
+    margin-bottom: 10px;
+  }
+
+  .sidebar-link {
+    padding: 30px 22px;
+    font-size: 20px;
+  }
+
+  .sidebar-logout {
+    padding: 24px 22px;
+    font-size: 20px;
+    gap: 14px;
+  }
+
+  .submenu {
+    padding-left: 70px !important;
+    padding-bottom: 38px;
+    padding-top: 14px;
+  }
+
+  .submenu::after {
+    left: 42px;
+    border-right-width: 3px;
+  }
+
+  .submenu-link {
+    font-size: 17px;
+    padding: 6px 0;
+  }
+
+  .sidebar-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .chev-container.abs {
+    width: 32px;
+    height: 32px;
+  }
+
+  .chev-container.abs svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .leave {
+    margin-left: 14px;
+  }
+
+  .sidebar-logo1 {
+    width: 320px;
+  }
+}
+}
+
+.leave {
+  margin-left: 14px;
+}
+
+.sidebar-logo1 {
+  width: 320px;
+}
+}

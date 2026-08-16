@@ -1,0 +1,42 @@
+.attendance-card {
+  border-radius: 16px;
+  border: none;
+  padding: 10px;
+   width: 330px;       /* new */
+}
+
+.attendance-header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.attendance-header1 h5 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.settings-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px;
+}
+
+.recharts-tooltip-wrapper {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recharts-default-tooltip {
+  background-color: #19bde8 !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.recharts-tooltip-label {
+  display: none;
+}

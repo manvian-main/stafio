@@ -1,0 +1,753 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+
+* {
+	/* modified */
+	margin-top: 0px !important;
+}
+
+/* AdminDashboard.css */
+
+.dashboard-wrapper {
+	display: flex;
+	background-color: #eff5ff;
+	height: 100vh;
+	overflow: hidden;
+	padding-right: 0px !important;
+}
+
+/* Sidebar slot — clips the translateX slide animation */
+.sidebar {
+	flex: 0 0 255px;
+	width: 255px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.main-content {
+	flex-grow: 1;
+	height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 7px;
+	background: #eff5ff;
+}
+
+.username h1 {
+	font-size: 2rem;
+	font-weight: bold;
+	color: #333;
+	margin-left: 10px !important;
+}
+
+.vector-img {
+	margin-bottom: 150px;
+}
+
+.meeting-card {
+	width: 100%;
+	max-width: 1165px;
+	min-height: 320px;
+	height: auto;
+	margin-left: -11px;
+	padding-bottom: 30px !important;
+	color: #fff;
+}
+
+.meeting-card h2,
+.meeting-card p,
+.meeting-card span {
+	color: #fff;
+}
+
+.meeting-left h2 {
+	/*new*/
+	font-size: 22px !important;
+	/*modified*/
+	padding-left: 5px !important;
+	margin-top: 15px !important;
+	color: #fff;
+}
+
+.meeting-box {
+	/*new*/
+	font-size: 15px;
+	height: 80px;
+	width: 270px !important;
+}
+
+.meeting-info h4 {
+	/*new*/
+	font-size: 16px !important;
+}
+
+.meeting-info p {
+	/*new*/
+	font-size: 13px !important;
+}
+
+.notice .summary-card {
+	/*new*/
+	margin-right: 2px;
+	/*modified*/
+	margin-left: -13px;
+	/*modified*/
+}
+
+.summary-card {
+	border-radius: 10px !important;
+	padding: 20px;
+	background: #eff5ff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	transition: transform 0.2s;
+	padding-bottom: 20px !important;
+	/*new*/
+}
+
+.summary-card:hover {
+	transform: translateY(-4px);
+}
+
+.summary-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 15px !important;
+}
+
+.summary-icons {
+	font-size: 1.2rem;
+	color: #19bde8;
+	margin-top: -5px !important;
+}
+
+.btn-punch-out1 {
+	padding: 12px 30px;
+	background: white;
+	border: none;
+	border-radius: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	min-width: 180px;
+	color: #19bde8;
+	font-size: 16px;
+}
+
+.btn-punch-out1:hover {
+	background: #f3f3f3;
+	color: #19bde8;
+}
+
+.break-btn-st-en {
+	padding: 12px 30px;
+	min-width: 180px;
+	width: auto !important;
+	background: #fff;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 600;
+	color: #19bde8;
+	font-size: 16px;
+}
+
+.break-btn-st-en:hover {
+	background: #f3f3f3;
+	color: #19bde8;
+}
+
+.button-row {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	margin-top: 25px;
+}
+
+/* .btn-end-break{
+  padding: 8px 16px !important;
+  width: 100%;
+  background: #19bde8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+} */
+
+.btn-punch {
+	padding: 10px 38px !important;
+	width: 270px !important;
+	background: #19bde8;
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 550;
+}
+
+.btn-punch:hover {
+	background: #17a2cc;
+}
+
+.arrow3 {
+	margin-bottom: -190px;
+}
+
+.maleteam {
+	/* modified */
+	height: 300px;
+	width: 260px !important;
+	margin-left: -45px;
+	margin-right: -152px !important;
+	margin-bottom: -43px;
+}
+
+.clock {
+	/* padding-right: 20px !important; */
+	margin-bottom: 100px;
+	/* modified */
+	margin-right: 20px !important;
+	/* modified */
+}
+
+.punch-info-box {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.info-item {
+	font-size: 14px;
+	border: 1px solid rgba(25, 189, 232, 0.4);
+	padding: 10px 20px;
+	border-radius: 8px;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.info-item span {
+	color: #fff !important;
+	font-weight: 500;
+}
+
+.info-item strong {
+	color: #fff !important;
+	background: transparent !important;
+}
+
+.meeting-time {
+	background: rgb(161, 161, 161) !important;
+	/* color: white; */
+	border-radius: 50%;
+	width: 30px !important;
+	height: 30px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+}
+
+.meeting-time img {
+	/*new*/
+	width: 30px;
+	height: 30px;
+}
+
+/* new css part  */
+
+.break-wrapper {
+	position: relative;
+}
+
+.break-dropdown {
+	position: relative;
+	top: 45px;
+	right: 30 !important;
+	background: #fff;
+	width: 260px;
+	border-radius: 6px;
+	color: #333;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	padding: 10px;
+	z-index: 20;
+}
+
+.break-item {
+	padding: 8px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 4px;
+}
+
+.break-item:hover {
+	background: #f5f5f5;
+}
+
+.break-item strong {
+	color: #333 !important;
+}
+
+.break-item span {
+	color: #666 !important;
+}
+
+.active-break {
+	background: #e6f7ff;
+	border-left: 4px solid #1890ff;
+}
+
+.custom-break {
+	color: #1890ff;
+	font-weight: 500;
+}
+
+/* ─── Admin Notification Banner ──────────────────────────────────────────────
+   Only styles for the pending approvals notification on Admin Dashboard
+──────────────────────────────────────────────────────────────────────────── */
+
+.admin-notif-banner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #eeeeee;
+	border: none;
+	border-radius: 14px;
+	padding: 13px 18px;
+	margin-bottom: 14px;
+	margin-top: 16px !important;
+	gap: 12px;
+	width: 100%;
+}
+
+.admin-notif-text {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 100%;
+	letter-spacing: 0.05em;
+	vertical-align: middle;
+	color: #000000;
+}
+
+.admin-notif-link {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 100%;
+	letter-spacing: 0.05em;
+	vertical-align: middle;
+	color: #19bde8;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.admin-notif-link:hover {
+	text-decoration: underline;
+	color: #19bde8;
+}
+
+.admin-notif-count {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 100%;
+	letter-spacing: 0.05em;
+	vertical-align: middle;
+	color: #19bde8;
+}
+
+.admin-notif-close {
+	background: #eeeeee;
+	border: none;
+	cursor: pointer;
+	color: #000000;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0;
+	flex-shrink: 0;
+	transition: opacity 0.2s;
+}
+
+.admin-notif-close:hover {
+	opacity: 0.6;
+}
+
+/* Dark theme overrides for Admin Notification Banner */
+body[data-theme='dark'] .admin-notif-banner {
+	background: rgba(25, 189, 232, 0.08) !important;
+	border: 1px solid rgba(25, 189, 232, 0.25) !important;
+}
+
+body[data-theme='dark'] .admin-notif-text {
+	color: #c8e6f5 !important;
+}
+
+body[data-theme='dark'] .admin-notif-close {
+	background: transparent !important;
+	color: #a5f3ff !important;
+}
+
+body[data-theme='dark'] .admin-notif-close:hover {
+	color: #ffffff !important;
+	opacity: 0.8;
+}
+
+/* ================= 1400px ================= */
+/* @media (max-width: 1400px) {
+	.dashboard-wrapper {
+		max-width: 1500px;
+		margin: auto;
+	}
+
+	.meeting-card {
+		width: 103% !important;
+		height: 300px;
+	}
+
+	.maleteam {
+		width: 420px !important;
+		height: 320px;
+	}
+
+	.summary-card {
+		padding: 22px;
+	}
+
+	.username h1 {
+		font-size: 2.1rem;
+	}
+} */
+
+/* ================= 1200px ================= */
+/* @media (max-width: 1200px) {
+	.meeting-card {
+		width: 103% !important;
+		height: auto;
+		padding: 20px;
+	}
+
+	.vector-img {
+		margin-bottom: 120px;
+	}
+
+	.maleteam {
+		width: 320px !important;
+		height: 250px;
+		margin-right: -80px !important;
+	}
+
+	.clock {
+		margin-right: 10px !important;
+	}
+
+	.meeting-box {
+		width: 240px !important;
+	}
+
+	.punch-info-box {
+		width: 300px;
+	}
+
+	.info-item {
+		width: 300px;
+	}
+
+	.summary-card {
+		padding: 18px;
+	}
+
+	.notice .summary-card {
+		margin-left: 0;
+	}
+} */
+
+/* ================= 992px ================= */
+/* @media (max-width: 992px) {
+	.username h1 {
+		font-size: 1.6rem;
+	}
+
+	.meeting-card {
+		flex-direction: column;
+		align-items: flex-start;
+		height: auto;
+		gap: 20px;
+	}
+
+	.meeting-left {
+		width: 100%;
+	}
+
+	.meeting-right {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.maleteam {
+		width: 260px !important;
+		height: 200px;
+		margin: 0 !important;
+	}
+
+	.arrow3 {
+		display: none;
+	}
+
+	.clock {
+		display: none;
+	
+	}
+
+	.meeting-box {
+		width: 240px !important;
+	}
+
+	.punch-info-box {
+		width: auto;
+		gap: 8px;
+	}
+
+	.info-item {
+		width: auto;
+		padding: 5px 12px;
+	}
+
+	.summary-card {
+		padding: 16px;
+	}
+
+	.summary-icons {
+		font-size: 1rem;
+	}
+} */
+
+@media (min-width: 993px) and (max-width: 1200px) {
+
+	.meeting-card {
+		width: 100%;
+		height: auto;
+		padding: 20px;
+	}
+
+	.vector-img {
+		margin-bottom: 120px;
+	}
+
+	.maleteam {
+		width: 260px !important;
+		height: 250px;
+		margin-right: -80px !important;
+	}
+
+	.clock {
+		margin-right: 10px !important;
+		margin-left: -40px !important;
+	}
+
+	.meeting-box {
+		width: 240px !important;
+	}
+
+	.punch-info-box {
+		width: auto !important;
+		gap: 12px;
+	}
+
+	.info-item {
+		width: auto !important;
+		padding: 6px 12px;
+	}
+
+	.summary-card {
+		padding: 18px;
+	}
+
+	.notice .summary-card {
+		margin-left: 0;
+	}
+
+}
+
+@media (min-width:1201px) and (max-width:1400px) {
+
+	.dashboard-wrapper {
+		max-width: 1400px;
+		margin: auto;
+	}
+
+	.meeting-card {
+		width: 100% !important;
+		min-height: 335px;
+		height: auto !important;
+	}
+
+	.maleteam {
+		width: 260px !important;
+		height: 300px;
+	}
+
+	.summary-card {
+		padding: 20px;
+	}
+
+	.username h1 {
+		font-size: 2rem;
+	}
+
+}
+
+@media (min-width:1401px) and (max-width:1550px) {
+
+	.dashboard-wrapper {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+	}
+
+	.meeting-card {
+		width: 100% !important;
+		min-height: 335px;
+		height: auto !important;
+	}
+
+	.maleteam {
+		width: 420px !important;
+		height: 320px;
+	}
+
+	.summary-card {
+		padding: 22px;
+	}
+
+	.username h1 {
+		font-size: 2.1rem;
+	}
+
+}
+
+.break-relative-container {
+	position: relative;
+	display: inline-block;
+	width: 35%;
+	vertical-align: middle;
+}
+
+.break-btn-st-en {
+	width: 100% !important;
+}
+
+.break-items-list {
+	max-height: 250px;
+	overflow-y: auto;
+	padding-right: 8px;
+}
+
+/* Premium Scrollbar */
+.break-items-list::-webkit-scrollbar {
+	width: 5px;
+}
+
+.break-items-list::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.break-items-list::-webkit-scrollbar-thumb {
+	background: #a5f3ff;
+	border-radius: 10px;
+}
+
+.break-items-list::-webkit-scrollbar-thumb:hover {
+	background: #19bde8;
+}
+
+.break-dropdown {
+	position: absolute;
+	top: calc(100% + 5px);
+	left: 0;
+	background: #fff;
+	width: 280px;
+	border-radius: 12px;
+	padding: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	z-index: 1100;
+	color: #333;
+}
+
+.dropdown-title {
+	font-weight: 600;
+	margin-bottom: 12px;
+	color: #19bde8;
+}
+
+/* Dark Mode support for Break dropdown */
+body[data-theme="dark"] .break-dropdown {
+	background-color: #1a1f2e !important;
+	color: #fff !important;
+	border: 1px solid #2d334a !important;
+}
+
+body[data-theme="dark"] .break-item:hover {
+	background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme="dark"] .break-item strong,
+body[data-theme="dark"] .break-item span {
+	color: #fff !important;
+}
+
+body[data-theme='dark'] .active-break {
+	background-color: rgba(25, 189, 232, 0.1) !important;
+	border-left: 3px solid #19bde8 !important;
+}
+
+/* Dark mode specific for Admin Meeting Card */
+body[data-theme='dark'] .meeting-card {
+	background: linear-gradient(135deg, #1e293b 0%, #0c1e35 100%) !important;
+	border: 1px solid rgba(25, 189, 232, 0.2) !important;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+	border-radius: 15px !important;
+}
+
+body[data-theme='dark'] .meeting-card h2 {
+	color: #19bde8 !important;
+	text-shadow: 0 0 15px rgba(25, 189, 232, 0.3);
+}
+
+body[data-theme='dark'] .meeting-card p,
+body[data-theme='dark'] .meeting-card span,
+body[data-theme='dark'] .info-item span {
+	color: #a5f3ff !important;
+}
+
+body[data-theme='dark'] .punch-info-box {
+	background: transparent !important;
+	border: none !important;
+}
+
+body[data-theme='dark'] .info-item {
+	background: rgba(12, 30, 53, 0.8) !important;
+	border-color: rgba(25, 189, 232, 0.4) !important;
+}
+
+body[data-theme='dark'] .info-item strong {
+	color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .btn-punch-out1,
+body[data-theme='dark'] .btn-punch,
+body[data-theme='dark'] .break-btn-st-en {
+	background-color: #ffffff !important;
+	color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .btn-punch-out1:hover,
+body[data-theme='dark'] .btn-punch:hover,
+body[data-theme='dark'] .break-btn-st-en:hover {
+	background-color: #f3f3f3 !important;
+	color: #12acd3 !important;
+}

@@ -1,0 +1,84 @@
+/* General styles */
+.dashboard-container {
+  background-color: #ffffff;
+  color: #202020;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* Titles */
+.dashboard-title {
+  font-weight: 600;
+  color: #202020;
+}
+.dashboard-subtitle {
+  color: #6c757d;
+}
+
+/* Search bar */
+.search-bar {
+  border-radius: 25px;
+  border: 1px solid #19bde8;
+  padding: 0.6rem 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Custom button */
+.custom-btn {
+  background-color: #19bde8;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.custom-btn:hover {
+  background-color: #148ba7;
+}
+
+/* Cards */
+.summary-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  color: #202020;
+  border-radius: 15px;
+  transition: transform 0.2s ease;
+}
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+.summary-title {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+.summary-value {
+  color: #19bde8;
+  font-weight: 700;
+}
+
+/* Chart cards */
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 15px;
+  color: #202020;
+}
+.card-header-custom {
+  background-color: #19bde8 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 15px 15px 0 0;
+}
+
+/* Table */
+.custom-table thead {
+  background-color: #19bde8;
+  color: #ffffff;
+}
+.custom-table tbody tr {
+  background: #ffffff;
+  color: #202020;
+}
+.custom-table tbody tr:hover {
+  background: #f8f9fa;
+}

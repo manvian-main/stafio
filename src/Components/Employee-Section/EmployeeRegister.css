@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+.employee-register-container {
+  background: linear-gradient(to right, #ffffff, #eaf9fd);
+  height: 100vh;
+}
+
+/* ===== LEFT SIDE ===== */
+.employee-register-left {
+  position: relative;
+  background: #e8edfa;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.employee-logos {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 0px !important;
+  margin-left: 30px;
+}
+
+.teamplus-logo {
+  height: 50% !important;
+}
+
+.employee-heading {
+  margin-top: 10px;
+  font-size: 35px;
+  font-weight: 600;
+  color: #1e2a5a;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.employee-subheading {
+  font-size: 35px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+.employee-description {
+  font-size: 18px;
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-left: 30px;
+}
+
+.employee-illustration {
+  width: 70%;
+  z-index: 2;
+  position: relative;
+  margin-top: -40px;
+  align-self: center;
+  height: 450px;
+}
+
+/* ===== RIGHT SIDE ===== */
+.employee-register-right {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.employee-form-wrapper {
+  background: #ffffff;
+  padding: 40px;
+ 
+  
+}
+
+.employee-form-wrapper h5 {
+  color: #36baee;
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.employee-form-wrapper h3 {
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.employee-form-wrapper .form-control {
+  width: 400px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.employee-form-wrapper .form-control:focus {
+  border-color: #19BDE8;
+  box-shadow: 0 0 0 0.2rem rgba(25, 189, 232, 0.25);
+}
+
+.employee-register-btn {
+  width: 400px;
+  background-color: #19BDE8;
+  border: none;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.employee-register-btn:hover {
+  background-color: #17a8d3;
+}
+
+.employee-login-link {
+  color: #19BDE8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.employee-login-link:hover {
+  text-decoration: underline;
+}

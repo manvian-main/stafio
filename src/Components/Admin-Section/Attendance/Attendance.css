@@ -1,0 +1,507 @@
+.attendance-layout {
+  position: relative;
+  display: flex;
+  background: #eff5ff;
+  min-height: 100vh;
+}
+
+/* Make sure fixed image always stays visible and ignores padding */
+.rightside-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  padding: 0px;
+}
+
+.rightside-logos {
+  width: 550px;
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* .topbar {
+  position: relative;
+  z-index: 10;
+} */
+
+.attendance-main {
+  flex: 1;
+  padding: 0 25px 25px 25px;
+  position: relative;
+}
+
+/* .attendance-main .topbar {
+  margin-top: 10px !important;
+  width: 100%;
+  margin-left: 2px !important;
+} */
+
+
+/* ===== Header Section ===== */
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  /* margin-top: 30px; */
+  /* margin-left: 10px; */
+  position: relative;
+}
+
+.attendance-header h2 {
+
+  font-size: 30px;
+  font-weight: 600;
+  color: #222;
+  margin-top: 5px !important;
+}
+
+.attendance-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  margin-top: 40px !important;
+}
+
+.select-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #a8a8a8ff;
+  color: #666;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* ===== Filter Button ===== */
+.attendance-filter-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-filter-button:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+select.sort-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: #ffffff;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Section Header ===== */
+.attendance-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0;
+  overflow: visible;
+  /* Changed from hidden to show calendar popup */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 26px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.section-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.section-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  font-size: 14px;
+  outline: none;
+  width: 500px;
+}
+
+.search-box input:focus {
+  border-color: #19bde8;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 25px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  background: #ece8e8ff;
+  position: relative;
+}
+
+
+.who-is-on-leave-btn {
+  background-color: #19bde8;
+  border: none;
+  color: white;
+  font-weight: 500;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.who-is-on-leave-btn:hover {
+  background-color: #0da5d3;
+}
+
+/* ===== Table Section ===== */
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 14px;
+  color: #000000ff;
+  border-bottom: 1px solid #e0ddddff;
+}
+
+.attendance-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-top: 1px solid #e4e4e4ff;
+  letter-spacing: 0.5px;
+}
+
+.attendance-table tr:last-child td {
+  border-bottom: none;
+}
+
+.attendance-table tr:hover {
+  background-color: #f8fbff;
+}
+
+/* ===== Status Styles ===== */
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status.on-time {
+  color: #27bb4aff;
+}
+
+.status.absent {
+  color: #dc3545;
+}
+
+.status.late-login {
+  color: #ffbf00ff;
+}
+
+/* ===== Time Cells ===== */
+.time-cell {
+  font-weight: 500;
+}
+
+.status.on-time+.time-cell,
+tr:has(.status.on-time) .time-cell {
+  color: #2060d7ff;
+}
+
+.status.absent+.time-cell,
+tr:has(.status.absent) .time-cell {
+  color: #dc3545;
+}
+
+.status.late-login+.time-cell,
+tr:has(.status.late-login) .time-cell {
+  color: #ffc107;
+}
+
+/* ===== Pagination ===== */
+.pagination1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  border-top: 1px solid #f0f0f0;
+  margin: 10px 10px !important;
+}
+
+.showing-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.page-size-select1 {
+  padding: 6px 12px;
+  border: 1px solid #19bde8;
+  border-radius: 6px;
+  background: #19bde8;
+  color: #ffffffff;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.page-btn:hover {
+  border-color: #19bde8;
+  color: #19bde8;
+}
+
+.page-btn.active {
+  background-color: #19bde8;
+  border-color: #19bde8;
+  color: white;
+}
+
+/* ===== Filter Dropdown (Opens Below Button) ===== */
+.filter-dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.filter-dropdown-container {
+  position: absolute;
+  top: 170px;
+  right: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  animation: filterDropDown 0.2s ease-out;
+}
+
+@keyframes filterDropDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-dropdown-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.filter-dropdown-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filter-dropdown-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.filter-dropdown-close:hover {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.filter-dropdown-body {
+  padding: 16px;
+}
+
+.filter-dropdown-field {
+  margin-bottom: 12px;
+}
+
+.filter-dropdown-field:last-child {
+  margin-bottom: 0;
+}
+
+.filter-dropdown-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filter-dropdown-field input,
+.filter-dropdown-field select {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #374151;
+  transition: all 0.2s;
+  background: #ffffff;
+  font-family: inherit;
+}
+
+.filter-dropdown-field input:focus,
+.filter-dropdown-field select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.filter-dropdown-field input::placeholder {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.filter-dropdown-field input[type="date"] {
+  color: #6b7280;
+}
+
+.filter-dropdown-field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+
+.filter-dropdown-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.filter-dropdown-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 10px 10px;
+}
+
+.filter-dropdown-reset,
+.filter-dropdown-apply {
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.filter-dropdown-reset {
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.filter-dropdown-reset:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.filter-dropdown-apply {
+  background: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.3);
+}
+
+.filter-dropdown-apply:hover {
+  background: #2563eb;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+}

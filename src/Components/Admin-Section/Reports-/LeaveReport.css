@@ -1,0 +1,142 @@
+.leave-report-layout {
+	display: flex;
+	min-height: 100vh;
+	background-color: #eff5ff;
+}
+
+.leave-report-main {
+	flex: 1;
+}
+
+/* .leave-report-main.topbar {
+    margin:20px !important;
+} */
+
+/* Header Section */
+.leave-report-header {
+	display: flex;
+
+	align-items: center;
+	padding: 24px 30px;
+}
+
+.leave-report-header h2 {
+	font-size: 30px;
+	font-weight: 600;
+	color: #374151;
+	margin: 0;
+}
+
+.leave-report-dropdown {
+	padding: 8px 16px;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	background: #ffffff;
+	font-size: 14px;
+	color: #374151;
+	min-width: 180px;
+	outline: none;
+	margin-left: 20px;
+}
+
+/* Leave Summary Cards */
+.leave-summary-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	padding: 30px;
+	margin-bottom: 0;
+	width: 90%; /*new*/
+}
+
+.leave-summary-card {
+	display: block;
+	align-items: center;
+	gap: 16px;
+	padding: 24px 20px;
+	border-radius: 3px; /*new*/
+	background: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border: 1px solid #f3f4f6;
+}
+
+.leave-icon-wrapper {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.leave-icon {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: 600;
+	color: #ffffff;
+	margin-bottom: 10px;
+}
+
+.leave-summary-card .leave-icon {
+	background-color: #10b981;
+}
+
+.leave-content {
+	flex: 1;
+}
+
+.leave-days {
+	font-size: 18px;
+	font-weight: 600;
+	color: #111827;
+	margin-bottom: 4px;
+	line-height: 1.2;
+}
+
+.leave-type {
+	font-size: 14px;
+	color: #6b7280;
+	line-height: 1.2;
+}
+.attendance-graph {
+	margin-left: 30px;
+}
+
+/* ================================================
+   Dark Theme Support for Leave Report
+   ================================================ */
+body[data-theme='dark'] .leave-report-layout {
+    background-color: #0b0f1a !important;
+}
+
+body[data-theme='dark'] .leave-report-header h2 {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-report-dropdown {
+    background: #1a1f2e !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-summary-card {
+    background: #1a1f2e !important;
+    border-color: #2d334a !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .leave-days {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-type {
+    color: #94a3b8 !important;
+}
+
+

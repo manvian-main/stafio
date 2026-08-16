@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.admin-register-container {
+  background: linear-gradient(to right, #ffffff, #eaf9fd);
+  height: 100vh;
+}
+
+/* ===== LEFT SIDE ===== */
+.register-left {
+  position: relative;
+  background: #e8edfa;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.bg-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.register-left-content {
+  z-index: 2;
+  position: relative;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.register-logos  {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 0px !important;
+  margin-left: 30px;
+}
+
+.teamplus-logo {          /* modified */
+  height: 22% !important; 
+  width: 60%; 
+  margin-right:180px;     
+  margin-bottom:10px !important;
+}
+
+.stafio-logo {
+  height: 35px;
+}
+
+.register-heading {
+  margin-top: 6px;  /* margin-top: 10px; */
+  font-size: 37px;  /* font-size: 35px;    */
+  font-weight: 600;
+  color: #000;   /* modified */
+  width: 100%;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.register-subheading {
+  font-size: 35px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.register-description {
+  font-size: 16px;  /* font-size: 18px; */
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-left: -160px;  /* modified */
+}
+
+.register-illustration {
+  width: 100%;
+  height: 70% !important;
+  z-index: 2;
+  position: relative;
+  margin-top: -40px;
+  align-self: center;
+  height:450px;
+}
+ 
+/* ===== RIGHT SIDE ===== */
+.register-form-wrapper {
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 0;
+  margin-left: 50px;
+}
+
+.register-form-wrapper h5 {
+  color: #36baee;
+  font-weight: 500;
+  font-size: 15px;  /* font-size: 20px; */
+  padding-bottom: 15px;
+}
+
+.register-form-wrapper h3 {
+  font-weight: 600;
+  font-size: 34px;  /* font-size: 30px; */
+  padding-bottom: 5px;
+}
+
+
+.register-form-wrapper .form-control {
+ 
+  width: 450px;              /* modified */
+  /* height: 40px ; */          /* modified */
+  border-radius: 8px ;
+  border: 1px solid #ced4da !important;    /* modified */
+}
+
+.register-form-wrapper .form-control:focus {
+  border-color: #19BDE8;
+  box-shadow: 0 0 0 0.2rem rgba(25, 189, 232, 0.25);
+}
+ /* Terms and condition checkbox */
+.terms-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.terms-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  
+}
+
+.terms-label {
+  color: #333;
+  cursor: pointer;
+}
+
+.terms-link {
+  color: #1a73e8;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+/* password errors */
+.password-rules {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.password-rules ul {
+  padding-left: 18px;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+/* signup btn */
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Disabled state */
+.signup-btn:disabled {
+  background-color: #c9d6f2;
+  cursor: not-allowed;
+}
+
+/* signup button */
+.register-btn {
+  width: 450px;       /* modified */
+  background-color: #19BDE8;
+  border: none;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  height: 47px ;
+}
+
+.register-btn:hover {
+  background-color: #17a8d3;
+}
+
+.login-link {
+  color: #19BDE8;
+  text-decoration: none;
+  font-weight: 600 !important;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Google Sign-In Buttons ===== */
+.google-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.google-btn {
+  width: 450px !important;   /* modified */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #EFF5FF !important;  /* modified */
+  border: 0px solid #dae0e0 !important;  /* modified */
+  border-radius: 18px;
+  font-size: 14px;
+  padding-right: 130px; /* modified */
+  font-weight: 600;
+  color: #83bce7ff ;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1);
+}
+
+.google-btn:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px 0 rgba(60, 64, 67, 0.15);
+  border-color: #dadce0;
+}
+
+.google-btn:active {
+  background-color: #f1f3f4;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1);
+}
+
+.google-btn:focus {
+  outline: none;
+  border-color: #19BDE8;
+  box-shadow: 0 0 0 3px rgba(25, 189, 232, 0.1);
+}
+
+.google-icon {
+  flex-shrink: 0;
+  width: 36px;    /* modified */
+  height: 26px;   /* modified */
+  /* padding-right: 10px; */
+   padding-left: 10px;
+   margin-left: 65px;   /* modified */
+}
+
+.google-btn span {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.google-btn-admin {
+  border-left: 3px solid #4285F4;
+}
+
+.google-btn-employee {
+  border-left: 3px solid #34A853;
+}
+
+.google-btn {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.google-btn:hover {
+  background: #f5f5f5;
+}
+

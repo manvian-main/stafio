@@ -1,0 +1,614 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/* Sidebar Container */
+.employee-sidebar {
+  width: 255px;
+  min-width: 255px;
+  background-color: #19BDE8;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1050;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar-scroll-content {
+  flex: 1;
+  overflow: hidden;
+  /* No scrollbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.employee-sidebar.show {
+  opacity: 1;
+}
+
+/* Header */
+.employee-sidebar-header {
+  text-align: center;
+  margin-bottom: 10px !important;
+  margin-top: 0px;
+}
+
+.sidebar-logo {
+  width: 170px !important;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 0px !important;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 14px 15px !important;
+  font-size: 15px;
+  font-weight: 500;
+  border-top: 1px solid #fff;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.sidebar-link:hover {
+  background-color: #19BDE8;
+  transform: translateX(5px);
+}
+
+.sidebar-link.active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+/* Submenu styling */
+.submenu {
+  background: #ffffff;
+  margin: 0 !important;
+  text-align: left;
+  padding-left: 50px !important;
+  padding-bottom: 12px;
+  padding-top: 8px;
+  position: relative;
+}
+
+/* Removed .submenu::after vertical line to prevent "extra" tail issues */
+/* The vertical line is now handled per-item in .submenu-link::after */
+
+/* Submenu links */
+.submenu-link {
+  color: #000000;
+  text-decoration: none !important;
+  padding: 6px 0;
+  font-size: 13.5px;
+  display: block;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Horizontal branch line */
+.submenu-link::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  width: 25px;
+  height: 1.5px;
+  background-image: linear-gradient(to right, #000 50%, transparent 50%);
+  background-size: 6px 1.5px;
+  background-repeat: repeat-x;
+}
+
+/* Vertical line segment */
+.submenu-link::after {
+  content: "";
+  position: absolute;
+  left: -26.5px;
+  top: -10px;
+  bottom: -10px;
+  width: 1.5px;
+  background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+  background-size: 1.5px 6px;
+  background-repeat: repeat-y;
+}
+
+/* Ensure the first item connects upwards if needed, or starts correctly */
+.submenu-link:first-child::after {
+  top: -15px; /* Reaches up towards the parent menu */
+}
+
+/* Eliminate the "extra" tail on the last item */
+.submenu-link:last-child::after {
+  bottom: 50%; /* Stops exactly at the horizontal branch */
+}
+
+.submenu-link:hover {
+  color: #19BDE8;
+  font-weight: 500;
+}
+
+.submenu-link.active {
+  color: #19BDE8;
+  font-weight: 600;
+}
+
+/* Chevron container */
+.chev-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chev-container.abs {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
+
+.chev-container.abs svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.chev-container svg {
+  color: #ffffff !important;
+  fill: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.chev-container svg:hover {
+  color: #000000 !important;
+  fill: #000000;
+}
+
+/* Section labels */
+.org,
+.approval,
+.leave,
+.report {
+  margin-left: 10px;
+  text-decoration: none !important;
+}
+
+/* Logout */
+.sidebar-logout {
+  margin-top: 0;
+  padding: 14px 15px;
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
+.sidebar-logout:hover {
+  background: #e63946;
+}
+
+/* Footer */
+.sidebar-logo1 {
+  width: 250px;
+}
+
+/* Sidebar link wrapper */
+.sidebar-leave-link {
+  text-decoration: none !important;
+  display: block;
+}
+
+.sidebar-icon {
+  width: 18px;
+  height: 18px;
+  transition: filter 0.3s ease;
+}
+
+/* When active — change the color via filter */
+.sidebar-icon.active {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+/* ============================================================
+   MEDIA QUERIES — Professional Breakpoint Suite (AdminSidebar)
+   Optimized for: 13", 14", 15" Laptops & 4K
+   ============================================================
+
+   Breakpoint Map:
+   ┌─────────────────────────────────────────┐
+   │  ≤ 1280px  →  13" Laptop (HD)           │
+   │  1281–1366px → 13"–14" Laptop (HD)      │
+   │  1367–1440px → 14" Laptop (QHD/FHD)     │
+   │  1441–1536px → 15" Laptop (QHD)         │
+   │  ≥ 2560px  →  4K / UHD Monitor          │
+   └─────────────────────────────────────────┘
+   ============================================================ */
+
+/* ── 13" Laptop — 1280px and below ─────────────────────────── */
+@media screen and (max-width: 1280px) {
+  .employee-sidebar {
+    width: 220px;
+  }
+
+  .sidebar-logo {
+    width: 140px !important;
+  }
+
+  .sidebar-link {
+    padding: 11px 13px !important;
+    font-size: 13px;
+  }
+
+  .sidebar-logout {
+    padding: 11px 13px;
+    font-size: 13px;
+  }
+
+  .submenu {
+    padding-left: 40px !important;
+    padding-bottom: 9px;
+    padding-top: 6px;
+  }
+
+  .submenu::after {
+    display: none;
+  }
+
+  .submenu-link::after {
+    content: "";
+    position: absolute;
+    left: -21px; 
+    top: -10px;
+    bottom: -10px;
+    width: 1.5px;
+    background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+    background-size: 1.5px 6px;
+    background-repeat: repeat-y;
+  }
+
+  .submenu-link:last-child::after {
+    bottom: 50%;
+  }
+
+  .submenu-link::before {
+    left: -20px;
+    width: 20px;
+    height: 1.5px;
+    background-image: linear-gradient(to right, #000 50%, transparent 50%);
+    background-size: 6px 1.5px;
+    background-repeat: repeat-x;
+  }
+
+  .submenu-link {
+    font-size: 11.5px;
+    padding: 3px 0;
+  }
+
+  .sidebar-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .org,
+  .approval,
+  .leave,
+  .report {
+    margin-left: 8px;
+  }
+}
+
+/* ── 13"–14" Laptop — 1281px to 1366px ─────────────────────── */
+@media screen and (min-width: 1281px) and (max-width: 1366px) {
+  .employee-sidebar {
+    width: 230px;
+  }
+
+  .sidebar-logo {
+    width: 148px !important;
+  }
+
+  .sidebar-link {
+    padding: 12px 14px !important;
+    font-size: 13.5px;
+  }
+
+  .sidebar-logout {
+    padding: 12px 14px;
+    font-size: 13.5px;
+  }
+
+  .submenu {
+    padding-left: 43px !important;
+    padding-bottom: 10px;
+    padding-top: 7px;
+  }
+
+  .submenu::after {
+    display: none;
+  }
+
+  .submenu-link::after {
+    content: "";
+    position: absolute;
+    left: -22px; 
+    top: -10px;
+    bottom: -10px;
+    width: 1.5px;
+    background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+    background-size: 1.5px 6px;
+    background-repeat: repeat-y;
+  }
+
+  .submenu-link:last-child::after {
+    bottom: 50%;
+  }
+
+  .submenu-link::before {
+    left: -21px; /* rounding adjustment */
+    width: 21px;
+    height: 1.5px;
+    background-image: linear-gradient(to right, #000 50%, transparent 50%);
+    background-size: 6px 1.5px;
+    background-repeat: repeat-x;
+  }
+
+  .submenu-link {
+    font-size: 12px;
+    padding: 3px 0;
+  }
+
+  .sidebar-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .org,
+  .approval,
+  .leave,
+  .report {
+    margin-left: 9px;
+  }
+}
+
+/* ── 14" Laptop — 1367px to 1440px ─────────────────────────── */
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+  .employee-sidebar {
+    width: 240px;
+  }
+
+  .sidebar-logo {
+    width: 155px !important;
+  }
+
+  .sidebar-link {
+    padding: 13px 14px !important;
+    font-size: 14px;
+  }
+
+  .sidebar-logout {
+    padding: 13px 14px;
+    font-size: 14px;
+  }
+
+  .submenu {
+    padding-left: 45px !important;
+    padding-bottom: 10px;
+    padding-top: 7px;
+  }
+
+  .submenu::after {
+    display: none;
+  }
+
+  .submenu-link::after {
+    content: "";
+    position: absolute;
+    left: -22.5px; 
+    top: -10px;
+    bottom: -10px;
+    width: 1.5px;
+    background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+    background-size: 1.5px 6px;
+    background-repeat: repeat-y;
+  }
+
+  .submenu-link:last-child::after {
+    bottom: 50%;
+  }
+
+  .submenu-link::before {
+    left: -21px;
+    width: 21px;
+    height: 1.5px;
+    background-image: linear-gradient(to right, #000 50%, transparent 50%);
+    background-size: 6px 1.5px;
+    background-repeat: repeat-x;
+  }
+
+  .submenu-link {
+    font-size: 12.5px;
+    padding: 4px 0;
+  }
+
+  .sidebar-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* ── 15" Laptop — 1441px to 1536px ─────────────────────────── */
+@media screen and (min-width: 1441px) and (max-width: 1536px) {
+  .employee-sidebar {
+    width: 255px;
+  }
+
+  .sidebar-logo {
+    width: 165px !important;
+  }
+
+  .sidebar-link {
+    padding: 14px 15px !important;
+    font-size: 14.5px;
+  }
+
+  .sidebar-logout {
+    padding: 14px 15px;
+    font-size: 14.5px;
+  }
+
+  .submenu {
+    padding-left: 48px !important;
+    padding-bottom: 11px;
+    padding-top: 8px;
+  }
+
+  .submenu::after {
+    display: none;
+  }
+
+  .submenu-link::after {
+    content: "";
+    position: absolute;
+    left: -24.5px; 
+    top: -10px;
+    bottom: -10px;
+    width: 1.5px;
+    background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+    background-size: 1.5px 6px;
+    background-repeat: repeat-y;
+  }
+
+  .submenu-link:last-child::after {
+    bottom: 50%;
+  }
+
+  .submenu-link::before {
+    left: -23px;
+    width: 23px;
+    height: 1.5px;
+    background-image: linear-gradient(to right, #000 50%, transparent 50%);
+    background-size: 6px 1.5px;
+    background-repeat: repeat-x;
+  }
+
+  .submenu-link {
+    font-size: 13px;
+    padding: 4px 0;
+  }
+
+  .sidebar-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* ── 4K / UHD Monitor — 2560px and above ───────────────────── */
+@media screen and (min-width: 2560px) {
+  .employee-sidebar {
+    width: 340px;
+  }
+
+  .sidebar-logo {
+    width: 220px !important;
+  }
+
+  .sidebar-link {
+    padding: 20px 22px !important;
+    font-size: 20px;
+  }
+
+  .sidebar-logout {
+    padding: 20px 22px;
+    font-size: 20px;
+    gap: 14px;
+  }
+
+  .submenu {
+    padding-left: 70px !important;
+    padding-bottom: 18px;
+    padding-top: 12px;
+  }
+
+  .submenu::after {
+    display: none;
+  }
+
+  .submenu-link::after {
+    content: "";
+    position: absolute;
+    left: -30px; 
+    top: -15px;
+    bottom: -15px;
+    width: 2.5px; /* Thicker for 4K */
+    background-image: linear-gradient(to bottom, #000 50%, transparent 50%);
+    background-size: 2.5px 10px;
+    background-repeat: repeat-y;
+  }
+
+  .submenu-link:last-child::after {
+    bottom: 50%;
+  }
+
+  .submenu-link::before {
+    left: -28px;
+    width: 28px;
+    height: 2.5px;
+    background-image: linear-gradient(to right, #000 50%, transparent 50%);
+    background-size: 10px 2.5px;
+    background-repeat: repeat-x;
+  }
+
+  .submenu-link {
+    font-size: 17px;
+    padding: 6px 0;
+  }
+
+  .sidebar-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .chev-container.abs {
+    width: 32px;
+    height: 32px;
+  }
+
+  .chev-container.abs svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .org,
+  .approval,
+  .leave,
+  .report {
+    margin-left: 14px;
+  }
+
+  .sidebar-logo1 {
+    width: 320px;
+  }
+}

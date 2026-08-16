@@ -1,0 +1,301 @@
+diff --git a/src/Components/Admin-Section/Dashboard/Dashboard.css b/src/Components/Admin-Section/Dashboard/Dashboard.css
+index e3dbdde..33a4d20 100644
+--- a/src/Components/Admin-Section/Dashboard/Dashboard.css
++++ b/src/Components/Admin-Section/Dashboard/Dashboard.css
+@@ -1,112 +1,123 @@
+-*{                          /* modified */
+-  margin-top: 0px !important;
+-}
++/* Global dashboard resets */
++
+ /* AdminDashboard.css */
+ 
+ .dashboard-wrapper {
+-	display: flex;
+-	background-color: #eff5ff;
+-	min-height: 100vh;
+-  padding-right: 5px !important;     /* new */
+-  
++  display: flex;
++  background-color: #eff5ff;
++  min-height: 100vh;
++  padding-right: 5px !important;
++  /* new */
++
+ }
+ 
+ .main-content {
+-	flex-grow: 1;
+-	padding: 7px;
+-	background: #eff5ff;
++  flex-grow: 1;
++  padding: 7px;
++  background: #eff5ff;
+ }
+ 
+ .username h1 {
+-	font-size: 2rem;
+-	font-weight: bold;
+-	color: #333;
+-  margin-left: 10px !important; /*modified*/
++  font-size: 2rem;
++  font-weight: bold;
++  color: #333;
++  margin-left: 0 !important;
+ }
+ 
+-.vector-img{
++.vector-img {
+   margin-bottom: 150px;
+ }
+ 
+ 
+ 
+-.meeting-card{       /*modified*/
+-  width: 1045px;
+-  height: 285px;     /*modified*/
+-  margin-left: -11px;    /*modified*/
++.meeting-card {
++  width: 100%;
++  height: 285px;
++  margin-left: 0;
++  /*modified*/
+   /* margin-right: 3px !important; */
+   padding-bottom: 10px !important;
+ }
+ 
+-.meeting-left h2{          /*new*/
+-  font-size: 22px !important;   /*modified*/
++.meeting-left h2 {
++  /*new*/
++  font-size: 22px !important;
++  /*modified*/
+   padding-left: 5px !important;
+   margin-top: 30px !important;
+ }
+-.meeting-box{          /*new*/
++
++.meeting-box {
++  /*new*/
+   font-size: 15px;
+   height: 80px;
+-  width: 270px !important;  
++  width: 270px !important;
+ }
+ 
+-.meeting-info h4{      /*new*/
++.meeting-info h4 {
++  /*new*/
+   font-size: 16px !important;
+ }
+ 
+-.meeting-info p{         /*new*/
++.meeting-info p {
++  /*new*/
+   font-size: 13px !important;
+ }
+ 
+-.notice .summary-card{    /*new*/
+-  margin-right: 2px;    /*modified*/
+-  margin-left: -13px;    /*modified*/
++.notice .summary-card {
++  /*new*/
++  margin-right: 2px;
++  /*modified*/
++  margin-left: -13px;
++  /*modified*/
+ 
+ }
+ 
+ .summary-card {
+-	border-radius: 10px !important;
+-	padding: 20px;
+-	background: #eff5ff;
+-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+-	transition: transform 0.2s;
+-  padding-bottom: 20px !important;  /*new*/
++  border-radius: 10px !important;
++  padding: 20px;
++  background: #eff5ff;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
++  transition: transform 0.2s;
++  padding-bottom: 20px !important;
++  /*new*/
+ }
+ 
+ .summary-card:hover {
+-	transform: translateY(-4px);
++  transform: translateY(-4px);
+ }
+ 
+ .summary-top {
+-	display: flex;
+-	justify-content: space-between;
+-	align-items: center;
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
+   padding-bottom: 15px !important;
+ }
+ 
+ .summary-icons {
+-	font-size: 1.2rem;
+-	color: #19bde8;
++  font-size: 1.2rem;
++  color: #19bde8;
+   margin-top: -5px !important;
+ }
+ 
+-.btn-punch-out1  {
+-   padding: 10px 38px;
+-   background: white;
++.btn-punch-out1 {
++  padding: 10px 38px;
++  background: white;
+   border: none;
+   border-radius: 12px;
+   font-weight: 550;
+   cursor: pointer;
+ }
+ 
+-.btn-punch-out1:hover{
++.btn-punch-out1:hover {
+   background: #f3f3f3;
+   color: #19bde8;
+ }
+ 
+ 
+-.break-btn-st-en{
+-  padding: 8px 16px ; 
+-  width: 35%; 
++.break-btn-st-en {
++  padding: 8px 16px;
++  width: 35%;
+   background: #fff;
+   border: none;
+   border-radius: 10px;
+@@ -114,7 +125,7 @@
+   font-weight: 600;
+ }
+ 
+-.break-btn-st-en:hover{
++.break-btn-st-en:hover {
+   background: #f3f3f3;
+   color: #19bde8;
+ }
+@@ -131,62 +142,68 @@
+ } */
+ 
+ .btn-punch {
+-	padding: 8px 16px !important;
++  padding: 8px 16px !important;
+   width: 100%;
+-	background: #19bde8;
+-	color: #fff;
+-	border: none;
+-	border-radius: 8px;
+-	cursor: pointer;
++  background: #19bde8;
++  color: #fff;
++  border: none;
++  border-radius: 8px;
++  cursor: pointer;
+ }
+ 
+ .btn-punch:hover {
+-	background: #17a2cc;
++  background: #17a2cc;
+ }
+ 
+-.arrow3{
++.arrow3 {
+   margin-bottom: -190px;
+-  
++
+ }
+ 
+-.maleteam {                /* modified */
+-	height: 300px;
++.maleteam {
++  /* modified */
++  height: 300px;
+   width: 380px !important;
+-	margin-left: -45px;
+-	margin-right: -152px !important;
++  margin-left: -45px;
++  margin-right: -152px !important;
+   margin-bottom: -43px;
+ }
+ 
+-.clock{
++.clock {
+   /* padding-right: 20px !important; */
+-  margin-bottom: 100px;    /* modified */
+- margin-right: 20px !important;      /* modified */
++  margin-bottom: 100px;
++  /* modified */
++  margin-right: 20px !important;
++  /* modified */
+ 
+ }
+ 
+-.punch-info-box{
++.punch-info-box {
+   height: 45px;
+   width: 350px;
+ }
+-.info-item{
+-  font-size: 13px ;
++
++.info-item {
++  font-size: 13px;
+   width: 340px;
+   text-align: center;
+   margin-top: 5px;
+ }
++
+ .meeting-time {
+-	background: rgb(161, 161, 161) !important;
+-	/* color: white; */
+-	border-radius: 50%;
+-	width: 30px !important;
+-	height: 30px !important;
+-	display: flex;
+-	justify-content: center;
+-	align-items: center;
+-	font-weight: bold;
+-}
+-
+-.meeting-time img{      /*new*/
++  background: rgb(161, 161, 161) !important;
++  /* color: white; */
++  border-radius: 50%;
++  width: 30px !important;
++  height: 30px !important;
++  display: flex;
++  justify-content: center;
++  align-items: center;
++  font-weight: bold;
++}
++
++.meeting-time img {
++  /*new*/
+   width: 30px;
+   height: 30px;
+ }
+@@ -206,7 +223,7 @@
+   width: 260px;
+   border-radius: 6px;
+   color: #333;
+-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   padding: 10px;
+   z-index: 20;
+ }
+@@ -231,4 +248,4 @@
+ .custom-break {
+   color: #1890ff;
+   font-weight: 500;
+-}
++}
+\ No newline at end of file

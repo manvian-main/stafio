@@ -1,0 +1,28 @@
+.payroll-content {
+  margin-left: 240px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.header-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+}
+
+.payroll-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.payroll-table td {
+  vertical-align: middle;
+}

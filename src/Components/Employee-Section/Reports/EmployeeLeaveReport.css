@@ -1,0 +1,131 @@
+/* ===========================================
+   EmployeeLeaveReport.css — elr__ prefix
+   Mirrors Attendance.css style exactly
+   =========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ── Page wrapper ── */
+.elr__page {
+  flex: 1;
+  padding: 0 25px 25px 25px !important;
+  font-family: 'Montserrat', sans-serif;
+  animation: elr__fadein 0.4s ease;
+  overflow-y: auto !important;
+}
+
+@keyframes elr__fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.elr__heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 8px 0 20px;
+  margin-top: 15px !important;
+}
+
+.elr__loading {
+  text-align: center;
+  color: #aaa;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* ── Leave Balance Cards ── */
+.elr__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.elr__card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.elr__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+}
+
+.elr__card-svg {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.elr__card-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.2;
+  margin-bottom: 3px;
+  margin-left: 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.elr__card-unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.elr__card-lbl {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  margin: 0;
+  margin-left: 4px;
+}
+
+/* ── Chart Card ── */
+.elr__chart-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  padding: 22px 20px 12px;
+  max-width: 420px;
+}
+
+.elr__chart-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.elr__chart-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Chart body */
+.elr__empty {
+  text-align: center;
+  color: #aaa;
+  padding: 40px 0;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+  .elr__cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .elr__cards { grid-template-columns: 1fr; }
+  .elr__chart-card { max-width: 100%; }
+}

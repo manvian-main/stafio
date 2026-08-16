@@ -1,0 +1,67 @@
+.add-leave-page {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  color: #202020;
+}
+
+.leave-card {
+  background-color: #ffffff;
+  border: 1px solid #19bde8;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(25, 189, 232, 0.2);
+}
+
+.form-title {
+  color: #19bde8;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.add-btn {
+  background-color: #19bde8;
+  border: none;
+  padding: 10px 25px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #17aad1;
+  box-shadow: 0 0 10px rgba(25, 189, 232, 0.5);
+  transform: scale(1.02);
+}
+
+/* ================================================
+   Dark Theme Support for Add Leave Type
+   ================================================ */
+body[data-theme='dark'] .add-leave-page {
+    background-color: #0b0f1a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-card {
+    background-color: #1a1f2e !important;
+    border-color: #2d334a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .form-label {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .form-control {
+    background-color: #0f172a !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .form-control:focus {
+    background-color: #0f172a !important;
+    border-color: #19bde8 !important;
+    color: #ffffff !important;
+}
+

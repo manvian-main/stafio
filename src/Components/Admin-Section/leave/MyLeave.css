@@ -1,0 +1,788 @@
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+/* ===== Sidebar ===== */
+.AdminSidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+/* ===== Main Container ===== */
+.myleave-container {
+  flex: 1;
+  padding: 0 25px 25px 25px;
+  background: #eff5ff;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ===== Page Title ===== */
+.page-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.leave-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  gap: 20px;
+  flex-wrap: nowrap;
+  /* Header should NOT wrap on desktop */
+}
+
+/* ===== Leave Summary Cards ===== */
+.leave-summary {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  flex-wrap: nowrap;
+  /* Prevent cards from wrapping to second line */
+}
+
+.summary-card {
+  background: #fff;
+  flex: 1;
+  min-width: 180px;
+  border-radius: 12px !important;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  padding: 20px !important;
+}
+
+.summary-icon {
+  color: #00c853;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+/* ===== Leave Actions ===== */
+.leave-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+  /* Don't squash the buttons */
+}
+
+.top-buttons {
+  display: flex;
+  gap: 0;
+}
+
+/* Buttons */
+.btn-apply {
+  background: #00bcd4;
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 9px 18px;
+  border-radius: 15px 0 0 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.btn-apply:hover {
+  background: #00a5bb;
+}
+
+.btn-regularization {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ddd;
+  padding: 9px 18px;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.btn-regularization:hover {
+  background: #f4f4f4;
+}
+
+/* ===== Table ===== */
+.leave-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.leave-table th,
+.leave-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.leave-table th {
+  background: #f9fbfd;
+  font-weight: 600;
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  height: 70px;
+}
+
+.leave-table td {
+  height: 90px;
+  font-weight: 500;
+}
+
+.status {
+  display: block;
+  margin-top: 4px;
+  color: #00c853;
+  font-weight: 500;
+}
+
+/* Action Icons */
+.edit-icon {
+  color: #555;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.edit-icon:hover {
+  color: #00bcd4;
+}
+
+.delete-icon {
+  color: #ff5252;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-icon:hover {
+  color: #ff1744;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.showing {
+  font-size: 15px;
+  color: #2d2e2e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.showing select {
+  padding: 6px 14px !important;
+  padding-right: 32px !important;
+  border: 1px solid #19bde8 !important;
+  border-radius: 8px !important;
+  background-color: #19bde8 !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  background-size: 18px !important;
+  min-width: 80px !important;
+  text-align: left !important;
+  font-size: 15px !important;
+  font-family: inherit !important;
+}
+
+.page-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  border-radius: 8px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn.prev-next {
+  padding: 8px 20px;
+  min-width: 80px;
+  height: 40px;
+}
+
+.page-btn.num-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.page-btn.active {
+  background: #19bde8;
+  color: #fff;
+  border-color: #19bde8;
+  font-weight: 600;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+/* ===== Modal Styles ===== */
+.app-leave-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.admin-apply-leave-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 700px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-apply-leave-modal form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.admin-apply-leave-modal-header-blue {
+  background: #19bde8;
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.admin-apply-leave-modal-header-blue h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-apply-leave-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.admin-apply-leave-close-btn:hover {
+  opacity: 0.8;
+}
+
+.admin-apply-leave-modal-body {
+  padding: 24px 28px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.admin-apply-leave-form-container {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.admin-apply-leave-form-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding-right: 10px;
+}
+
+.admin-apply-leave-form-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-apply-leave-reason-row {
+  align-items: flex-start !important;
+}
+
+.admin-apply-leave-reason-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-apply-leave-char-counter {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.admin-apply-leave-form-row label {
+  width: 130px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.admin-apply-leave-form-left input,
+.admin-apply-leave-form-left select,
+.admin-apply-leave-form-left textarea {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #f3f8ff;
+  height: 36px;
+  outline: none;
+}
+
+.admin-apply-leave-form-left textarea {
+  resize: none;
+  height: 80px;
+  padding: 10px;
+}
+
+.admin-apply-leave-date-row {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  align-items: flex-end;
+}
+
+.admin-apply-leave-date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-apply-leave-date-item p {
+  font-size: 12px;
+  color: #555;
+  margin: 0;
+}
+
+.admin-apply-leave-date-item input,
+.admin-apply-leave-date-item select {
+  width: 100%;
+}
+
+.admin-apply-leave-form-right {
+  flex: 0 0 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+}
+
+.admin-apply-leave-form-right img {
+  width: 80%;
+  height: auto;
+}
+
+.admin-apply-leave-notify-row {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  align-items: center;
+}
+
+.admin-apply-leave-notify-row select {
+  flex: 1;
+}
+
+.admin-apply-leave-upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 36px;
+}
+
+.apply-leave-upload-btn:hover {
+  background: #f4f4f4;
+}
+
+.admin-apply-leave-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 10px 28px 24px 28px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.admin-apply-leave-btn {
+  background: #19bde8;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.apply-leave-btn:hover {
+  background: #00a5bb;
+}
+
+.admin-apply-leave-cancel-btn {
+  background: #fff;
+  border: 1px solid #999;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Modal sizing for all zoom levels */
+@media (max-width: 768px) {
+  .admin-apply-leave-modal {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .admin-apply-leave-form-right {
+    display: none;
+  }
+
+  .admin-apply-leave-form-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .admin-apply-leave-form-row label {
+    width: 100%;
+  }
+}
+
+/* filter button */
+.app-btn-filter {
+  color: #333;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  transition: 0.2s;
+}
+
+/* ====== Filter Dropdown Box ====== */
+.filter-dropdown-box {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #fff;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES: Laptop & Desktop Breakpoint Suite
+   Optimized for: 13", 14", 15" Laptops, Full HD, 2K, and 4K Displays
+   ========================================================================== */
+
+/* â”€â”€ 1. Small Laptop / Large Tablet (768px â€“ 1024px) â”€â”€ */
+@media (max-width: 1024px) {
+  .myleave-container {
+    padding: 0 14px 20px 14px;
+  }
+
+  .page-title {
+    font-size: 20px !important;
+  }
+
+  .leave-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .leave-summary {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .summary-card {
+    min-width: 140px;
+    flex: 1 1 140px;
+    padding: 12px !important;
+  }
+
+  .leave-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .leave-table th,
+  .leave-table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+/* â”€â”€ 2. Standard & High-Res Laptops (1025px â€“ 1550px) â”€â”€ */
+/* Covers physical 1366px, 1440px, and 1536px resolutions */
+@media (min-width: 1025px) and (max-width: 1550px) {
+  .myleave-container {
+    padding: 0 18px 20px 18px;
+  }
+
+  .page-title {
+    font-size: 23px !important;
+  }
+
+  .leave-header {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .leave-summary {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .summary-card {
+    min-width: 160px;
+    padding: 15px 12px !important;
+  }
+
+  .summary-card strong {
+    font-size: 14px;
+  }
+
+  .leave-table th,
+  .leave-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .AdminSidebar {
+    width: 230px;
+  }
+}
+
+/* â”€â”€ 3. Transition Range Fix (1551px â€“ 1700px) â”€â”€ */
+@media (min-width: 1551px) and (max-width: 1700px) {
+  .myleave-container {
+    padding: 0 24px 24px 24px;
+  }
+
+  .summary-card {
+    min-width: 190px;
+  }
+}
+
+/* â”€â”€ 4. Large Desktop / Big Monitor (1701px and above) â”€â”€ */
+@media (min-width: 1701px) {
+  .myleave-container {
+    padding: 0 40px 40px 40px;
+  }
+
+  .page-title {
+    font-size: 30px !important;
+  }
+
+  .leave-summary {
+    gap: 24px;
+  }
+
+  .summary-card {
+    min-width: 240px;
+    padding: 25px !important;
+  }
+
+  .leave-table th,
+  .leave-table td {
+    padding: 18px 25px;
+    font-size: 15px;
+  }
+}
+
+/* ================================================
+   Dark Theme Support for My Leave (Admin)
+   ================================================ */
+body[data-theme='dark'] .myleave-container {
+    background-color: #0b0f1a !important;
+}
+
+body[data-theme='dark'] .page-title {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .summary-card {
+    background: #1a1f2e !important;
+    border-color: #2d334a !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .summary-card strong,
+body[data-theme='dark'] .summary-card .h5 {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .summary-card p {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .btn-regularization,
+body[data-theme='dark'] .app-btn-filter {
+    background: #1a1f2e !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-table table {
+    background: #1a1f2e !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table th {
+    background: #1a1f2e !important;
+    color: #cbd5e1 !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table td {
+    color: #e2e8f0 !important;
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .showing {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .page-btn {
+    background: #1a1f2e !important;
+    color: #cbd5e1 !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .page-btn.active {
+    background: #19bde8 !important;
+    color: #ffffff !important;
+    border-color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-modal,
+body[data-theme='dark'] .filter-dropdown-box {
+    background: #1a1f2e !important;
+    border: 1px solid #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-modal-header-blue {
+    background: #12acd3 !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-form-row label {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-form-left input,
+body[data-theme='dark'] .admin-apply-leave-form-left select,
+body[data-theme='dark'] .admin-apply-leave-form-left textarea,
+body[data-theme='dark'] .admin-apply-leave-upload-btn {
+    background: #0f172a !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-modal-actions {
+    background: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-cancel-btn {
+    background: #1a1f2e !important;
+    border-color: #cbd5e1 !important;
+    color: #cbd5e1 !important;
+}

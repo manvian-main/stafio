@@ -1,0 +1,1411 @@
+/* ===== Font CSS Variable — controlled by Settings ===== */
+:root {
+    --app-font: 'Montserrat', sans-serif;
+}
+
+/* Apply system font to ALL elements, overriding any hardcoded font-family */
+*,
+*::before,
+*::after {
+    font-family: var(--app-font) !important;
+}
+
+/* Global Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A5F3FF;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #19BDE8;
+}
+
+/* Firefox support */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #A5F3FF transparent;
+}
+
+/* Global Layout for Fixed Sidebar & Scrollable Content */
+.employee-page,
+.dashboard-wrapper,
+.attendance-layout,
+.performance-layout,
+.letter-generation-layout,
+.leave-approval-layout,
+.admin-broadcast-layout,
+.payroll-layout,
+.regularization-approval-layout,
+.leave-policies-layout,
+.who-is-on-leave-layout,
+.admin-settings-layout,
+.report-layout,
+.att-report-layout,
+.leave-report-layout,
+.layout,
+.myteam-layout,
+.ra-page,
+.d-flex:has(.sidebar),
+.admin-page-container {
+    display: flex !important;
+    height: 100vh !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    background-color: #eff5ff;
+}
+
+.employee-main,
+.main-content,
+.main-content5,
+.attendance-main,
+.performance-main,
+.letter-generation-main,
+.leave-approval-main,
+.admin-broadcast-main,
+.payroll-main,
+.regularization-approval-main,
+.leave-policies-main,
+.who-is-on-leave-main,
+.admin-settings-main,
+.report-main,
+.att-report-main,
+.leave-report-main,
+.attendance-content,
+.myteam-main,
+.ra-main,
+.admin-main-content {
+    flex: 1 !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 0 !important;
+}
+
+/* Base Topbar — default style for pages not explicitly targeted */
+.topbar {
+    margin: 0 16px !important;
+    width: calc(100% - 32px) !important;
+    border-radius: 12px !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Target Pages Only: Dashboard, Attendance, Approval, Leave */
+.admin-settings-main,
+.attendance-main,
+.employee-main,
+.main-content,
+.main-content5,
+.leave-approval-main,
+.regularization-approval-main,
+.leave-policies-main,
+.myteam-main,
+.myleave-container,
+.myholiday-container,
+.att-report-main,
+.leave-report-main,
+.ra-main,
+.who-is-on-leave-main,
+.ear__page,
+.elr__page,
+.att__page,
+.regularization-container {
+    padding: 0 25px 25px 25px !important;
+    flex: 1 !important;
+    position: relative;
+}
+
+.admin-settings-main .topbar,
+.attendance-main .topbar,
+.employee-main .topbar,
+.main-content .topbar,
+.main-content5 .topbar,
+.leave-approval-main .topbar,
+.regularization-approval-main .topbar,
+.leave-policies-main .topbar,
+.myteam-main .topbar,
+.myleave-container .topbar,
+.myholiday-container .topbar,
+.att-report-main .topbar,
+.leave-report-main .topbar,
+.ra-main .topbar,
+.who-is-on-leave-main .topbar,
+.ear__page .topbar,
+.elr__page .topbar,
+.att__page .topbar,
+.regularization-container .topbar {
+    position: sticky !important;
+    top: 15px !important;
+    z-index: 1000 !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    background: #fff !important;
+    border-radius: 12px !important;
+    margin: 15px 0 25px 0 !important;
+    padding: 0 25px !important;
+    width: 100% !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-bottom: none !important;
+}
+
+/* Dashboard Specific Background Optimization - Light Theme Only */
+body:not([data-theme='dark']) .dashboard-wrapper .main-content {
+    background-color: #eff5ff !important;
+}
+
+
+
+
+
+/* Sidebar Specific Scrollable Content Area */
+.sidebar-scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   GLOBAL DARK MODE SYSTEM
+   ========================================================================== */
+
+/* Root and Layout Transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Global Dark Theme Overrides */
+body[data-theme='dark'] {
+    background-color: #0b0f1a !important;
+    color: #ffffff;
+}
+
+/* Universal background force - applies to EVERY page layout class currently defined */
+body[data-theme='dark'] .employee-page,
+body[data-theme='dark'] .dashboard-wrapper,
+body[data-theme='dark'] .admin-page-container,
+body[data-theme='dark'] .layout,
+body[data-theme='dark'] .attendance-layout,
+body[data-theme='dark'] .performance-layout,
+body[data-theme='dark'] .letter-generation-layout,
+body[data-theme='dark'] .leave-approval-layout,
+body[data-theme='dark'] .admin-broadcast-layout,
+body[data-theme='dark'] .payroll-layout,
+body[data-theme='dark'] .regularization-approval-layout,
+body[data-theme='dark'] .leave-policies-layout,
+body[data-theme='dark'] .who-is-on-leave-layout,
+body[data-theme='dark'] .admin-settings-layout,
+body[data-theme='dark'] .report-layout,
+body[data-theme='dark'] .att-report-layout,
+body[data-theme='dark'] .leave-report-layout,
+body[data-theme='dark'] .myteam-layout,
+body[data-theme='dark'] .ra-page,
+body[data-theme='dark'] .employee-main,
+body[data-theme='dark'] .employee-content,
+body[data-theme='dark'] .employee-table,
+body[data-theme='dark'] .employee-table thead th,
+body[data-theme='dark'] .employee-table tbody td,
+body[data-theme='dark'] .btn-regularization,
+body[data-theme='dark'] .main-content,
+body[data-theme='dark'] .admin-main-content,
+body[data-theme='dark'] .attendance-main,
+body[data-theme='dark'] .attendance-section,
+body[data-theme='dark'] .admin-settings-main,
+body[data-theme='dark'] .settings-page {
+    background-color: #0b0f1a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .employee-table {
+    border: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .employee-table thead th {
+    background-color: #111827 !important;
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .employee-table tbody td {
+    border-bottom: 1px solid #1f2937 !important;
+}
+
+/* Settings Specific Header and Separators */
+body[data-theme='dark'] .settings-header {
+    background: transparent !important;
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .settings-tabs {
+    background-color: #111827 !important;
+    border-bottom: 1px solid #2d334a !important;
+}
+
+/* Sidebars and Topbars */
+body[data-theme='dark'] .sidebar,
+body[data-theme='dark'] .admin-sidebar,
+body[data-theme='dark'] .employee-sidebar {
+    background-color: #111827 !important;
+    border-right-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .topbar,
+body[data-theme='dark'] .admin-settings-main .topbar,
+body[data-theme='dark'] .attendance-main .topbar,
+body[data-theme='dark'] .employee-main .topbar,
+body[data-theme='dark'] .main-content .topbar {
+    background-color: #1a1f2e !important;
+    background: #1a1f2e !important;
+    /* Force gradient override if any */
+    border-bottom: 1px solid #2d334a !important;
+    color: #ffffff !important;
+}
+
+/* Cards and Containers */
+body[data-theme='dark'] .card,
+body[data-theme='dark'] .settings-card,
+body[data-theme='dark'] .summary-card,
+body[data-theme='dark'] .attendance-card,
+body[data-theme='dark'] .meeting-card,
+body[data-theme='dark'] .filter-dropdown-container,
+body[data-theme='dark'] .dept-modal-box,
+body[data-theme='dark'] .break-modal-box,
+body[data-theme='dark'] .announcement-popup,
+body[data-theme='dark'] .profile-popup,
+body[data-theme='dark'] .search-dropdown,
+body[data-theme='dark'] .tp-modal-box,
+body[data-theme='dark'] .notification,
+body[data-theme='dark'] .notification-top,
+body[data-theme='dark'] .full-profile-popups,
+body[data-theme='dark'] .popup-content,
+body[data-theme='dark'] .profile-section,
+body[data-theme='dark'] .details-grid div,
+body[data-theme='dark'] .filter-dropdown,
+body[data-theme='dark'] .profile-image-card-box,
+body[data-theme='dark'] .profile-circular-mask,
+body[data-theme='dark'] .profile-name-id-pill,
+body[data-theme='dark'] .document-card,
+body[data-theme='dark'] .doc-icon-box,
+body[data-theme='dark'] .profile-modal-container,
+body[data-theme='dark'] .profile-modal,
+body[data-theme='dark'] .add-employee-modal1,
+body[data-theme='dark'] .empl-modal-body,
+body[data-theme='dark'] .add-employee-form,
+body[data-theme='dark'] .profile-upload-section,
+body[data-theme='dark'] .main-content5,
+body[data-theme='dark'] .profile-banner-wrapper,
+body[data-theme='dark'] .profile-banner-container,
+body[data-theme='dark'] .profile-info-card,
+body[data-theme='dark'] .profile-tabs-card,
+body[data-theme='dark'] .update-info-header-box,
+body[data-theme='dark'] .profile-tab-section,
+body[data-theme='dark'] .option-box,
+body[data-theme='dark'] .doc-item,
+body[data-theme='dark'] .upload-box,
+body[data-theme='dark'] .leave-approval-layout,
+body[data-theme='dark'] .leave-approval-main,
+body[data-theme='dark'] .summary-card-leave,
+body[data-theme='dark'] .leave-table,
+body[data-theme='dark'] .leave-table th,
+body[data-theme='dark'] .leave-table td,
+body[data-theme='dark'] .approve-leave-modal,
+body[data-theme='dark'] .approve-form-modal-body,
+body[data-theme='dark'] .myteam-layout,
+body[data-theme='dark'] .myteam-main,
+body[data-theme='dark'] .myteam-page,
+body[data-theme='dark'] .myteam-table,
+body[data-theme='dark'] .myteam-table th,
+body[data-theme='dark'] .myteam-table td,
+body[data-theme='dark'] .toggle-tab-container,
+body[data-theme='dark'] .regularization-approval-layout,
+body[data-theme='dark'] .regularization-approval-main,
+body[data-theme='dark'] .regularization-containerApproval,
+body[data-theme='dark'] .table-container,
+body[data-theme='dark'] .regularization-table,
+body[data-theme='dark'] .regularization-table th,
+body[data-theme='dark'] .regularization-table td,
+body[data-theme='dark'] .filter-popup,
+body[data-theme='dark'] .ra-modal-content,
+body[data-theme='dark'] .ra-modal-body,
+body[data-theme='dark'] .ra-small-modal,
+body[data-theme='dark'] .ra-result-modal,
+body[data-theme='dark'] .ra-page,
+body[data-theme='dark'] .ra-main,
+body[data-theme='dark'] .ra-container,
+body[data-theme='dark'] .ra-table-card,
+body[data-theme='dark'] .ra-table,
+body[data-theme='dark'] .ra-table thead th,
+body[data-theme='dark'] .ra-table tbody td,
+body[data-theme='dark'] .ra-tabs,
+body[data-theme='dark'] .ra-filter-card,
+body[data-theme='dark'] .leave-policies-layout,
+body[data-theme='dark'] .leave-policies-main,
+body[data-theme='dark'] .leave-policies-table,
+body[data-theme='dark'] .leave-policies-table th,
+body[data-theme='dark'] .leave-policies-table td,
+body[data-theme='dark'] .leave-policies-modal,
+body[data-theme='dark'] .leave-policies-modal-body,
+body[data-theme='dark'] .layout,
+body[data-theme='dark'] .myleave-container,
+body[data-theme='dark'] .emp-summary-card,
+body[data-theme='dark'] .apply-modal,
+body[data-theme='dark'] .apply-modal-body,
+body[data-theme='dark'] .app-leave-modal-actions,
+body[data-theme='dark'] .ear__page,
+body[data-theme='dark'] .ear__card,
+body[data-theme='dark'] .ear__overview,
+body[data-theme='dark'] .att__page,
+body[data-theme='dark'] .att__card,
+body[data-theme='dark'] .att__overview,
+body[data-theme='dark'] .elr__page,
+body[data-theme='dark'] .elr__card,
+body[data-theme='dark'] .elr__chart-card,
+body[data-theme='dark'] .summary-card,
+body[data-theme='dark'] .leave-table table,
+body[data-theme='dark'] .admin-apply-leave-modal,
+body[data-theme='dark'] .admin-apply-leave-modal-body,
+body[data-theme='dark'] .filter-dropdown-box,
+body[data-theme='dark'] .filter-popup-footer,
+body[data-theme='dark'] .regularization-container,
+body[data-theme='dark'] .regularization-table table,
+body[data-theme='dark'] .regularization-table th,
+body[data-theme='dark'] .regularization-table td,
+body[data-theme='dark'] .regularization-modal-exact,
+body[data-theme='dark'] .regularization-body-exact,
+body[data-theme='dark'] .main-content,
+body[data-theme='dark'] .summary-card,
+body[data-theme='dark'] .attendance-card,
+body[data-theme='dark'] .leave-notif-banner,
+body[data-theme='dark'] .leave-notif-close,
+body[data-theme='dark'] .announcement-popup,
+body[data-theme='dark'] .announcement-item,
+body[data-theme='dark'] .announce-calendar-box,
+body[data-theme='dark'] .dropdown-menu-custom,
+body[data-theme='dark'] .empl-app-filter-dropdown-box,
+body[data-theme='dark'] .filter-dropdown-box,
+body[data-theme='dark'] .empl-app-filter-popup-footer,
+body[data-theme='dark'] .filter-popup-footer,
+body[data-theme='dark'] .break-dropdown {
+    background-color: #1a1f2e !important;
+    background: #1a1f2e !important;
+    border-color: #2d334a !important;
+}
+
+
+body[data-theme='dark'] .ear__card:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .ear__table-wrap th {
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .ear__tbody-tr td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .ear__tbody-tr:hover td {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .att__card:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .att__table-wrap th {
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .att__tbody-tr td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .att__tbody-tr:hover td {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .leave-report-layout,
+body[data-theme='dark'] .leave-report-main,
+body[data-theme='dark'] .leave-summary-card,
+body[data-theme='dark'] .attendance-card,
+body[data-theme='dark'] .attendance-layout,
+body[data-theme='dark'] .attendance-main,
+body[data-theme='dark'] .attendance-section,
+body[data-theme='dark'] .section-header,
+body[data-theme='dark'] .attendance-table,
+body[data-theme='dark'] .filter-dropdown-container,
+body[data-theme='dark'] .who-is-on-leave-layout,
+body[data-theme='dark'] .who-is-on-leave-main,
+body[data-theme='dark'] .whoisleave-section,
+body[data-theme='dark'] .whoisleave-table,
+body[data-theme='dark'] .whoisleave-filter-popup,
+body[data-theme='dark'] .notification-dropdown,
+body[data-theme='dark'] .notif-header,
+body[data-theme='dark'] .notif-body,
+body[data-theme='dark'] .notif-footer,
+body[data-theme='dark'] .notification-top,
+body[data-theme='dark'] .search-results-dropdown,
+body[data-theme='dark'] .logout-icon,
+body[data-theme='dark'] .logout-icon {
+
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    border-color: #2d334a !important;
+}
+
+
+
+
+body[data-theme='dark'] .notif-item:hover,
+body[data-theme='dark'] .search-result-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .notif-item.unread {
+    background: rgba(25, 189, 232, 0.1) !important;
+}
+
+body[data-theme='dark'] .notif-header,
+body[data-theme='dark'] .notif-footer {
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .notif-icon-circle {
+    background: #2d334a !important;
+    color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .myholiday-container,
+body[data-theme='dark'] .wall-calendar-card,
+body[data-theme='dark'] .upcoming-holidays-list,
+body[data-theme='dark'] .holiday-table-container,
+body[data-theme='dark'] .view-toggle,
+body[data-theme='dark'] .wall-cal-headers,
+body[data-theme='dark'] .wall-day-cell,
+body[data-theme='dark'] .wall-day-empty,
+body[data-theme='dark'] .wall-sunday,
+body[data-theme='dark'] .wall-cal-legend,
+body[data-theme='dark'] .upcoming-card,
+body[data-theme='dark'] .holiday-modal,
+body[data-theme='dark'] .holiday-modal-body,
+body[data-theme='dark'] .type-pill,
+body[data-theme='dark'] .att-report-layout,
+body[data-theme='dark'] .att-report-main,
+body[data-theme='dark'] .att-report-table-wrapper,
+body[data-theme='dark'] .att-report-table,
+body[data-theme='dark'] .att-report-table-header,
+body[data-theme='dark'] .att-filter-popup,
+body[data-theme='dark'] .att-report-date,
+body[data-theme='dark'] .att-overview-date,
+body[data-theme='dark'] .att-showing-pill-btn,
+body[data-theme='dark'] .rows-dropdown-popup {
+    background-color: #1a1f2e !important;
+    background: #1a1f2e !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-summary-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .attendance-card h6 {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .att-report-table th {
+    background: #1a1f2e !important;
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .att-report-table td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .att-report-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .att-report-table-header {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .att-filter-popup {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+body[data-theme='dark'] .att-filter-footer {
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .whoisleave-table th {
+    background: #1a1f2e !important;
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .whoisleave-table td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .whoisleave-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .whoisleave-section-header {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .filter-actions {
+    background: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .attendance-table th {
+    background: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .attendance-table td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .attendance-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .filter-dropdown-header,
+body[data-theme='dark'] .filter-dropdown-footer {
+    border-color: #2d334a !important;
+    background: #1a1f2e !important;
+}
+
+body[data-theme='dark'] .type-pill.mandatory,
+body[data-theme='dark'] .card-type-badge.mandatory,
+body[data-theme='dark'] .wall-holiday-mandatory,
+body[data-theme='dark'] .dot-mandatory {
+    background-color: rgba(244, 63, 94, 0.2) !important;
+    background: rgba(244, 63, 94, 0.2) !important;
+    color: #fb7185 !important;
+    border-color: rgba(244, 63, 94, 0.4) !important;
+}
+
+body[data-theme='dark'] .type-pill.national,
+body[data-theme='dark'] .card-type-badge.national,
+body[data-theme='dark'] .wall-holiday-national,
+body[data-theme='dark'] .dot-national {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: #60a5fa !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+body[data-theme='dark'] .type-pill.observance,
+body[data-theme='dark'] .card-type-badge.observance,
+body[data-theme='dark'] .wall-holiday-observance,
+body[data-theme='dark'] .dot-observance {
+    background-color: rgba(20, 184, 166, 0.2) !important;
+    background: rgba(20, 184, 166, 0.2) !important;
+    color: #2dd4bf !important;
+    border-color: rgba(20, 184, 166, 0.4) !important;
+}
+
+body[data-theme='dark'] .type-pill.restricted,
+body[data-theme='dark'] .card-type-badge.restricted,
+body[data-theme='dark'] .wall-holiday-restricted,
+body[data-theme='dark'] .dot-restricted {
+    background-color: rgba(245, 158, 11, 0.2) !important;
+    background: rgba(245, 158, 11, 0.2) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(245, 158, 11, 0.4) !important;
+}
+
+body[data-theme='dark'] .dot-mandatory,
+body[data-theme='dark'] .dot-national,
+body[data-theme='dark'] .dot-observance,
+body[data-theme='dark'] .dot-restricted {
+    background-color: currentColor !important;
+}
+
+body[data-theme='dark'] .type-pill {
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding: 4px 12px !important;
+    border: 1px solid transparent !important;
+}
+
+
+
+body[data-theme='dark'] .holiday-table tr:hover td {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .holiday-modal-footer {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .holiday-table th {
+    background: #1a1f2e !important;
+    border-bottom: 2px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .holiday-table td {
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .wall-day-cell {
+    border-right: 1.5px solid #2d334a !important;
+    border-bottom: 1.5px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .wall-day-cell:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .regularization-footer-exact {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .regularization-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .regularization-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .filter-popup-footer {
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-modal-actions {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .admin-apply-leave-modal-actions {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .leave-policies-modal-footer {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-policies-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-policies-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .ra-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .ra-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .ra-modal-footer {
+    background-color: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .regularization-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .regularization-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .myteam-table tr {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .myteam-table tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body[data-theme='dark'] .leave-table tbody tr {
+    background-color: transparent !important;
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Modal Headers/Footers */
+body[data-theme='dark'] .filter-dropdown-header,
+body[data-theme='dark'] .filter-dropdown-footer,
+body[data-theme='dark'] .dept-modal-header,
+body[data-theme='dark'] .break-modal-header,
+body[data-theme='dark'] .popup-header,
+body[data-theme='dark'] .profile-modal-header,
+body[data-theme='dark'] .tp-footer {
+    border-color: #2d334a !important;
+    background-color: #1a1f2e !important;
+}
+
+/* Typography Overrides */
+body[data-theme='dark'] h1,
+body[data-theme='dark'] h2,
+body[data-theme='dark'] h3,
+body[data-theme='dark'] h4,
+body[data-theme='dark'] h5,
+body[data-theme='dark'] h6,
+body[data-theme='dark'] .filter-dropdown h4,
+body[data-theme='dark'] .filter-field label,
+body[data-theme='dark'] .section-label-top,
+body[data-theme='dark'] .username h1,
+body[data-theme='dark'] label,
+body[data-theme='dark'] .details-grid p,
+body[data-theme='dark'] .employee-header h2,
+body[data-theme='dark'] .right-butn-filterr,
+body[data-theme='dark'] .emp-name,
+body[data-theme='dark'] .emp-email,
+body[data-theme='dark'] .profile-title-text,
+body[data-theme='dark'] .info-item p,
+body[data-theme='dark'] .doc-name-main,
+body[data-theme='dark'] .doc-completed-text,
+body[data-theme='dark'] .doc-action-btn,
+body[data-theme='dark'] .empl-form-group label,
+body[data-theme='dark'] .upload-info h4,
+body[data-theme='dark'] .upload-info p,
+body[data-theme='dark'] .my-profile-title h1,
+body[data-theme='dark'] .profile-name,
+body[data-theme='dark'] .profile-id,
+body[data-theme='dark'] .profile-role,
+body[data-theme='dark'] .profile-location,
+body[data-theme='dark'] .profile-center div,
+body[data-theme='dark'] .profile-right div,
+body[data-theme='dark'] .profile-tabs .nav-link,
+body[data-theme='dark'] .tab-section-title,
+body[data-theme='dark'] .form-label,
+body[data-theme='dark'] .pexform-input,
+body[data-theme='dark'] .edform-input,
+body[data-theme='dark'] .upload-box p,
+body[data-theme='dark'] .upload-box span,
+body[data-theme='dark'] .doc-item h6,
+body[data-theme='dark'] .doc-item span,
+body[data-theme='dark'] .page-title,
+body[data-theme='dark'] .card-text-block strong,
+body[data-theme='dark'] .leave-type-name,
+body[data-theme='dark'] .req-date-text,
+body[data-theme='dark'] .form-row label,
+body[data-theme='dark'] .date-item p,
+body[data-theme='dark'] .leave-table td,
+body[data-theme='dark'] .regularization-table td,
+body[data-theme='dark'] .myteam-title,
+body[data-theme='dark'] .days,
+body[data-theme='dark'] .header-top h2,
+body[data-theme='dark'] .filter-popup label,
+body[data-theme='dark'] .ra-modal-header h2,
+body[data-theme='dark'] .ra-small-modal h3,
+body[data-theme='dark'] .filter-icon-btn,
+body[data-theme='dark'] .filter-icon-btn::after,
+body[data-theme='dark'] .ra-table td,
+body[data-theme='dark'] .ra-title,
+body[data-theme='dark'] .ra-emp-name,
+body[data-theme='dark'] .ra-filter-field label,
+body[data-theme='dark'] .leave-policies-title,
+body[data-theme='dark'] .leave-policies-table td,
+body[data-theme='dark'] .leave-policies-field label,
+body[data-theme='dark'] .leave-policies-edit-btn,
+body[data-theme='dark'] .page-title,
+body[data-theme='dark'] .summary-card p,
+body[data-theme='dark'] .summary-card strong,
+body[data-theme='dark'] .admin-apply-leave-form-row label,
+body[data-theme='dark'] .filter-popup-body label,
+body[data-theme='dark'] .showing,
+body[data-theme='dark'] .filter-popup-header h3,
+body[data-theme='dark'] .regularization-table td,
+body[data-theme='dark'] .form-row-exact label,
+body[data-theme='dark'] .regularization-header-exact h3,
+body[data-theme='dark'] .leave-report-header h2,
+body[data-theme='dark'] .leave-days,
+body[data-theme='dark'] .leave-type,
+body[data-theme='dark'] .attendance-header h2,
+body[data-theme='dark'] .section-header h3,
+body[data-theme='dark'] .filter-dropdown-field label,
+body[data-theme='dark'] .filter-dropdown-header h3,
+body[data-theme='dark'] .attendance-table th,
+body[data-theme='dark'] .attendance-table td,
+body[data-theme='dark'] .whoisleave-header h2,
+body[data-theme='dark'] .whoisleave-section-header h3,
+body[data-theme='dark'] .filter-group label,
+body[data-theme='dark'] .filter-popup-header h3,
+body[data-theme='dark'] .whoisleave-table td,
+body[data-theme='dark'] .notif-header h6,
+body[data-theme='dark'] .notif-title,
+body[data-theme='dark'] .notif-message,
+body[data-theme='dark'] .notif-footer,
+body[data-theme='dark'] .notification-top p,
+body[data-theme='dark'] .notification-top span,
+body[data-theme='dark'] .search-result-title,
+body[data-theme='dark'] .wall-day-number,
+body[data-theme='dark'] .wall-cal-header-cell,
+body[data-theme='dark'] .upcoming-holidays-list h3,
+body[data-theme='dark'] .card-title,
+body[data-theme='dark'] .holiday-table td,
+body[data-theme='dark'] .holiday-table th,
+body[data-theme='dark'] .form-group label,
+body[data-theme='dark'] .wall-holiday-name,
+body[data-theme='dark'] .card-date,
+body[data-theme='dark'] .legend-item,
+body[data-theme='dark'] .no-holidays-text,
+body[data-theme='dark'] .att-report-main h2,
+body[data-theme='dark'] .att-report-table-header h3,
+body[data-theme='dark'] .att-filter-label,
+body[data-theme='dark'] .att-filter-title,
+body[data-theme='dark'] .att-report-pagination span,
+body[data-theme='dark'] .att-report-showing span,
+body[data-theme='dark'] .att-filter-col label,
+body[data-theme='dark'] .att-report-date,
+body[data-theme='dark'] .att-overview-date,
+body[data-theme='dark'] .att-overview-search input,
+body[data-theme='dark'] .att-showing-pill-btn,
+body[data-theme='dark'] .emp-summary-card p,
+body[data-theme='dark'] .emp-summary-card strong,
+body[data-theme='dark'] .apply-modal-header h3,
+body[data-theme='dark'] .form-row_pop label,
+body[data-theme='dark'] .date-label-row span,
+body[data-theme='dark'] .ear__footer span,
+body[data-theme='dark'] .username h1,
+body[data-theme='dark'] .summary-card h6,
+body[data-theme='dark'] .summary-top h2,
+body[data-theme='dark'] .card-title,
+body[data-theme='dark'] .leave-notif-text,
+body[data-theme='dark'] .dropdown-title,
+body[data-theme='dark'] .break-item strong,
+body[data-theme='dark'] .info-item,
+body[data-theme='dark'] .info-item span,
+body[data-theme='dark'] .info-item strong,
+body[data-theme='dark'] .att__heading,
+body[data-theme='dark'] .ear__card-num,
+body[data-theme='dark'] .ear__overview-title,
+body[data-theme='dark'] .ear__table th,
+body[data-theme='dark'] .ear__table td,
+body[data-theme='dark'] .ear__filter-lbl,
+body[data-theme='dark'] .ear__dp-label,
+body[data-theme='dark'] .ear__footer span,
+body[data-theme='dark'] .att__heading,
+body[data-theme='dark'] .att__card-num,
+body[data-theme='dark'] .att__overview-title,
+body[data-theme='dark'] .att__table th,
+body[data-theme='dark'] .att__table td,
+body[data-theme='dark'] .att__filter-lbl,
+body[data-theme='dark'] .att__showing span,
+body[data-theme='dark'] .elr__heading,
+body[data-theme='dark'] .elr__card-num,
+body[data-theme='dark'] .elr__card-unit,
+body[data-theme='dark'] .elr__chart-title,
+body[data-theme='dark'] .elr__loading {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .elr__page,
+body[data-theme='dark'] .elr__card,
+body[data-theme='dark'] .elr__chart-card {
+    background-color: #1a1f2e !important;
+}
+
+body[data-theme='dark'] .pdf-icon {
+    background-color: #431407 !important;
+    /* Muted Red for PDF */
+    color: #f87171 !important;
+}
+
+body[data-theme='dark'] p,
+body[data-theme='dark'] span,
+body[data-theme='dark'] .text-muted,
+body[data-theme='dark'] .setting-muted-text,
+body[data-theme='dark'] .summary-action,
+body[data-theme='dark'] .summary-action-icon,
+body[data-theme='dark'] .notification-bell,
+body[data-theme='dark'] .profile-chevron,
+body[data-theme='dark'] .topbar-bell-icon,
+body[data-theme='dark'] .notif-bell-icon,
+body[data-theme='dark'] .leave-notif-close,
+body[data-theme='dark'] .profile-chevron,
+body[data-theme='dark'] .summary-card svg,
+body[data-theme='dark'] .profile-name,
+body[data-theme='dark'] .profile-role,
+body[data-theme='dark'] .event-name,
+body[data-theme='dark'] .event-message,
+body[data-theme='dark'] .event-names,
+body[data-theme='dark'] .event-messages,
+body[data-theme='dark'] .close,
+body[data-theme='dark'] .btn-close,
+body[data-theme='dark'] .announcement-name,
+body[data-theme='dark'] .announcement-eventname,
+body[data-theme='dark'] .announcement-message,
+body[data-theme='dark'] .react-btn,
+body[data-theme='dark'] .action-btn,
+body[data-theme='dark'] .add-new-link,
+body[data-theme='dark'] .empl-app-filter-popup-header h3,
+body[data-theme='dark'] .filter-popup-header h3,
+body[data-theme='dark'] .filter-field label,
+body[data-theme='dark'] .filter-reset-btn,
+body[data-theme='dark'] .logout-icon,
+body[data-theme='dark'] .close-icon,
+body[data-theme='dark'] strong {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+
+
+body[data-theme='dark'] .filter-field input,
+body[data-theme='dark'] .filter-field select,
+body[data-theme='dark'] .filter-reset-btn {
+    background-color: #2a3142 !important;
+    border-color: #3f4e6b !important;
+    color: #ffffff !important;
+}
+
+
+
+/* Sub-labels or strictly secondary text can be slate */
+body[data-theme='dark'] .member-email,
+body[data-theme='dark'] input::placeholder,
+body[data-theme='dark'] .search-type {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .ear__card-lbl {
+    color: #94a3b8 !important;
+}
+
+/* 📊 Charts Visibility (Recharts) 📊 */
+body[data-theme='dark'] .recharts-cartesian-axis-tick text,
+body[data-theme='dark'] .recharts-text,
+body[data-theme='dark'] .recharts-legend-item-text {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .recharts-cartesian-grid line {
+    stroke: #2d334a !important;
+}
+
+/* Form Elements */
+body[data-theme='dark'] input,
+body[data-theme='dark'] select,
+body[data-theme='dark'] option,
+body[data-theme='dark'] .form-control,
+body[data-theme='dark'] .custom-select-wrapper select,
+body[data-theme='dark'] .theme-input-box,
+body[data-theme='dark'] .theme-input-box0,
+body[data-theme='dark'] .search-input,
+body[data-theme='dark'] .search-input0,
+body[data-theme='dark'] .sort-select1,
+body[data-theme='dark'] .filter-field input,
+body[data-theme='dark'] .filter-field select,
+body[data-theme='dark'] .empl-form-group input,
+body[data-theme='dark'] .empl-form-group select,
+body[data-theme='dark'] .page-size-select1,
+body[data-theme='dark'] .right-search-input-new,
+body[data-theme='dark'] .right-btn-filter-new,
+body[data-theme='dark'] .right-sort-select-new,
+body[data-theme='dark'] .right-btn-filter,
+body[data-theme='dark'] .filter-icon-btn,
+body[data-theme='dark'] .right-search-input,
+body[data-theme='dark'] .sort-select,
+body[data-theme='dark'] .ra-search,
+body[data-theme='dark'] .ra-filter-btn,
+body[data-theme='dark'] .ra-sort,
+body[data-theme='dark'] .ra-view-btn,
+body[data-theme='dark'] .leave-policies-input,
+body[data-theme='dark'] .leave-policies-select,
+body[data-theme='dark'] .admin-apply-leave-form-left input,
+body[data-theme='dark'] .admin-apply-leave-form-left select,
+body[data-theme='dark'] .admin-apply-leave-form-left textarea,
+body[data-theme='dark'] .admin-apply-leave-date-item input,
+body[data-theme='dark'] .admin-apply-leave-date-item select,
+body[data-theme='dark'] .app-btn-filter,
+body[data-theme='dark'] .btn-regularization,
+body[data-theme='dark'] .showing select,
+body[data-theme='dark'] .page-btn,
+body[data-theme='dark'] .filter-reset-btn,
+body[data-theme='dark'] .btn-my-leaves,
+body[data-theme='dark'] .right-butn-filters,
+body[data-theme='dark'] .regularization-cancel-exact,
+body[data-theme='dark'] .form-row-exact input,
+body[data-theme='dark'] .form-row-exact select,
+body[data-theme='dark'] .textarea-wrapper-exact textarea,
+body[data-theme='dark'] .date-input-wrapper-exact input,
+body[data-theme='dark'] .leave-report-dropdown,
+body[data-theme='dark'] .btn-light,
+body[data-theme='dark'] .attendance-filter-button,
+body[data-theme='dark'] .sort-dropdown,
+body[data-theme='dark'] .search-box input,
+body[data-theme='dark'] .date-picker,
+body[data-theme='dark'] .filter-dropdown-field input,
+body[data-theme='dark'] .filter-dropdown-field select,
+body[data-theme='dark'] .whoisleave-filter-btn,
+body[data-theme='dark'] .whoisleave-search,
+body[data-theme='dark'] .whoisleave-date-picker,
+body[data-theme='dark'] .whoisleave-page-select,
+body[data-theme='dark'] .filter-group input,
+body[data-theme='dark'] .filter-group select,
+body[data-theme='dark'] .date-input-wrapper input,
+body[data-theme='dark'] .whoisleave-page-btn,
+body[data-theme='dark'] .btn-filter,
+body[data-theme='dark'] .pagination select,
+body[data-theme='dark'] .page-controls button,
+body[data-theme='dark'] .form-row_pop input,
+body[data-theme='dark'] .form-row_pop select,
+body[data-theme='dark'] .form-row_pop textarea,
+body[data-theme='dark'] .apply-leave-upload-btn,
+body[data-theme='dark'] .app-leave-cancel-btn,
+body[data-theme='dark'] .ear__input,
+body[data-theme='dark'] .ear__sort-sel,
+body[data-theme='dark'] .ear__filter-box,
+body[data-theme='dark'] .ear__qs-input,
+body[data-theme='dark'] .ear__dp-box,
+body[data-theme='dark'] .ear__showing-sel,
+body[data-theme='dark'] .ear__pag-prev,
+body[data-theme='dark'] .ear__pag-next,
+body[data-theme='dark'] .att__input,
+body[data-theme='dark'] .att__sort-sel,
+body[data-theme='dark'] .att__filter-box,
+body[data-theme='dark'] .att__qs-input,
+body[data-theme='dark'] .att__dp-input,
+body[data-theme='dark'] .att__showing-sel,
+body[data-theme='dark'] .att__pag-prev,
+body[data-theme='dark'] .att__pag-next,
+body[data-theme='dark'] .break-dropdown,
+body[data-theme='dark'] .break-item,
+body[data-theme='dark'] .toggle-btn,
+body[data-theme='dark'] .form-group input,
+body[data-theme='dark'] .form-group select,
+body[data-theme='dark'] .form-group textarea,
+body[data-theme='dark'] .att-report-dropdown,
+body[data-theme='dark'] .search-input2,
+body[data-theme='dark'] .att-report-filter-btn,
+body[data-theme='dark'] .att-report-sort,
+body[data-theme='dark'] .att-header-search,
+body[data-theme='dark'] .att-date-input,
+body[data-theme='dark'] .att-filter-input,
+body[data-theme='dark'] .att-filter-select,
+body[data-theme='dark'] .att-showing-pill,
+body[data-theme='dark'] .rows-dropdown-popup {
+    background-color: #0f172a !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+    color-scheme: dark !important;
+}
+
+body[data-theme='dark'] select option {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+}
+
+
+body[data-theme='dark'] .toggle-btn.active {
+    background-color: #ffffff !important;
+    color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .page-btn:disabled {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #4b5563 !important;
+    border-color: #2d334a !important;
+    opacity: 0.5 !important;
+}
+
+body[data-theme='dark'] .summary-icon {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+body[data-theme='dark'] input[type="date"],
+body[data-theme='dark'] input[type="time"],
+body[data-theme='dark'] input[type="checkbox"] {
+    color-scheme: dark !important;
+    accent-color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .btn-cancel,
+body[data-theme='dark'] .attendance-filter-button,
+body[data-theme='dark'] .sort-dropdown,
+body[data-theme='dark'] .date-picker,
+body[data-theme='dark'] .page-btn,
+body[data-theme='dark'] .page-nav button,
+body[data-theme='dark'] .pagination select,
+body[data-theme='dark'] .reset-btn {
+    background-color: #1a1f2e !important;
+    border-color: #374151 !important;
+    color: #e5e7eb !important;
+}
+
+body[data-theme='dark'] .btn-cancel:hover,
+body[data-theme='dark'] .attendance-filter-button:hover,
+body[data-theme='dark'] .page-btn:hover {
+    background-color: #262c40 !important;
+}
+
+/* Table styling for dark mode */
+body[data-theme='dark'] table {
+    color: #e5e7eb;
+}
+
+body[data-theme='dark'] th {
+    background-color: #1f2937 !important;
+    color: #ffffff !important;
+    border-bottom-color: #374151 !important;
+    border-top-color: #374151 !important;
+}
+
+body[data-theme='dark'] td {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .attendance-table,
+body[data-theme='dark'] .team-table table,
+body[data-theme='dark'] .department-table table {
+    background-color: #1a1f2e !important;
+}
+
+/* Specific component fixes for dark mode */
+body[data-theme='dark'] .slider {
+    background-color: #374151;
+}
+
+body[data-theme='dark'] .tab-link {
+    color: #ffffff !important;
+    /* White text for tabs */
+    background: transparent !important;
+}
+
+body[data-theme='dark'] .tab-link:hover {
+    background-color: #111827 !important;
+}
+
+body[data-theme='dark'] .tab-link.active {
+    color: #19bde8 !important;
+    border-bottom-color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .section-header {
+    border-bottom-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .attendance-main {
+    background-color: #0b0f1a !important;
+}
+
+body[data-theme='dark'] .btn-punch-out1,
+body[data-theme='dark'] .break-btn-st-en {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .break-dropdown {
+    background-color: #1a1f2e !important;
+    color: #ffffff !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .break-item:hover,
+body[data-theme='dark'] .search-item:hover {
+    background-color: #262c40 !important;
+}
+
+body[data-theme='dark'] .search-item.no-result {
+    color: #ffffff !important;
+}
+
+/* Dashboard Card Text Visibility */
+body[data-theme='dark'] .meeting-card h2,
+body[data-theme='dark'] .meeting-card p,
+body[data-theme='dark'] .meeting-card span,
+body[data-theme='dark'] .meeting-card strong,
+body[data-theme='dark'] .summary-card h2,
+body[data-theme='dark'] .summary-card h6,
+body[data-theme='dark'] .summary-card .summary-action,
+body[data-theme='dark'] .summary-icons svg,
+body[data-theme='dark'] .summary-action-icon svg {
+    color: #19bde8 !important;
+    fill: #19bde8 !important;
+}
+
+body[data-theme='dark'] .summary-card .summary-action {
+    color: #ffffff !important;
+    /* Keep the label text white */
+}
+
+/* Sidebar Detailed Theming */
+body[data-theme='dark'] .sidebar-link {
+    color: #ffffff !important;
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body[data-theme='dark'] .sidebar-link:hover {
+    background-color: rgba(25, 189, 232, 0.15) !important;
+}
+
+body[data-theme='dark'] .sidebar-link.active {
+    background-color: #19bde8 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .submenu {
+    background-color: #0b1120 !important;
+}
+
+body[data-theme='dark'] .submenu::after {
+    border-right-color: #334155 !important;
+}
+
+body[data-theme='dark'] .submenu-link {
+    color: #cbd5e1 !important;
+}
+
+body[data-theme='dark'] .submenu-link:hover,
+body[data-theme='dark'] .submenu-link.active {
+    color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .sidebar-logout {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .sidebar-logout:hover {
+    background-color: #dc2626 !important;
+}
+
+/* Action Buttons Contrast */
+body[data-theme='dark'] .view-btn {
+    background-color: #19bde8 !important;
+    border-color: #19bde8 !important;
+    color: #ffffff !important;
+    transition: transform 0.2s, background-color 0.2s !important;
+}
+
+body[data-theme='dark'] .view-btn:hover {
+    background-color: #12acd3 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(25, 189, 232, 0.3) !important;
+}
+
+/* Success/Alert messages */
+body[data-theme='dark'] .alert-success {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    border-color: #10b981 !important;
+    color: #34d399 !important;
+}
+
+/* Toggle Buttons (Regularization & RA My Team) */
+body[data-theme='dark'] .tab-btn,
+body[data-theme='dark'] .ra-tab {
+    background-color: #1a1f2e !important;
+    color: #cbd5e1 !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .tab-btn.active,
+body[data-theme='dark'] .ra-tab.active {
+    background-color: #19bde8 !important;
+    color: #ffffff !important;
+    border-color: #19bde8 !important;
+}
+
+
+
+
+
+/* Status Badges Enhancement */
+/* Status Badges Enhancement (Unified) */
+body[data-theme='dark'] .status-approved,
+body[data-theme='dark'] .status-badge.approved,
+body[data-theme='dark'] .ra-status.approved {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+body[data-theme='dark'] .status-rejected,
+body[data-theme='dark'] .status-badge.rejected,
+body[data-theme='dark'] .status-badge.rejected-new,
+body[data-theme='dark'] .ra-status.rejected {
+    background-color: rgba(220, 38, 38, 0.2) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(220, 38, 38, 0.4) !important;
+}
+
+body[data-theme='dark'] .status-pending,
+body[data-theme='dark'] .status-badge.pending,
+body[data-theme='dark'] .ra-status.pending {
+    background-color: rgba(245, 158, 11, 0.2) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+
+/* ====================== SKILL PILLS — DARK MODE ====================== */
+body[data-theme='dark'] .skill-pill {
+    background-color: #1e3a4a !important;
+    background: #1e3a4a !important;
+    color: #a8ecff !important;
+    border-color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .skill-remove {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .skill-remove:hover {
+    color: #f87171 !important;
+}
+
+body[data-theme='dark'] .skill-input {
+    background-color: #0f172a !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .skill-add-btn {
+    background-color: #1a1f2e !important;
+    border-color: #19bde8 !important;
+    color: #19bde8 !important;
+}
+
+body[data-theme='dark'] .skill-add-btn:hover {
+    background-color: #19bde8 !important;
+    color: #ffffff !important;
+}

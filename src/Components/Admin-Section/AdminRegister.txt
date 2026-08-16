@@ -1,0 +1,427 @@
+import React, { useState } from "react";
+import {
+  Form,
+  Button,
+  Alert,
+  Container,
+  Row,
+  Col,
+  ProgressBar,
+  InputGroup,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./AdminRegister.css";
+
+// Reuse same assets as login
+import BGShape from "../../assets/BGShape.png";
+import teampluslogo from "../../assets/stafioimg.png";
+import Registerlogo from "../../assets/registerlogo.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import apiClient from "../../api/client";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+
+const AdminRegister = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    phone:"",
+    password: "",
+    confirmPassword: "",
+    email: "",
+    role: "admin",
+  });
+
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [strength, setStrength] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [showOtpInput, setShowOtpInput] = useState(false);
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const evaluatePasswordStrength = (value) => {
+    let score = 0;
+    if (/[A-Z]/.test(value)) score += 1;
+    if (/\d/.test(value)) score += 1;
+    if (value.length >= 8) score += 1;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(value)) score += 1;
+    return score;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setError("");
+    setMessage("");
+
+    if (!formData.username || !formData.email) {
+      setError("Username and email are required.");
+      return;
+    }
+    if (!formData.phone) {
+  setError("Phone number required.");
+  return;
+}
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      if (!isOtpSent) {
+        // Step 1: send OTP
+        const res = await apiClient.post("/send_otp", {
+          email: formData.email,
+          username: formData.username,
+        });
+        setMessage(res.data?.message || "OTP sent successfully.");
+        setShowOtpInput(true);
+        setIsOtpSent(true);
+      } else {
+        // Step 2: verify OTP & register
+        const res = await apiClient.post("/verify_otp_register", {
+          email: formData.email,
+          username: formData.username,
+          phone: formData.phone,
+          password: formData.password,
+          otp,
+          role: formData.role,
+        });
+
+        setMessage(
+          res.data?.message || "Registration successful! You can now log in."
+        );
+        setShowOtpInput(false);
+        setIsOtpSent(false);
+        setOtp("");
+        setFormData({
+          username: "",
+          password: "",
+          phone:"",
+          confirmPassword: "",
+          email: "",
+          role: "admin",
+        });
+        setStrength(0);
+      }
+    } catch (err) {
+      const apiMessage =
+        err.response?.data?.message ||
+        (isOtpSent ? "Registration failed." : "Failed to send OTP.");
+      setError(apiMessage);
+      // eslint-disable-next-line no-console
+      console.error("AdminRegister error:", err.response || err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setFormData({ ...formData, password: value });
+    setStrength(evaluatePasswordStrength(value));
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value;
+    setFormData({ ...formData, confirmPassword: value });
+  };
+
+  // Determine progress bar color and label
+  const getVariant = () => {
+    if (strength === 1) return "danger"; // Red
+    if (strength === 2) return "warning"; // Yellow
+    if (strength === 3) return "ok"; // orange
+    if (strength === 4) return "success"; // Green
+    return "secondary"; // Grey (empty)
+  };
+
+  const getLabel = () => {
+    if (strength === 1) return "Weak";
+    if (strength === 2) return "Moderate";
+    if (strength === 3) return "Almost Strong";
+    if (strength === 4) return "Strong";
+    return "";
+  };
+
+  // ---------------------------
+  // ⭐ Google Register
+  // ---------------------------
+  const handleGoogleRegister = async (tokenResponse) => {
+    try {
+      // Get Google profile
+      const userInfoRes = await fetch(
+        "https://www.googleapis.com/oauth2/v3/userinfo",
+        {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        }
+      );
+
+      const profile = await userInfoRes.json();
+
+      const googleEmail = profile.email;
+      const googleName = profile.name;
+
+      // Send to backend for registration
+      const res = await apiClient.post("/admin_google_register", {
+        email: googleEmail,
+        username: googleName,
+        role: "admin",
+      });
+
+      setMessage(res.data?.message || "Google registration successful!");
+      setError("");
+    } catch (err) {
+      setError("Google registration failed.");
+    }
+  };
+
+  const googleRegister = useGoogleLogin({
+    onSuccess: handleGoogleRegister,
+    onError: () => setError("Google registration failed."),
+  });
+
+  return (
+    <Container fluid className="admin-register-container">
+      <Row className="vh-100">
+        {/* ===== LEFT SIDE ===== */}
+        <Col
+          md={6}
+          className="register-left d-flex flex-column align-items-center justify-content-center"
+        >
+          <img src={BGShape} alt="Background Shape" className="bg-shape" />
+
+          <div className="register-left-content text-center">
+            <div className="register-logos mb-3">
+              <img
+                src={teampluslogo}
+                alt="Team Plus Logo"
+                className="teamplus-logo"
+              />
+            </div>
+
+            <h2 className="register-heading">One Portal,</h2>
+            <h4 className="register-subheading">Unlimited Potential</h4>
+
+            <p className="register-description">
+              Create your account — It only takes a minute!
+            </p>
+          </div>
+
+          <img
+            src={Registerlogo}
+            alt="Register Illustration"
+            className="register-illustration"
+          />
+        </Col>
+
+        {/* ===== RIGHT SIDE ===== */}
+        <Col
+          md={6}
+          className="d-flex align-items-center justify-content-left bg-white"
+        >
+          <div className="register-form-wrapper">
+            <h5 className="mb-2">Just a Few Details to Begin</h5>
+            <h3 className="mb-4">Admin Sign Up</h3>
+
+            {message && <Alert variant="success">{message}</Alert>}
+            {error && <Alert variant="danger">{error}</Alert>}
+
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Enter username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Phone Nunber</Form.Label>
+                <Form.Control
+                  type="tel"
+                  name="phone"
+                  placeholder="Please enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Password</Form.Label>
+
+                {/* Input with eye toggle */}
+                <InputGroup className="align-items-center">
+                  <div style={{ position: "relative" }}>
+                    <Form.Control
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Enter password"
+                      value={formData.password}
+                      onChange={handlePasswordChange}
+                      required
+                      style={{ paddingRight: "40px" }} // add space for the eye icon
+                    />
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        cursor: "pointer",
+                        color: "#6c757d",
+                      }}
+                    >
+                      {showPassword ? (
+                        <FaEye size={18} />
+                      ) : (
+                        <FaEyeSlash size={18} />
+                      )}
+                    </span>
+                  </div>
+                </InputGroup>
+
+                {/* Progress bar */}
+                {formData.password && (
+                  <div style={{ marginTop: "8px" }}>
+                    <ProgressBar
+                      now={(strength / 4) * 100}
+                      variant={getVariant()}
+                      animated
+                      label={getLabel()}
+                    />
+                    <div style={{ fontSize: "13px", marginTop: "4px" }}>
+                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
+                        • At least one uppercase
+                      </span>
+                      <br />
+                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
+                        • At least one number
+                      </span>
+                      <br />
+                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
+                        • Minimum 8 characters
+                      </span>
+                      <br />
+                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
+                        • At least one special character
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Confirm Password</Form.Label>
+                <InputGroup className="align-items-center">
+                  <div style={{ position: "relative" }}>
+                    <Form.Control
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="confirmPassword"
+                      placeholder="Confirm password"
+                      value={formData.confirmPassword}
+                      onChange={handleConfirmPasswordChange}
+                      required
+                      style={{ paddingRight: "40px" }}
+                    />
+                    <span
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        cursor: "pointer",
+                        color: "#6c757d",
+                      }}
+                    >
+                      {showConfirmPassword ? (
+                        <FaEye size={18} />
+                      ) : (
+                        <FaEyeSlash size={18} />
+                      )}
+                    </span>
+                  </div>
+                </InputGroup>
+              </Form.Group>
+              {showOtpInput && (
+                <Form.Group className="mb-3">
+                  <Form.Label>OTP Code</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter 6-digit OTP sent to your email"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength="6"
+                    required
+                  />
+                  <Form.Text className="text-muted">
+                    Enter the 6-digit code sent to {formData.email}
+                  </Form.Text>
+                </Form.Group>
+              )}
+              <Button variant="primary" type="submit" className="register-btn">
+                {isOtpSent ? "Verify & Register" : "Send OTP"}
+              </Button>
+              
+              {/* -------- Google Register Button -------- */}
+              <div className="text-center my-3">
+                <button
+                  type="button"
+                  onClick={() => googleRegister()}
+                  className="google-btn"
+                >
+                  <img
+                    src="https://developers.google.com/identity/images/g-logo.png"
+                    alt="Google"
+                    style={{ width: "20px", marginRight: "10px" }}
+                  />
+                  <span style={{ color: "#19bde9", fontWeight: 500 }}>
+                    Continue with Google
+                  </span>
+                </button>
+              </div>
+
+              <div className="text-center mt-3">
+                <small>
+                  Already have an account?{" "}
+                  <Link to="/" className="login-link">
+                    Log in
+                  </Link>
+                </small>
+              </div>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default AdminRegister;

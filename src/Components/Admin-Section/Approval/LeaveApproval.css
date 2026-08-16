@@ -1,0 +1,1494 @@
+/* ================================================
+   LEAVE APPROVAL — pixel-perfect match to design
+   ================================================ */
+* {
+	box-sizing: border-box;
+}
+
+/* ── Layout ── */
+.leave-approval-layout {
+	display: flex;
+	background: #eff5ff;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+}
+
+.rightside-logo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.rightside-logos {
+	width: 420px;
+	height: auto;
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.leave-approval-main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	position: relative;
+	/* z-index removed intentionally — avoids creating an isolated stacking context
+	   so position:fixed children (modal overlay) compete in the global stack
+	   and correctly render above the sidebar (z-index: 1050) */
+	padding: 0 24px 24px 24px;
+}
+
+/* ── Title ── */
+.page-title {
+	font-size: 32px !important;
+	font-weight: 500 !important;
+	color: #111827 !important;
+	margin: 26px 10px 18px 0 !important;
+}
+
+/* ================================================
+   HEADER: cards LEFT  |  controls RIGHT
+   ================================================ */
+.leave-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 0;
+	margin-bottom: 20px;
+	gap: 20px;
+	flex-wrap: nowrap;
+}
+
+/* =====================================
+   SUMMARY CARDS
+===================================== */
+.leave-summary {
+	display: flex;
+	gap: 14px;
+	background: transparent;
+	box-shadow: none;
+	flex-shrink: 0;
+	align-items: stretch;
+}
+
+/* individual card */
+.summary-card-leave {
+	background: #ffffff;
+	min-width: 229px;
+	height: 115px;
+	padding: 14px 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+	border: none;
+	border-right: none !important;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+/* ── Spinner & SVG icons ── */
+/* ── Dots spinner wrapper (SVG rendered inside via JSX) ── */
+.dots-spinner-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	margin-bottom: 8px;
+	animation: spin 1.5s linear infinite;
+}
+
+.summary-svg-icon {
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	margin-bottom: 8px;
+}
+
+.summary-svg-icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Card text */
+.card-text-block {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.card-text-block strong {
+	font-size: 14px;
+	font-weight: 700;
+	color: #111827;
+	line-height: 1.35;
+	display: block;
+}
+
+.sub-text {
+	font-size: 12px;
+	color: #9ca3af;
+	font-weight: 400;
+	margin-top: 6px;
+	display: block;
+}
+
+/* animation */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* ── Right controls ── */
+.right-leave-actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+	gap: 10px;
+	flex-shrink: 0;
+}
+
+/* All / My Team toggle */
+.right-top-buttons {
+	display: flex;
+	gap: 0;
+}
+
+.right-tab-btn {
+	padding: 10px 26px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #374151;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	cursor: pointer;
+	transition: all 0.2s;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+.right-tab-btn:first-child {
+	border-radius: 8px 0 0 8px;
+	border-right: none;
+}
+
+.right-tab-btn:last-child {
+	border-radius: 0 8px 8px 0;
+}
+
+.right-tab-btn--active {
+	background: #ffffff;
+	color: #111827;
+	font-weight: 500;
+	border-color: #d1d5db;
+}
+
+.right-tab-btn--cyan {
+	background: #12b3e6 !important;
+	color: #ffffff !important;
+	border-color: #12b3e6 !important;
+	font-weight: 500;
+}
+
+/* Search + Filter + Sort row */
+.right-bottom-button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Search */
+.search-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.search-icon-inside {
+	position: absolute;
+	left: 11px;
+	color: #9ca3af;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+.right-search-input-new {
+	padding: 7px 12px 7px 30px;
+	border: 1px solid #e2e8f0;
+	border-radius: 20px;
+	background: #f8fafc;
+	font-size: 13px;
+	width: 150px;
+	outline: none;
+	color: #374151;
+	transition: border-color 0.2s;
+}
+
+.right-search-input-new::placeholder {
+	color: #9ca3af;
+}
+
+.right-search-input-new:focus {
+	border-color: #12b3e6;
+}
+
+/* Filter button */
+.right-btn-filter-new {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 14px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	font-size: 13px;
+	color: #374151;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background 0.2s;
+}
+
+.right-btn-filter-new:hover {
+	background: #f3f4f6;
+}
+
+/* Sort */
+.right-sort-select-new {
+	padding: 7px 10px;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	background: #ffffff;
+	font-size: 13px;
+	color: #374151;
+	cursor: pointer;
+	outline: none;
+}
+
+/* ================================================
+   FILTER DROPDOWN
+   ================================================ */
+.filter-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+/* Compact dropdown anchored below the Filter button */
+.filter-dropdown {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: -250px;
+	width: 240px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 14px 14px 12px 14px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+	border: 1px solid #e2e8f0;
+	z-index: 9999;
+}
+
+.filter-title {
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	text-align: center;
+	color: #1f2937;
+}
+
+/* 2-col grid: Name spans both cols, Leave Type + Status side by side */
+.filter-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 8px;
+}
+
+/* Name field spans full width */
+.filter-grid .filter-field:first-child {
+	grid-column: 1 / -1;
+}
+
+.filter-field {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.filter-field label {
+	font-size: 11px;
+	font-weight: 600;
+	color: #1e3a5f;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}
+
+.filter-field input,
+.filter-field select {
+	padding: 5px 8px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	font-size: 12px;
+	outline: none;
+	background: #fff;
+	width: 100%;
+	color: #12b3e6;
+}
+
+.filter-field input::placeholder {
+	color: #d97706;
+	font-size: 12px;
+}
+
+.filter-field input:focus,
+.filter-field select:focus {
+	border-color: #12b3e6;
+}
+
+.filter-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	gap: 8px;
+}
+
+.reset-btn {
+	background: #f3f4f6;
+	color: #374151;
+	border: none;
+	padding: 5px 12px;
+	border-radius: 6px;
+	font-size: 12px;
+	cursor: pointer;
+	flex: 1;
+}
+
+.reset-btn:hover {
+	background: #e5e7eb;
+}
+
+.apply-btn {
+	background: #12b3e6;
+	color: #fff;
+	border: none;
+	padding: 5px 12px;
+	border-radius: 6px;
+	font-size: 12px;
+	cursor: pointer;
+	flex: 1;
+}
+
+.apply-btn:hover {
+	background: #0ea5cb;
+}
+
+/* ================================================
+   TABLE
+   ================================================ */
+.leave-table {
+	width: 100%;
+	margin: 0;
+	border-collapse: collapse;
+	background: #ffffff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+}
+
+.leave-table th {
+	padding: 14px 18px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #374151;
+	text-align: left;
+	background: #ffffff;
+	border-bottom: 1px solid #f1f5f9;
+}
+
+/* Dashed row dividers */
+.leave-table tbody tr {
+	border-bottom: 1px dashed #e5e7eb;
+}
+
+.leave-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.leave-table tbody tr:hover {
+	background: #f8fbff;
+}
+
+.leave-table td {
+	padding: 14px 18px;
+	font-size: 13px;
+	color: #374151;
+	text-align: left;
+	vertical-align: middle;
+}
+
+/* Employee */
+.employee-info {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.emp-avatar img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.emp-name {
+	font-size: 14px;
+	font-weight: 600;
+	color: #111827;
+	margin: 0;
+}
+
+.emp-id {
+	font-size: 12px;
+	color: #9ca3af;
+	margin-top: 2px;
+	display: block;
+}
+
+/* Leave type */
+.leave-type-name {
+	font-size: 13px;
+	color: #374151;
+	font-weight: 500;
+}
+
+.leave-type-days {
+	font-size: 12px;
+	color: #9ca3af;
+	margin-top: 2px;
+}
+
+/* Date */
+.req-date-text {
+	font-size: 13px;
+	color: #374151;
+	margin-bottom: 6px;
+	font-weight: 500;
+}
+
+/* Status badges */
+.status-badge {
+	display: inline-block;
+	padding: 3px 14px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.status-pending {
+	background: transparent;
+	color: #d97706;
+	border: 1.5px solid #f59e0b;
+}
+
+.status-approved {
+	background: transparent;
+	color: #059669;
+	border: 1.5px solid #10b981;
+}
+
+.status-rejected {
+	background: transparent;
+	color: #dc2626;
+	border: 1.5px solid #ef4444;
+}
+
+/* View Details */
+.view-btn {
+	background: transparent;
+	border: 1px solid #d1d5db;
+	color: #374151;
+	padding: 6px 14px;
+	border-radius: 8px;
+	font-size: 13px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: all 0.2s;
+}
+
+.view-btn:hover {
+	border-color: #12b3e6;
+	color: #12b3e6;
+}
+
+/* ================================================
+   PAGINATION — Harmonized with MyLeaves
+   ================================================ */
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 25px;
+	padding: 10px 0;
+}
+
+.showing {
+	font-size: 14px;
+	color: #333;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-weight: 500;
+}
+
+.showing select {
+	padding: 6px 12px;
+	border: 1px solid #19bde8;
+	border-radius: 6px;
+	background: #19bde8;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	padding-right: 32px;
+	min-width: 60px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.page-nav {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.page-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #dcdcdc;
+	background: #fff;
+	border-radius: 8px;
+	color: #000;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.page-btn.prev-next {
+	padding: 8px 20px;
+	min-width: 80px;
+	height: 40px;
+}
+
+.page-btn.num-btn {
+	width: 40px;
+	height: 40px;
+	padding: 0;
+}
+
+.page-btn:hover:not(:disabled) {
+	background: #f8fafc;
+	border-color: #cbd5e1;
+}
+
+.page-btn.active {
+	background: #19bde8;
+	color: #fff;
+	border-color: #19bde8;
+	font-weight: 600;
+}
+
+.page-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background: #f9f9f9;
+}
+
+/* ================================================
+   MODALS
+   ================================================ */
+.approve-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.approve-leave-modal {
+	background: #fff;
+	border-radius: 16px;
+	width: 400px;
+	max-width: 90vw;
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+	animation: fadeIn 0.3s ease;
+}
+
+.approve-modal-header-blue {
+	background: #12b3e6;
+	color: #fff;
+	padding: 16px 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.approve-modal-header-blue h3 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.close-btn {
+	background: none;
+	border: none;
+	color: #fff;
+	font-size: 24px;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.approve-form-modal-body {
+	padding: 24px;
+	position: relative;
+}
+
+.approve-leave-form {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+}
+
+.form-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.form-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: nowrap;
+	width: 100%;
+}
+
+.form-row label {
+	width: 110px;
+	font-weight: 500;
+	font-size: 13px;
+	color: #374151;
+	flex-shrink: 0;
+}
+
+.reason-row {
+	align-items: flex-start !important;
+}
+
+.form-row input {
+	flex: 1;
+	height: 38px;
+	background: #fdfdfd;
+	border: 1px solid #d1d5db;
+	border-radius: 10px;
+	padding: 9px 12px;
+	font-size: 13px;
+	outline: none;
+}
+
+.form-row textarea {
+	flex: 1;
+	height: 80px;
+	background: #f3f8ff;
+	border: 1px solid #d1d5db;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 13px;
+	resize: none;
+	outline: none;
+}
+
+.date-row {
+	display: flex;
+	gap: 10px;
+	flex: 1;
+	align-items: flex-end;
+}
+
+.notify-row {
+	display: flex;
+	gap: 10px;
+	flex: 1;
+}
+
+.notify-row input {
+	flex: 1;
+	max-width: 100px;
+}
+
+.date-item {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	flex: 1;
+}
+
+.date-item p {
+	font-size: 12px;
+	color: #555;
+	margin: 0;
+}
+
+.date-item input {
+	width: 100%;
+}
+
+.document-input {
+	flex: 1;
+	height: 36px;
+	background: #f3f8ff;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	padding: 8px 12px;
+	font-size: 13px;
+}
+
+.action-approve-modal-actions {
+	display: flex;
+	gap: 12px;
+	margin-top: 6px;
+}
+
+.approve-apply-btn {
+	background: #19bde8;
+	color: #fff;
+	border: none;
+	padding: 8px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.approve-cancel-btn {
+	background: #fff;
+	border: 1px solid #999;
+	padding: 8px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+/* ── Modal Footer (Approve/Reject buttons row) ── */
+.la-modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	padding: 16px 28px;
+	border-top: 1px solid #e5e7eb;
+}
+
+.la-modal-footer .modal-approve-btn {
+	background: #19bde8;
+	color: #fff;
+	border: none;
+	padding: 10px 24px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	transition: 0.2s;
+}
+
+.la-modal-footer .modal-approve-btn:hover {
+	background: #15a5cc;
+}
+
+.la-modal-footer .modal-reject-btn {
+	background: #fff;
+	border: 1px solid #333;
+	color: #333;
+	padding: 10px 24px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	transition: 0.2s;
+}
+
+.la-modal-footer .modal-reject-btn:hover {
+	background: #f1f5f9;
+}
+
+.form-right {
+	flex: 0 0 175px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	align-self: flex-end;
+	padding-bottom: 4px;
+}
+
+.form-right img {
+	width: 150px;
+	height: 120px;
+	object-fit: contain;
+	display: block;
+}
+
+/* Reason modal - Perfectly centered layout to match latest design */
+.reason-modal-overlay,
+.success-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10001; 
+}
+
+.reason-modal {
+	width: 440px;
+	background: #eff6ff;
+	border-radius: 12px;
+	padding: 35px 30px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+	position: relative;
+	text-align: center;
+	animation: fadeIn 0.2s ease;
+}
+
+.reason-close-btn,
+.success-close-btn {
+	position: absolute;
+	top: 14px;
+	right: 16px;
+	background: none;
+	border: none;
+	font-size: 20px; /* Small and thin as per image */
+	cursor: pointer;
+	color: #64748b;
+	line-height: 1;
+	transition: color 0.2s;
+}
+
+.reason-close-btn:hover,
+.success-close-btn:hover {
+	color: #1e293b;
+}
+
+.reason-modal h3 {
+	font-size: 22px;
+	font-weight: 600;
+	color: #1e293b;
+	margin-bottom: 20px;
+}
+
+.reason-modal textarea {
+	width: 100%;
+	height: 120px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	padding: 15px;
+	font-size: 14px;
+	resize: none;
+	outline: none;
+	background: #ffffff;
+	margin-bottom: 8px;
+}
+
+.reason-modal small {
+	display: block;
+	font-size: 12px;
+	color: #94a3b8;
+	text-align: center; /* Centered helper text */
+	margin-bottom: 24px;
+	font-style: italic;
+}
+
+.reason-modal-actions {
+	display: flex;
+	justify-content: center; /* Centered buttons */
+	align-items: center;
+	gap: 12px;
+}
+
+.reason-apply-btn {
+	background: #19bde8 !important;
+	color: #ffffff !important;
+	border: none !important;
+	padding: 9px 28px !important;
+	border-radius: 6px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	cursor: pointer;
+}
+
+.reason-cancel-btn {
+	background: #ffffff !important;
+	border: 1px solid #000000 !important;
+	color: #000000 !important;
+	padding: 9px 28px !important;
+	border-radius: 6px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	cursor: pointer;
+}
+
+/* Success modal - Fully centered */
+.success-modal {
+	width: 420px;
+	background: #eff6ff;
+	border-radius: 12px;
+	padding: 40px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+	position: relative;
+	text-align: center;
+	animation: fadeIn 0.2s ease;
+}
+
+.tick-icon {
+	width: 65px;
+	height: 65px;
+	margin-bottom: 25px;
+}
+
+.success-modal h2 {
+	font-size: 22px;
+	font-weight: 600;
+	color: #1e293b;
+	margin-bottom: 10px;
+}
+
+.success-modal p {
+	font-size: 14px;
+	color: #475569;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ==========/* ================================================
+   MEDIA QUERIES — Professional Breakpoint Suite
+   Optimized for: 13", 14", 15" Laptops (1536px) & 4K
+   ================================================ */
+
+/* ── 1. Small Laptop / Large Tablet (Up to 1024px) ── */
+@media (max-width: 1024px) {
+	.leave-approval-main {
+		padding: 0 14px 20px 14px;
+	}
+
+	.page-title {
+		font-size: 20px !important;
+		margin: 16px 0 14px 0 !important;
+	}
+
+	.leave-header {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.leave-summary {
+		flex-wrap: wrap;
+		gap: 10px;
+		width: 100%;
+	}
+
+	.summary-card-leave {
+		min-width: 140px;
+		height: auto;
+		flex: 1 1 140px;
+		padding: 12px 14px;
+	}
+
+	/* ── View Details Popup ── */
+	.approve-leave-modal {
+		width: 58%;
+		max-width: 58%;
+	}
+
+	.approve-form-modal-body {
+		padding: 14px 14px;
+	}
+
+	.approve-leave-form {
+		flex-direction: column;
+	}
+
+	.form-right {
+		display: none;
+	}
+
+	.form-left {
+		padding-right: 0;
+		width: 100%;
+	}
+
+	.form-row {
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: nowrap;
+	}
+
+	.form-row label {
+		width: 110px;
+		font-size: 12px;
+		flex-shrink: 0;
+	}
+
+	.form-row input {
+		height: 34px;
+		font-size: 12px;
+	}
+
+	.form-row textarea {
+		height: 70px;
+		font-size: 12px;
+	}
+
+	.date-row {
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
+
+	.notify-row {
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
+}
+
+/* ── 2. Standard & High-Res Laptops (1025px – 1550px) ── */
+/* Optimized for your current 1536px logical resolution */
+@media (min-width: 1025px) and (max-width: 1550px) {
+	.leave-approval-main {
+		padding: 0 18px 20px 18px;
+	}
+
+	.page-title {
+		font-size: 23px !important;
+		margin: 20px 0 16px 0 !important;
+	}
+
+	.leave-header {
+		flex-wrap: wrap;
+		gap: 15px;
+		justify-content: space-between;
+	}
+
+	.leave-summary {
+		flex-wrap: nowrap;
+		gap: 8px;
+		flex-shrink: 1;
+	}
+
+	.summary-card-leave {
+		min-width: 160px;
+		height: 100px;
+		padding: 10px 12px;
+		flex-shrink: 1;
+	}
+
+	.card-text-block strong {
+		font-size: 13px;
+	}
+
+	.leave-table th,
+	.leave-table td {
+		padding: 10px 14px;
+		font-size: 13px;
+	}
+
+	.right-search-input-new {
+		width: 110px;
+	}
+
+	.right-leave-actions {
+		align-items: flex-end;
+		flex-shrink: 0;
+	}
+
+	/* ── View Details Popup ── */
+	.approve-leave-modal {
+		width: 55%;
+		max-width: 65%;
+	}
+
+	.approve-form-modal-body {
+		padding: 20px 22px;
+	}
+
+	.approve-leave-form {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 0;
+	}
+
+	.form-left {
+		flex: 1;
+		padding-right: 10px;
+	}
+
+	.form-row {
+		flex-direction: row;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: nowrap;
+	}
+
+	.form-row label {
+		width: 120px;
+		font-size: 13px;
+		flex-shrink: 0;
+	}
+
+	.form-row input {
+		height: 34px;
+		font-size: 12px;
+	}
+
+	.form-row textarea {
+		height: 74px;
+		font-size: 12px;
+	}
+
+	.date-row {
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
+
+	.notify-row {
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
+
+	.form-right {
+		flex: 0 0 130px;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		align-self: flex-end;
+	}
+
+	.form-right img {
+		width: 115px;
+		height: 95px;
+	}
+}
+
+/* ── 3. Transition Range (1551px – 1800px) ── */
+@media (min-width: 1551px) and (max-width: 1800px) {
+	.leave-approval-main {
+		padding: 0 24px 24px 24px;
+	}
+
+	.page-title {
+		font-size: 26px !important;
+	}
+
+	.summary-card-leave {
+		min-width: 210px;
+		height: 115px;
+	}
+
+	/* ── View Details Popup ── */
+	.approve-leave-modal {
+		width: 58%;
+		max-width: 58%;
+	}
+
+	.approve-form-modal-body {
+		padding: 22px 26px;
+	}
+
+	.approve-leave-form {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.form-left {
+		flex: 1;
+		padding-right: 10px;
+	}
+
+	.form-row {
+		flex-direction: row;
+		align-items: center;
+		gap: 14px;
+		flex-wrap: nowrap;
+	}
+
+	.form-row label {
+		width: 125px;
+		font-size: 13px;
+		flex-shrink: 0;
+	}
+
+	.form-row input {
+		height: 36px;
+		font-size: 13px;
+	}
+
+	.form-row textarea {
+		height: 78px;
+		font-size: 13px;
+	}
+
+	.date-row {
+		flex-wrap: nowrap;
+		gap: 8px;
+	}
+
+	.notify-row {
+		flex-wrap: nowrap;
+		gap: 8px;
+	}
+
+	.form-right {
+		flex: 0 0 155px;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		align-self: flex-end;
+	}
+
+	.form-right img {
+		width: 138px;
+		height: 110px;
+	}
+}
+
+/* ── 4. Large Desktop / Big Monitor (1801px and above) ── */
+@media (min-width: 1801px) {
+	.leave-approval-main {
+		padding: 0 40px 40px 40px;
+	}
+
+	.page-title {
+		font-size: 30px !important;
+	}
+
+	.summary-card-leave {
+		min-width: 260px;
+		height: 130px;
+		padding: 20px 28px;
+	}
+
+	.card-text-block strong {
+		font-size: 17px;
+	}
+
+	.leave-table th,
+	.leave-table td {
+		padding: 18px 25px;
+		font-size: 15px;
+	}
+
+	/* ── View Details Popup ── */
+	.approve-leave-modal {
+		width: 700px;
+		max-width: 55%;
+	}
+
+	.approve-form-modal-body {
+		padding: 24px 28px;
+	}
+
+	.approve-leave-form {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.form-left {
+		flex: 1;
+		padding-right: 10px;
+	}
+
+	.form-row {
+		flex-direction: row;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: nowrap;
+	}
+
+	.form-row label {
+		width: 130px;
+		font-size: 14px;
+		flex-shrink: 0;
+	}
+
+	.form-row input {
+		height: 36px;
+		font-size: 13px;
+	}
+
+	.form-row textarea {
+		height: 80px;
+		font-size: 13px;
+	}
+
+	.date-row {
+		flex-wrap: nowrap;
+		gap: 10px;
+	}
+
+	.notify-row {
+		flex-wrap: nowrap;
+		gap: 10px;
+	}
+
+	.form-right {
+		flex: 0 0 175px;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		align-self: flex-end;
+	}
+
+	.form-right img {
+		width: 150px;
+		height: 120px;
+	}
+
+	.pagination {
+		padding: 20px 4px 12px 4px;
+	}
+}
+
+/* ── Reason Modal Overlay (above Leave Details modal at z-index 9999) ─────── */
+/* Duplicate cleanup handled above */
+
+/* Dark Theme support for Leave Approval */
+body[data-theme='dark'] .leave-approval-layout,
+body[data-theme='dark'] .leave-approval-main {
+    background: #0b0f1a !important;
+}
+
+body[data-theme='dark'] .summary-card-leave {
+    background: #1a1f2e !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme='dark'] .summary-card-leave strong {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .leave-table {
+    background: #1a1f2e !important;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body[data-theme='dark'] .leave-table th {
+    background: #1a1f2e !important;
+    color: #e2e8f0 !important;
+    border-bottom: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tbody tr {
+    background: transparent !important;
+    border-bottom: 1px dashed #2d334a !important;
+}
+
+body[data-theme='dark'] .leave-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+body[data-theme='dark'] .emp-name {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .right-tab-btn {
+    background: #1a1f2e !important;
+    color: #cbd5e1 !important;
+    border-color: #2d334a !important;
+}
+
+body[data-theme='dark'] .right-tab-btn--active {
+    background: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .right-search-input-new,
+body[data-theme='dark'] .right-btn-filter-new,
+body[data-theme='dark'] .right-sort-select-new {
+    background: #1a1f2e !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .page-title {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .approve-leave-modal,
+body[data-theme='dark'] .reason-modal,
+body[data-theme='dark'] .success-modal {
+    background: #1a1f2e !important;
+    border: 1px solid #2d334a !important;
+    color: #ffffff !important;
+}
+
+/* Pagination Dark Mode */
+body[data-theme='dark'] .showing {
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .showing select {
+    background-color: #1a1f2e !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .page-btn {
+    background-color: #111827 !important;
+    border-color: #2d334a !important;
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .page-btn.active {
+    background-color: #12b3e6 !important;
+    border-color: #12b3e6 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .page-btn:hover:not(:disabled) {
+    background-color: #1a1f2e !important;
+    border-color: #12b3e6 !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .page-btn:disabled {
+    background-color: #111827 !important;
+    color: #475569 !important;
+    border-color: #1f2937 !important;
+    opacity: 0.5;
+}

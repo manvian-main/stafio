@@ -1,0 +1,283 @@
+/* AdminLogin.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.admin-login-container {
+  background: linear-gradient(to right, #ffffff, #eaf9fd);
+  height: 100vh;
+}
+
+/* ===== LEFT SIDE (same as Employee login) ===== */
+.login-left {
+  position: relative;
+  background: #e8edfa;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.bg-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.login-left-content {
+  z-index: 2;
+  position: relative;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.login-logos {
+  margin-top: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 0px !important;
+  margin-left: 30px;
+}
+
+.teampluss-logo {       /* modified */
+  height: 22% !important;  
+  margin-right:180px;     
+  margin-bottom:10px !important;
+}
+
+.stafio-logo {
+  height: 35px;
+}
+
+.login-heading {
+  margin-top: 10px;
+  font-size: 35px;
+  font-weight: 600;
+  color: #030303;
+  width: 100%;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.login-subheading {
+  font-size: 35px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.login-description {
+  font-size: 16px;     /* modified */
+  color: #0a0a0a;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-left: 30px;
+}
+
+.login-illustrations {
+  width: 530px !important;    /* modified */
+  height: 530px !important;   /* modified */
+  z-index: 2;
+  position: relative;
+  margin-top: -260px !important;  /* modified */
+  align-self: center;
+}
+
+/* ===== RIGHT SIDE (same as Employee login alignment) ===== */
+.login-form-wrapper {
+  background: #ffffff;
+  padding: 50px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+ 
+}
+
+.login-form-wrapper h5 {
+  color: #36baee;
+  font-weight: 500;
+  font-size: 24px;         /* modified */
+  padding-bottom: 10px;    /* modified */
+}
+
+.login-form-wrapper h3 {
+  font-weight: 600;
+  font-size: 36px;         /* modified */
+}
+
+.email-input {
+  background: #e9eaea;
+  width: 450px !important;    /* modified */
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.email-input:focus {
+  border-color: #19BDE8;
+  box-shadow: 0 0 0 0.2rem rgba(25, 189, 232, 0.25);
+}
+
+.login-btn {
+  width: 450px !important;      /* modified */
+  background-color: #19BDE8;
+  border: none;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;      /* modified */
+}
+
+.login-btn:hover {
+  background-color: #17a8d3;
+}
+
+.signup-page {
+  color: #36baee;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-page:hover {
+  text-decoration: underline;
+}
+
+.signup-text {
+  text-align:center;
+  font-size: 15px;
+  font-weight:500;
+}
+.signup-page{
+  font-weight:600;
+}
+
+.text-center a {
+  color: #19BDE8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+
+
+.remember-me-checkbox label {
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom:-2px ;
+  padding-left:5px;
+
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+
+/* .google-login-custom {
+  width: 100%;
+  max-width: 450px !important;
+  margin-top:20px;
+  text-align: center;
+  border-radius: 15px !important;
+  font-size: 18px;
+  font-weight: 600;
+  color: #19bde8; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #e0e8ff;
+  transition: 0.2s ease;
+} */
+
+ /* .google-login-custom:hover {
+  background: #e9f2ff;
+ } */
+
+/* .google-icon {
+  width: 2px !important;
+  height: 22px !important;
+  right: 20px ;
+} */
+
+/* #googleLoginButton{
+  width: 440px !important;
+  margin-left: -40px;
+  
+
+}  */
+
+/* #googleLoginButton div {
+  margin-top: 15px !important;
+  margin-bottom: -2px ;
+  padding-bottom: 25px;
+  margin-left: 30px;
+  margin-right: 10px;
+  background: #e7faff !important;
+  color: #1a8caf;
+  border: none;
+  border-radius: 10px !important;
+  font-size: 18px;
+  height: 45px;
+  bottom: 2px;
+  
+} */
+ 
+.custom-google-btn {
+  width: 450px;
+  height: 45px;
+  background: #e7faff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content:left;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.2s ease;
+  
+}
+
+.custom-google-btn:hover {
+  background: #d9f4ff;
+}
+
+.custom-google-btn span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00b5e2;
+}
+
+.google-icon {
+  width: 30px !important;
+  height: 20px !important;
+}
+
+.google-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}

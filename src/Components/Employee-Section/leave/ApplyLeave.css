@@ -1,0 +1,406 @@
+.apply-leave-wrapper{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.apply-leave-form-emp{
+display:flex;
+justify-content:space-between;
+gap:20px;
+}
+
+/* LEFT SIDE */
+
+.form-left{
+flex:1;
+max-width:520px;
+display:flex;
+flex-direction:column;
+gap:26px;
+}
+
+/* ROW STRUCTURE */
+
+.form-row_pop{
+display:flex;
+align-items:center;
+gap:15px;
+width:100%;
+}
+
+.form-row_pop.align-top{
+align-items:flex-start;
+}
+
+.form-row_pop label{
+width:150px;
+min-width:150px;
+font-size:14px;
+font-weight:500;
+color:#444;
+}
+
+.form-row_pop input,
+.form-row_pop select,
+.form-row_pop textarea{
+flex:1;
+padding:10px 12px;
+border-radius:10px;
+border:1px solid #cfd7df;
+font-size:14px;
+background:#fff;
+}
+
+/* READONLY */
+
+.form-left input[readonly]{
+background:#eef2f6;
+}
+
+/* DATE SECTION */
+
+.date-container{
+flex:1;
+}
+
+/* DATE LABELS */
+
+.date-label-row{
+display:flex;
+gap:10px;
+font-size:13px;
+color:#555;
+margin-bottom:4px;
+}
+
+.date-label-row span{
+width:150px;
+}
+
+/* DATE INPUT ROW */
+
+.app-leave-date-row{
+display:flex;
+align-items:center;
+}
+
+/* FIXED WIDTH DATE INPUTS */
+
+.app-leave-date-row input[type="date"]{
+flex:0 0 150px;
+width:150px;
+margin-right:10px;
+padding: 8px 10px;
+}
+
+.app-leave-date-row input[type="date"]:last-of-type{
+margin-right:10px;
+}
+
+.app-leave-date-row select{
+flex:0 0 120px;
+z-index: 999;
+padding: 8px 10px;
+}
+
+/* NOTIFY */
+
+.app-leave-notify-row{
+display:flex;
+gap:10px;
+flex:1;
+}
+
+.app-leave-notify-row select{
+flex:1;
+}
+
+/* TEXTAREA */
+
+textarea{
+min-height:90px;
+resize:none;
+}
+
+.form-row_pop textarea{
+flex:1;
+width:100%;
+padding: 15px 5px;
+}
+
+/* IMAGE */
+
+.form-right{
+flex:0 0 180px;
+flex-shrink:0;
+display:flex;
+justify-content:center;
+align-items:end;
+}
+
+.form-right img{
+width:220px;
+}
+
+/* UPLOAD BUTTON */
+
+.apply-leave-upload-btn{
+border:1px solid #b8d6df;
+background:#fff;
+padding:9px 14px;
+border-radius:10px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+/* FOOTER */
+
+.app-leave-modal-actions{
+background:#f0f2f5;
+padding:18px 30px;
+display:flex;
+justify-content:flex-end;
+gap:14px;
+margin-top:25px;
+border-bottom-left-radius:8px;
+border-bottom-right-radius:8px;
+}
+
+.apply-leave-btn{
+background:#19bde8;
+color:white;
+border:none;
+padding:10px 26px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.apply-leave-btn:hover{
+background:#13a7cd;
+}
+
+.app-leave-cancel-btn{
+background:white;
+border:1px solid #cfd7df;
+padding:10px 22px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* LAPTOP SCREENS */
+
+@media (max-width:1360px){
+
+.form-left{
+max-width:440px;
+gap: 18px;
+}
+
+.form-right{
+flex:0 0 120px;
+}
+
+.form-right img{
+width:160px;
+}
+
+.form-row_pop label{
+width:120px;
+min-width:120px;
+}
+
+.app-leave-date-row input[type="date"]{
+flex:0 0 130px;
+width:130px;
+}
+
+.app-leave-date-row select{
+flex:0 0 100px;
+width:100px;
+}
+}
+
+/* LARGE DESKTOP SCREENS */
+
+@media (min-width:1600px){
+
+.form-left{
+max-width:600px;
+}
+
+.app-leave-date-row input[type="date"]{
+flex:0 0 170px;
+width:170px;
+}
+
+.app-leave-date-row select{
+flex:0 0 140px;
+width:140px;
+}
+
+.form-right img{
+width:260px;
+}
+
+}
+
+/* TABLET SCREENS */
+
+@media (max-width:1024px){
+
+.form-left{
+max-width:100%;
+}
+
+.form-right{
+flex:0 0 100px;
+}
+
+.form-right img{
+width:140px;
+}
+
+.form-row_pop label{
+width:110px;
+min-width:110px;
+}
+
+.app-leave-date-row input[type="date"]{
+flex:0 0 120px;
+width:120px;
+}
+
+.app-leave-date-row select{
+flex:0 0 90px;
+width:90px;
+}
+
+}
+
+/* SMALL TABLETS */
+
+@media (max-width:768px){
+
+.apply-leave-form-emp{
+flex-direction:column;
+}
+
+.form-right{
+order:-1;
+align-items:center;
+margin-bottom:10px;
+}
+
+.form-right img{
+width:120px;
+}
+
+.form-row_pop{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+}
+
+.form-row_pop label{
+width:auto;
+min-width:auto;
+}
+
+.date-container{
+width:100%;
+}
+
+.app-leave-date-row{
+flex-wrap:wrap;
+gap:8px;
+}
+
+.app-leave-date-row input[type="date"]{
+flex:1;
+width:100%;
+}
+
+.app-leave-date-row select{
+flex:1;
+width:100%;
+}
+
+.app-leave-notify-row{
+flex-direction:column;
+width:100%;
+}
+
+.app-leave-notify-row select{
+width:100%;
+}
+
+.apply-leave-upload-btn{
+width:100%;
+justify-content:center;
+}
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:480px){
+
+.form-left{
+gap:14px;
+}
+
+.form-right{
+display:none;
+}
+
+.app-leave-modal-actions{
+flex-direction:column;
+gap:10px;
+}
+
+.apply-leave-btn,
+.app-leave-cancel-btn{
+width:100%;
+}
+
+}
+
+/* ================================================
+   Dark Theme Support for Apply Leave (Employee)
+   ================================================ */
+body[data-theme='dark'] .form-row_pop label,
+body[data-theme='dark'] .date-label-row {
+    color: #94a3b8 !important;
+}
+
+body[data-theme='dark'] .form-row_pop input,
+body[data-theme='dark'] .form-row_pop select,
+body[data-theme='dark'] .form-row_pop textarea,
+body[data-theme='dark'] .app-leave-date-row input,
+body[data-theme='dark'] .app-leave-date-row select,
+body[data-theme='dark'] .app-leave-notify-row select,
+body[data-theme='dark'] .apply-leave-upload-btn {
+    background: #0f172a !important;
+    border-color: #2d334a !important;
+    color: #ffffff !important;
+}
+
+body[data-theme='dark'] .form-left input[readonly] {
+    background: #1a1f2e !important;
+    color: #cbd5e1 !important;
+}
+
+body[data-theme='dark'] .app-leave-modal-actions {
+    background: #1a1f2e !important;
+    border-top: 1px solid #2d334a !important;
+}
+
+body[data-theme='dark'] .app-leave-cancel-btn {
+    background: #1a1f2e !important;
+    border-color: #cbd5e1 !important;
+    color: #cbd5e1 !important;
+}
