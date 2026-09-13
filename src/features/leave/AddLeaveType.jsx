@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Form, Alert } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
 import { getCurrentSession } from "../../utils/sessionManager";
 
 const AddLeaveType = () => {

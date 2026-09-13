@@ -11,8 +11,8 @@ import {
   Spinner,
   ProgressBar,
 } from "react-bootstrap";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import apiClient from "../../api/apiClient";
 import {
   FaTasks,

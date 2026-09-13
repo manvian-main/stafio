@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaFilter } from "react-icons/fa";
 import "./LeaveReport.css";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import Topbar from "../../components/layout/AdminTopbar";
 import group10 from "../../assets/Group10.png";
 import AttendanceCard from "../dashboard/AttendanceCard";
 import { useLocation } from "react-router-dom";

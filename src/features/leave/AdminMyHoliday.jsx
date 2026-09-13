@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdminMyHoliday.css";
-import EmployeeSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import group10 from "../../assets/Group10.png";
 import axios from "axios";
 import {

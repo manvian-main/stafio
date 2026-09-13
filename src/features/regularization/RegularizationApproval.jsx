@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RegularizationApproval.css";
 import { FaFilter, FaSearch } from "react-icons/fa";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import { useNavigate } from "react-router-dom";
 import group10 from "../../assets/Group10.png";
 import timemgnt from "../../assets/Timemgnt.png";

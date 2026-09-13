@@ -1,6 +1,6 @@
 import React from "react";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import { Container, Card } from "react-bootstrap";
 import group10 from "../../assets/Group10.png";
 

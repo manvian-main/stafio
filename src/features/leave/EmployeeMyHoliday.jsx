@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { SettingsContext } from "../../context/SettingsContext";
 
 import "./EmployeeMyHoliday.css";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import group10 from "../../assets/Group10.png";
 import axios from "axios";
 import {

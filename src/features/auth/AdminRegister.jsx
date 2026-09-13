@@ -66,7 +66,7 @@ const AdminRegister = () => {
       setPasswordRules({
         uppercase: /[A-Z]/.test(value),
         number: /\d/.test(value),
-        length: password.length >= 8,
+        length: value.length >= 8,
         special: /[!@#$%^&*(),.?":{}|<>]/.test(value),
       });
     }

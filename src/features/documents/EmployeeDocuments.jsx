@@ -1,6 +1,6 @@
 import React from "react";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { FaFilePdf, FaFileWord, FaDownload } from "react-icons/fa";
 import group10 from "../../assets/Group10.png";

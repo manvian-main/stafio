@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef, useContext } from "react";
 import { SettingsContext } from "../../context/SettingsContext";
 import { useNavigate } from "react-router-dom";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import "./EmployeeAttendance.css";
 /* no react-icons needed for cards */
 import axios from "axios";

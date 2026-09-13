@@ -23,7 +23,7 @@ import {
   Legend,
 } from "chart.js";
 import "./AdminPayrollDashboard.css";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
 
 ChartJS.register(
   CategoryScale,

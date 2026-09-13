@@ -9,8 +9,8 @@ import {
 	FaUpload,
 } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import illustration from "../../assets/Formsbro.png"; // Add your illustration image
 import { useNavigate } from "react-router-dom";
 import group10 from "../../assets/Group10.png";

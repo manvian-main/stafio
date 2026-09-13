@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./Settings.css";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import { SettingsContext } from "../../context/SettingsContext";
 import { Border } from "react-bootstrap-icons";
 import { BiFontSize } from "react-icons/bi";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form, Nav, Tab } from "react-bootstrap";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import ProfileBanner from "./AdminProfileBanner";
 import "./AdminProfile.css";
 import apiClient from "../../api/apiClient";

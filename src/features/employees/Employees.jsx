@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import "./Employees.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import apiClient from "../../api/apiClient";

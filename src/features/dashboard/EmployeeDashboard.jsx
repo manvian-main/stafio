@@ -19,8 +19,8 @@ import {
 import { FaChevronRight, FaAngleDown } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import NotificationBar from "../notifications/NotificationBar";
 import Vector3 from "../../assets/Vector3.svg";
 import arrow3 from "../../assets/arrow3.png";

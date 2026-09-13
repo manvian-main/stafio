@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Form, Nav, Tab } from "react-bootstrap";
-import EmployeeSidebar from "../../Components/Employee-Section/EmployeeSidebar";
-import Topbar from "../../Components/Employee-Section/Topbar";
+import EmployeeSidebar from "../../components/layout/EmployeeSidebar";
+import Topbar from "../../components/layout/EmployeeTopbar";
 import ProfileBanner from "./EmployeeProfileBanner";
 import "./EmployeeProfile.css";
 import apiClient from "../../api/apiClient";

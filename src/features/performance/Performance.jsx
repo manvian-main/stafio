@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import apiClient from "../../api/apiClient";
+import group10 from "../../assets/Group10.png";
 import {
   Container,
   Card,
@@ -20,7 +21,7 @@ import {
   FaChartLine,
   FaTrophy,
 } from "react-icons/fa";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
 
 const MonthlyPerformanceReport = () => {
   const [loading, setLoading] = useState(true);

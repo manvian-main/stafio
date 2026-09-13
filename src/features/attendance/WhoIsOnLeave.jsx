@@ -3,8 +3,8 @@ import { FaFilter, FaCalendarAlt } from "react-icons/fa";
 import apiClient from "../../api/apiClient";
 import { formatDate } from "../../utils/dateFormat";
 import "./WhoIsOnLeave.css";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import { useNavigate } from "react-router-dom";
 import group10 from "../../assets/Group10.png";
 

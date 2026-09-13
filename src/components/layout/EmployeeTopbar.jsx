@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import stafiologoimg from "../../assets/stafiologoimg.png";
 import axios from "axios";
-import "./Topbar.css";
-import profileimg from "../../assets/profileimg.png";
+import "./EmployeeTopbar.css";
+import profileimg2 from "../../assets/profileimg2.png";
 
 const API_BASE = "http://127.0.0.1:5001";
 

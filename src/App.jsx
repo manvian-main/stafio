@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RoleRoute from "./routes/RoleRoute";
 import { ROLES } from "./constants/roles";
+import PageLoader from "./components/ui/PageLoader";
 
 const ADMIN_ROLES = [ROLES.ADMIN, ROLES.MANAGER];
 const AdminRoute = ({ children }) => (
@@ -19,53 +21,58 @@ const EmployeeRoute = ({ children }) => (
   <ProtectedRoute loginPath="/employee-login">{children}</ProtectedRoute>
 );
 
-// Auth
+// Auth — not lazy: these are the very first screens almost every visitor
+// hits, so there is no benefit to a second round-trip for them.
 import AdminLogin from "./features/auth/AdminLogin";
 import AdminRegister from "./features/auth/AdminRegister";
 import EmployeeLogin from "./features/auth/EmployeeLogin";
 import EmployeeRegister from "./features/auth/EmployeeRegister";
 
+// Everything else is route-based code-split: each page's JS is only
+// downloaded when the user actually navigates to it, keeping the initial
+// bundle small (previously a single ~1.3MB chunk).
+
 // Admin Components
-import Dashboard from "./features/dashboard/Dashboard";
-import AdminLetterGeneration from "./Components/Admin-Section/AdminLetterGeneration";
-import AdminAttendance from "./features/attendance/AdminAttendance";
-import EmployeesList from "./features/employees/Employees";
-import EmployeesMyTeam from "./features/employees/EmployeesMyTeam";
-import Payroll from "./features/payroll/PayrollDashboard";
-import AdminBroadcast from "./features/notifications/AdminBroadCast";
-import AdminProfile from "./features/employees/AdminProfile";
-import AddLeave from "./features/leave/AddLeaveType";
-import LeavePolicies from "./features/leave/LeavePolicies";
-import PerformancePage from "./features/performance/Performance";
-import AdminSidebar from "./Components/Admin-Section/AdminSidebar";
-import Myholiday from "./features/leave/AdminMyHoliday";
-import MyLeave from "./features/leave/AdminMyLeave";
-import Myregularization from "./features/regularization/AdminMyRegularization";
-import LeaveApproval from "./features/leave/LeaveApproval";
-import MyTeamLeaveApproval from "./features/leave/MyTeamLeaveApproval";
-import RegularizationApproval from "./features/regularization/RegularizationApproval";
-import RAMyTean from "./features/regularization/RAMyTeam";
-import WhoIsOnLeave from "./features/attendance/WhoIsOnLeave";
-import AdminSettings from "./features/settings/AdminSettings";
-import AttendanceReport from "./features/reports/AttendanceReport";
-import LeaveReport from "./features/reports/LeaveReport";
+const Dashboard = lazy(() => import("./features/dashboard/Dashboard"));
+const AdminLetterGeneration = lazy(() => import("./features/documents/AdminLetterGeneration"));
+const AdminAttendance = lazy(() => import("./features/attendance/AdminAttendance"));
+const EmployeesList = lazy(() => import("./features/employees/Employees"));
+const EmployeesMyTeam = lazy(() => import("./features/employees/EmployeesMyTeam"));
+const Payroll = lazy(() => import("./features/payroll/PayrollDashboard"));
+const AdminBroadcast = lazy(() => import("./features/notifications/AdminBroadCast"));
+const AdminProfile = lazy(() => import("./features/employees/AdminProfile"));
+const AddLeave = lazy(() => import("./features/leave/AddLeaveType"));
+const LeavePolicies = lazy(() => import("./features/leave/LeavePolicies"));
+const PerformancePage = lazy(() => import("./features/performance/Performance"));
+const AdminSidebar = lazy(() => import("./components/layout/AdminSidebar"));
+const Myholiday = lazy(() => import("./features/leave/AdminMyHoliday"));
+const MyLeave = lazy(() => import("./features/leave/AdminMyLeave"));
+const Myregularization = lazy(() => import("./features/regularization/AdminMyRegularization"));
+const LeaveApproval = lazy(() => import("./features/leave/LeaveApproval"));
+const MyTeamLeaveApproval = lazy(() => import("./features/leave/MyTeamLeaveApproval"));
+const RegularizationApproval = lazy(() => import("./features/regularization/RegularizationApproval"));
+const RAMyTean = lazy(() => import("./features/regularization/RAMyTeam"));
+const WhoIsOnLeave = lazy(() => import("./features/attendance/WhoIsOnLeave"));
+const AdminSettings = lazy(() => import("./features/settings/AdminSettings"));
+const AttendanceReport = lazy(() => import("./features/reports/AttendanceReport"));
+const LeaveReport = lazy(() => import("./features/reports/LeaveReport"));
 
 // Employee Components
-import EmployeeDashboard from "./features/dashboard/EmployeeDashboard";
-import ApplyLeave from "./features/leave/ApplyLeave";
-import Attendance from "./features/attendance/EmployeeAttendance";
-import ProfileBanner from "./features/employees/EmployeeProfile";
-import EmployeePerformanceTracker from "./features/performance/EmployeePerformanceTracker";
-import EmployeePayroll from "./features/payroll/EmployeePayroll";
-import EmployeeDocuments from "./features/documents/EmployeeDocuments";
-import Settings from "./features/settings/Settings";
-import Myleave from "./features/leave/EmployeeMyLeave";
-import MyRegularization from "./features/regularization/EmployeeMyRegularization";
-import MyHoliday from "./features/leave/EmployeeMyHoliday";
+const EmployeeDashboard = lazy(() => import("./features/dashboard/EmployeeDashboard"));
+const ApplyLeave = lazy(() => import("./features/leave/ApplyLeave"));
+const Attendance = lazy(() => import("./features/attendance/EmployeeAttendance"));
+const ProfileBanner = lazy(() => import("./features/employees/EmployeeProfile"));
+const EmployeePerformanceTracker = lazy(() => import("./features/performance/EmployeePerformanceTracker"));
+const EmployeePayroll = lazy(() => import("./features/payroll/EmployeePayroll"));
+const EmployeeDocuments = lazy(() => import("./features/documents/EmployeeDocuments"));
+const Settings = lazy(() => import("./features/settings/Settings"));
+const Myleave = lazy(() => import("./features/leave/EmployeeMyLeave"));
+const MyRegularization = lazy(() => import("./features/regularization/EmployeeMyRegularization"));
+const MyHoliday = lazy(() => import("./features/leave/EmployeeMyHoliday"));
 
 // Employee Report Components
-import EmployeeAttendanceReport from "./features/reports/EmployeeAttendanceReport";
-import EmployeeLeaveReport from "./features/reports/EmployeeLeaveReport";
+const EmployeeAttendanceReport = lazy(() => import("./features/reports/EmployeeAttendanceReport"));
+const EmployeeLeaveReport = lazy(() => import("./features/reports/EmployeeLeaveReport"));
 
 const App = () => {
   return (
@@ -73,6 +80,7 @@ const App = () => {
       <AuthProvider>
         <SettingsProvider>
           <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
+          <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public */}
             <Route path="/" element={<AdminLogin />} />
@@ -146,6 +154,7 @@ const App = () => {
               element={<EmployeeRoute><EmployeeLeaveReport /></EmployeeRoute>}
             />
           </Routes>
+          </Suspense>
         </SettingsProvider>
       </AuthProvider>
     </Router>

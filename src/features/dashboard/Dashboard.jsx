@@ -13,8 +13,8 @@ import {
 	BsFlag,
 } from "react-icons/bs";
 import { BsPlusCircle } from "react-icons/bs";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import NotificationBar from "../notifications/NotificationBar";
 import NotificationTop from "../notifications/NotificationTop";
 import Vector3 from "../../assets/Vector3.svg";

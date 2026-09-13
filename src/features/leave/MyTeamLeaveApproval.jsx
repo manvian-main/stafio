@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./MyTeamLeaveApproval.css";
 import { FaFilter } from "react-icons/fa";
-import AdminSidebar from "../../Components/Admin-Section/AdminSidebar";
-import Topbar from "../../Components/Admin-Section/Topbar";
+import AdminSidebar from "../../components/layout/AdminSidebar";
+import Topbar from "../../components/layout/AdminTopbar";
 import group10 from "../../assets/Group10.png";
 import illustration from "../../assets/Formsbro.png";
 import { useNavigate } from "react-router-dom";
