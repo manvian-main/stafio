@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "./ForgotPasswordPopup.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { sendOtp, verifyOtp, resetPassword } from "../../services/authService";
 
 const ForgotPasswordPopup = ({ show, onClose }) => {
   const [email, setEmail] = useState("");
@@ -18,46 +19,22 @@ const ForgotPasswordPopup = ({ show, onClose }) => {
   // STEP 1 → SEND OTP
   const handleSendOtp = async () => {
     setErrorMsg("");
-
     try {
-      const response = await fetch("http://127.0.0.1:5001/forgot_send_otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStep(2);
-      } else {
-        setErrorMsg(data.message || "Failed to send OTP.");
-      }
+      await sendOtp(email);
+      setStep(2);
     } catch (err) {
-      setErrorMsg("Network error. Try again.");
+      setErrorMsg(err.response?.data?.message || "Failed to send OTP.");
     }
   };
 
   // STEP 2 → VERIFY OTP
   const handleVerifyOtp = async () => {
     setErrorMsg("");
-
     try {
-      const response = await fetch("http://127.0.0.1:5001/forgot_verify_otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, otp }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStep(3); // go to reset password page
-      } else {
-        setErrorMsg(data.message || "Invalid OTP.");
-      }
+      await verifyOtp(email, otp);
+      setStep(3); // go to reset password page
     } catch (err) {
-      setErrorMsg("Network error.");
+      setErrorMsg(err.response?.data?.message || "Invalid OTP.");
     }
   };
 
@@ -69,21 +46,10 @@ const ForgotPasswordPopup = ({ show, onClose }) => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5001/reset_password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password: newPassword }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStep(4); // success page
-      } else {
-        setErrorMsg(data.message || "Failed to reset password.");
-      }
+      await resetPassword(email, otp, newPassword);
+      setStep(4); // success page
     } catch (err) {
-      setErrorMsg("Network error. Try again.");
+      setErrorMsg(err.response?.data?.message || "Failed to reset password.");
     }
   };
 

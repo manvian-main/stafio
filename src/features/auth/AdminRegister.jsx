@@ -17,9 +17,9 @@ import BGShape from "../../assets/BGShape.png";
 import teampluslogo from "../../assets/stafio-bg-dark.png";
 import Registerlogo from "../../assets/registerlogo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import apiClient from "../../utils/apiClient";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import gicon from "../../assets/favicon.ico";
+import { register as registerRequest, googleLogin as googleLoginRequest } from "../../services/authService";
 
 const AdminRegister = () => {
   const [formData, setFormData] = useState({
@@ -127,44 +127,32 @@ const AdminRegister = () => {
       setIsSubmitting(true);
       setError("");
       // ⭐ NORMAL REGISTRATION
-      const res = await apiClient.post("/register", {
+      const data = await registerRequest({
         username: formData.username.trim(),
         email: formData.email.trim(),
         phone: formData.phone,
         password: formData.password,
         role: "admin",
       });
-      console.log("SUCCESS MESSAGE:", res.data?.message);
 
-      if (res.status === 200 || res.status === 201) {
-        setMessage(res.data?.message || "Registration successful!");
-        setError("");
+      setMessage(data?.message || "Registration successful!");
+      setError("");
 
-        setTimeout(() => {
-          // optional redirect
-          // navigate("/login");
-        }, 1500);
-        // Reset form
+      setFormData({
+        username: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+        role: "admin",
+      });
 
-        setFormData({
-          username: "",
-          phone: "",
-          password: "",
-          confirmPassword: "",
-          email: "",
-          role: "admin",
-        });
-
-        setPasswordRules({
-          uppercase: false,
-          number: false,
-          length: false,
-          special: false,
-        });
-        return; //  !!stop execution here
-      }
-
-      setError("Registration failed.");
+      setPasswordRules({
+        uppercase: false,
+        number: false,
+        length: false,
+        special: false,
+      });
     } catch (err) {
       console.error("Register error:", err);
       // const apiMessage =
@@ -223,47 +211,21 @@ const AdminRegister = () => {
     try {
       setError("");
       setMessage("");
-      // Get Google profile
-      const userInfoRes = await fetch(
-        "https://www.googleapis.com/oauth2/v3/userinfo",
-        {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        },
-      );
 
-      if (!userInfoRes.ok) {
-        //new
-        throw new Error("Failed to fetch Google profile");
+      // The backend independently verifies the token and resolves the
+      // email/name itself, and creates the account (as admin only if no
+      // admin exists yet, otherwise as employee) if it doesn't exist.
+      const data = await googleLoginRequest(tokenResponse.access_token, "admin");
+
+      if (data.role !== "admin" && data.role !== "manager") {
+        setError(
+          "An admin account already exists — this Google account was registered as an employee instead.",
+        );
+        return;
       }
 
-      const profile = await userInfoRes.json();
-
-      // const googleEmail = profile.email;
-      // const googleName = profile.name;
-
-      // Send to backend for registration
-      const res = await apiClient.post("/admin_google_register", {
-        email: profile.email,
-        username: profile.name,
-        role: "admin",
-      });
-
-      console.log("GOOGLE SUCCESS MESSAGE:", res.data?.message);
-
-      // ✅ Accept success properly
-      if (res.status === 200 || res.status === 201) {
-        setMessage(res.data?.message || "Google registration successful!");
-        setError("");
-
-        setTimeout(() => {
-          // navigate("/login");
-        }, 1500);
-
-        return; // stop here
-      }
-
-      //  fallback
-      setError("Google registration failed.");
+      setMessage(data?.message || "Google registration successful!");
+      setError("");
     } catch (err) {
       console.error("Google register error:", err);
 

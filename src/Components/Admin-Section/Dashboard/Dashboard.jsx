@@ -506,7 +506,7 @@ const Dashboard = () => {
 		setPunchError("");
 
 		try {
-			await apiClient.post(`/api/attendance/start-break`, {});
+			await apiClient.post(`/api/attendance/break_start`, {});
 
 			const breakStart = new Date();
 			stopWorkingTimer();
@@ -556,7 +556,7 @@ const Dashboard = () => {
 		setPunchError("");
 
 		try {
-			await apiClient.post(`/api/attendance/end-break`, {});
+			await apiClient.post(`/api/attendance/break_end`, {});
 
 			if (breakStartRef.current) {
 				totalBreakMsRef.current += Date.now() - breakStartRef.current.getTime();

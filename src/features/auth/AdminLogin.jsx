@@ -21,6 +21,7 @@ import {
 } from "../../utils/sessionManager";
 
 import { useGoogleLogin } from "@react-oauth/google";
+import { login as loginRequest, googleLogin as googleLoginRequest } from "../../services/authService";
 
 const AdminLogin = () => {
   const [identifier, setIdentifier] = useState("");
@@ -41,17 +42,10 @@ const AdminLogin = () => {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:5001/admin_login", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier, password }),
-      });
+      const data = await loginRequest(identifier, password);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.message || "Login failed");
+      if (data.role !== "admin" && data.role !== "manager") {
+        setError("This account is not an admin account.");
         return;
       }
 
@@ -67,8 +61,8 @@ const AdminLogin = () => {
 
       // ✅ 3. Navigate
       navigate("/admin-dashboard");
-    } catch {
-      setError("Network error. Check backend.");
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -120,19 +114,15 @@ const AdminLogin = () => {
     flow: "implicit",
     onSuccess: async (tokenResponse) => {
       try {
-        const res = await fetch("http://127.0.0.1:5001/admin_google_login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            access_token: tokenResponse.access_token,
-            role: "admin",
-          }),
-        });
-
-        const data = await res.json();
+        const data = await googleLoginRequest(tokenResponse.access_token);
 
         if (!data.user_id) {
           setError("Google login failed");
+          return;
+        }
+
+        if (data.role !== "admin" && data.role !== "manager") {
+          setError("This Google account is not registered as an admin.");
           return;
         }
 

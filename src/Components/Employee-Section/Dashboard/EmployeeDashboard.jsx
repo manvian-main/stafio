@@ -508,7 +508,7 @@ const EmployeeDashboard = () => {
 
     try {
       await axios.post(
-        `${BASE_URL}/api/attendance/start-break`,
+        `${BASE_URL}/api/attendance/break_start`,
         {},
         { headers: apiHeaders() },
       );
@@ -563,7 +563,7 @@ const EmployeeDashboard = () => {
 
     try {
       await axios.post(
-        `${BASE_URL}/api/attendance/end-break`,
+        `${BASE_URL}/api/attendance/break_end`,
         {},
         { headers: apiHeaders() },
       );

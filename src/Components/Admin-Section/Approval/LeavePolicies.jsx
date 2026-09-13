@@ -185,9 +185,7 @@ const LeavePolicies = () => {
     if (!window.confirm("Are you sure you want to delete this leave policy?"))
       return;
 
-    await fetch(`/api/leavepolicies/${id}`, {
-      method: "DELETE",
-    });
+    await apiClient.delete(`/api/leavepolicies/${id}`);
 
     fetchleavepolicies(); // refresh list
   };

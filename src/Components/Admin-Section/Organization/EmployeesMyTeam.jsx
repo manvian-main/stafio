@@ -128,15 +128,10 @@ const Employee = () => {
 			}
 
 			if (isEditing) {
-				await apiClient.put(`/admin_profile/${editingId}`, formData, {
-					headers: {
-						"X-User-Role": localStorage.getItem("current_role"),
-						"X-User-ID": localStorage.getItem("current_user_id"),
-					},
-				});
+				await apiClient.put(`/api/employees/${editingId}`, formData);
 				alert("Employee updated successfully ✅");
 			} else {
-				await apiClient.post("/api/add_employee", formData);
+				await apiClient.post("/api/employees", formData);
 				alert("Employee added successfully ✅");
 			}
 			setShowModal(false);

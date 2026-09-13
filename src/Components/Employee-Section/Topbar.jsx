@@ -123,7 +123,10 @@ const Topbar = () => {
 
   const markAsRead = async (notifId) => {
     try {
-      await axios.put(`${API_BASE_URL}/api/notifications/${notifId}/read`);
+      const userId = localStorage.getItem("current_user_id");
+      await axios.put(`${API_BASE_URL}/api/notifications/${notifId}/read`, null, {
+        headers: { "X-User-ID": userId },
+      });
       setNotifications((prev) =>
         prev.map((n) => (n.id === notifId ? { ...n, is_read: true } : n)),
       );

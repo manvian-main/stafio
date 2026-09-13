@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Form, Alert } from "react-bootstrap";
 import apiClient from "../../utils/apiClient";
 import AdminSidebar from "./AdminSidebar";
+import { getCurrentSession } from "../../utils/sessionManager";
 
 const AddLeaveType = () => {
   const [formData, setFormData] = useState({
@@ -12,14 +13,15 @@ const AddLeaveType = () => {
 
   const [message, setMessage] = useState("");
   const [variant, setVariant] = useState("success");
+  const [authorized, setAuthorized] = useState(true);
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    const role = localStorage.getItem("role");
+    const session = getCurrentSession();
 
-    if (!userId || role !== "admin") {
+    if (!session || session.role !== "admin") {
       setMessage("Please log in as an admin before adding a leave type.");
       setVariant("danger");
+      setAuthorized(false);
     }
   }, []);
 
@@ -34,15 +36,19 @@ const AddLeaveType = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!formData.name.trim()) {
+      setVariant("danger");
+      setMessage("Leave type name is required.");
+      return;
+    }
+    if (!formData.max_days_per_year || formData.max_days_per_year <= 0) {
+      setVariant("danger");
+      setMessage("Max days per year must be greater than 0.");
+      return;
+    }
+
     try {
-      const res = await apiClient.post("/leave_types", formData, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-User-Role": localStorage.getItem("role"),
-          "X-User-ID": localStorage.getItem("userId"),
-        },
-        withCredentials: true, // ✅ send cookies if needed
-      });
+      const res = await apiClient.post("/leave_types", formData);
 
       setVariant("success");
       setMessage(`Leave type added successfully! ID: ${res.data.id}`);
@@ -99,7 +105,7 @@ const AddLeaveType = () => {
               <Button
                 className="mt-4"
                 type="submit"
-                disabled={variant === "danger"}
+                disabled={!authorized}
               >
                 Add Leave Type
               </Button>

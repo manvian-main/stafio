@@ -1,12 +1,31 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 
 import { SettingsProvider } from "./Components/Employee-Section/Settings-/SettingsContext";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import RoleRoute from "./routes/RoleRoute";
+import { ROLES } from "./constants/roles";
+
+const ADMIN_ROLES = [ROLES.ADMIN, ROLES.MANAGER];
+const AdminRoute = ({ children }) => (
+  <RoleRoute allow={ADMIN_ROLES} loginPath="/" redirectTo="/employee-dashboard">
+    {children}
+  </RoleRoute>
+);
+const EmployeeRoute = ({ children }) => (
+  <ProtectedRoute loginPath="/employee-login">{children}</ProtectedRoute>
+);
+
+// Auth
+import AdminLogin from "./features/auth/AdminLogin";
+import AdminRegister from "./features/auth/AdminRegister";
+import EmployeeLogin from "./features/auth/EmployeeLogin";
+import EmployeeRegister from "./features/auth/EmployeeRegister";
 
 // Admin Components
-import AdminLogin from "./Components/Admin-Section/AdminLogin";
-import AdminRegister from "./Components/Admin-Section/AdminRegister";
 import Dashboard from "./Components/Admin-Section/Dashboard/Dashboard";
 import AdminLetterGeneration from "./Components/Admin-Section/AdminLetterGeneration";
 import AdminAttendance from "./Components/Admin-Section/Attendance/Attendance";
@@ -32,12 +51,10 @@ import AttendanceReport from "./Components/Admin-Section/Reports-/AttendanceRepo
 import LeaveReport from "./Components/Admin-Section/Reports-/LeaveReport";
 
 // Employee Components
-import EmployeeLogin from "./Components/Employee-Section/EmployeeLogin";
 import EmployeeDashboard from "./Components/Employee-Section/Dashboard/EmployeeDashboard";
 import ApplyLeave from "./Components/Employee-Section/leave/ApplyLeave";
 import Attendance from "./Components/Employee-Section/Attendance/Attendance";
 import ProfileBanner from "./Components/Employee-Section/Profile/EmployeeProfile";
-import EmployeeRegister from "./Components/Employee-Section/EmployeeRegister";
 import EmployeePerformanceTracker from "./Components/Employee-Section/EmployeePerformanceTracker";
 import EmployeePayroll from "./Components/Employee-Section/EmployeePayroll";
 import EmployeeDocuments from "./Components/Employee-Section/EmployeeDocuments";
@@ -53,79 +70,84 @@ import EmployeeLeaveReport from "./Components/Employee-Section/Reports/EmployeeL
 const App = () => {
   return (
     <Router>
-      <SettingsProvider>
-        <Routes>
-          {/* Admin Routes */}
-          <Route path="/admin-sidebar" element={<AdminSidebar />} />
-          <Route path="/" element={<AdminLogin />} />
-          <Route path="/admin-dashboard" element={<Dashboard />} />
-          <Route path="/attendance" element={<AdminAttendance />} />
-          <Route path="/employees-list" element={<EmployeesList />} />
-          <Route path="/el-myteam" element={<EmployeesMyTeam />} />
-          <Route path="/admin-broadcast" element={<AdminBroadcast />} />
-          <Route path="/leave-policies" element={<LeavePolicies />} />
-          <Route path="/addleavetype" element={<AddLeave />} />
-          <Route path="/register-admin" element={<AdminRegister />} />
-          <Route path="/performance" element={<PerformancePage />} />
-          <Route path="/payroll" element={<Payroll />} />
-          <Route path="/admin-profile" element={<AdminProfile />} />
-          <Route
-            path="/adminlettergeneration"
-            element={<AdminLetterGeneration />}
-          />
-          <Route path="/admin-my-holidays" element={<Myholiday />} />
-          <Route path="/admin-my-leave" element={<MyLeave />} />
-          <Route
-            path="/admin-my-regularization"
-            element={<Myregularization />}
-          />
-          <Route path="/leave-approval" element={<LeaveApproval />} />
-          <Route
-            path="/myTeam-LeaveApproval"
-            element={<MyTeamLeaveApproval />}
-          />
-          <Route
-            path="/regularization-approval"
-            element={<RegularizationApproval />}
-          />
-          <Route path="/ra-myteam" element={<RAMyTean />} />
-          <Route path="/who-is-on-Leave" element={<WhoIsOnLeave />} />
-          <Route path="/admin-settings" element={<AdminSettings />} />
-          <Route
-            path="/admin-attendance-report"
-            element={<AttendanceReport />}
-          />
-          <Route path="/leave-report" element={<LeaveReport />} />
+      <AuthProvider>
+        <SettingsProvider>
+          <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
+          <Routes>
+            {/* Public */}
+            <Route path="/" element={<AdminLogin />} />
+            <Route path="/register-admin" element={<AdminRegister />} />
+            <Route path="/employee-login" element={<EmployeeLogin />} />
+            <Route path="/register-employee" element={<EmployeeRegister />} />
 
-          {/* Employee Routes */}
-          <Route path="/employee-login" element={<EmployeeLogin />} />
-          <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-          <Route path="/apply-leave" element={<ApplyLeave />} />
-          <Route path="/employee-attendance" element={<Attendance />} />
-          <Route path="/profile" element={<ProfileBanner />} />
-          <Route path="/register-employee" element={<EmployeeRegister />} />
-          <Route
-            path="/performance-tracker"
-            element={<EmployeePerformanceTracker />}
-          />
-          <Route path="/employee-payroll" element={<EmployeePayroll />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/employeedocs" element={<EmployeeDocuments />} />
-          <Route path="/my-leave" element={<Myleave />} />
-          <Route path="/my-regularization" element={<MyRegularization />} />
-          <Route path="/my-holidays" element={<MyHoliday />} />
+            {/* Admin Routes (admin or manager) */}
+            <Route path="/admin-sidebar" element={<AdminRoute><AdminSidebar /></AdminRoute>} />
+            <Route path="/admin-dashboard" element={<AdminRoute><Dashboard /></AdminRoute>} />
+            <Route path="/attendance" element={<AdminRoute><AdminAttendance /></AdminRoute>} />
+            <Route path="/employees-list" element={<AdminRoute><EmployeesList /></AdminRoute>} />
+            <Route path="/el-myteam" element={<AdminRoute><EmployeesMyTeam /></AdminRoute>} />
+            <Route path="/admin-broadcast" element={<AdminRoute><AdminBroadcast /></AdminRoute>} />
+            <Route path="/leave-policies" element={<AdminRoute><LeavePolicies /></AdminRoute>} />
+            <Route path="/addleavetype" element={<AdminRoute><AddLeave /></AdminRoute>} />
+            <Route path="/performance" element={<AdminRoute><PerformancePage /></AdminRoute>} />
+            <Route path="/payroll" element={<AdminRoute><Payroll /></AdminRoute>} />
+            <Route path="/admin-profile" element={<AdminRoute><AdminProfile /></AdminRoute>} />
+            <Route
+              path="/adminlettergeneration"
+              element={<AdminRoute><AdminLetterGeneration /></AdminRoute>}
+            />
+            <Route path="/admin-my-holidays" element={<AdminRoute><Myholiday /></AdminRoute>} />
+            <Route path="/admin-my-leave" element={<AdminRoute><MyLeave /></AdminRoute>} />
+            <Route
+              path="/admin-my-regularization"
+              element={<AdminRoute><Myregularization /></AdminRoute>}
+            />
+            <Route path="/leave-approval" element={<AdminRoute><LeaveApproval /></AdminRoute>} />
+            <Route
+              path="/myTeam-LeaveApproval"
+              element={<AdminRoute><MyTeamLeaveApproval /></AdminRoute>}
+            />
+            <Route
+              path="/regularization-approval"
+              element={<AdminRoute><RegularizationApproval /></AdminRoute>}
+            />
+            <Route path="/ra-myteam" element={<AdminRoute><RAMyTean /></AdminRoute>} />
+            <Route path="/who-is-on-Leave" element={<AdminRoute><WhoIsOnLeave /></AdminRoute>} />
+            <Route path="/admin-settings" element={<AdminRoute><AdminSettings /></AdminRoute>} />
+            <Route
+              path="/admin-attendance-report"
+              element={<AdminRoute><AttendanceReport /></AdminRoute>}
+            />
+            <Route path="/leave-report" element={<AdminRoute><LeaveReport /></AdminRoute>} />
 
-          {/* Employee Report Routes */}
-          <Route
-            path="/employee-attendance-report"
-            element={<EmployeeAttendanceReport />}
-          />
-          <Route
-            path="/employee-leave-report"
-            element={<EmployeeLeaveReport />}
-          />
-        </Routes>
-      </SettingsProvider>
+            {/* Employee Routes (any authenticated user) */}
+            <Route path="/employee-dashboard" element={<EmployeeRoute><EmployeeDashboard /></EmployeeRoute>} />
+            <Route path="/apply-leave" element={<EmployeeRoute><ApplyLeave /></EmployeeRoute>} />
+            <Route path="/employee-attendance" element={<EmployeeRoute><Attendance /></EmployeeRoute>} />
+            <Route path="/profile" element={<EmployeeRoute><ProfileBanner /></EmployeeRoute>} />
+            <Route
+              path="/performance-tracker"
+              element={<EmployeeRoute><EmployeePerformanceTracker /></EmployeeRoute>}
+            />
+            <Route path="/employee-payroll" element={<EmployeeRoute><EmployeePayroll /></EmployeeRoute>} />
+            <Route path="/settings" element={<EmployeeRoute><Settings /></EmployeeRoute>} />
+            <Route path="/employeedocs" element={<EmployeeRoute><EmployeeDocuments /></EmployeeRoute>} />
+            <Route path="/my-leave" element={<EmployeeRoute><Myleave /></EmployeeRoute>} />
+            <Route path="/my-regularization" element={<EmployeeRoute><MyRegularization /></EmployeeRoute>} />
+            <Route path="/my-holidays" element={<EmployeeRoute><MyHoliday /></EmployeeRoute>} />
+
+            {/* Employee Report Routes */}
+            <Route
+              path="/employee-attendance-report"
+              element={<EmployeeRoute><EmployeeAttendanceReport /></EmployeeRoute>}
+            />
+            <Route
+              path="/employee-leave-report"
+              element={<EmployeeRoute><EmployeeLeaveReport /></EmployeeRoute>}
+            />
+          </Routes>
+        </SettingsProvider>
+      </AuthProvider>
     </Router>
   );
 };

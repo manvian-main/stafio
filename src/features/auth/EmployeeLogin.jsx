@@ -7,11 +7,12 @@ import "./EmployeeLogin.css";
 import Imagelogin from "../../assets/Imagelogin.png";
 import BGShape from "../../assets/BGShape.png";
 import teampluslogo from "../../assets/stafio-bg-dark.png";
-import ForgotPasswordPopup from "../Admin-Section/ForgotPasswordPopup";
+import ForgotPasswordPopup from "./ForgotPasswordPopup";
 import gicon from "../../assets/favicon.ico";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { saveSession } from "../../utils/sessionManager";
+import { login as loginRequest, googleLogin as googleLoginRequest } from "../../services/authService";
 
 const EmployeeLogin = () => {
   const [identifier, setIdentifier] = useState("");
@@ -32,38 +33,28 @@ const EmployeeLogin = () => {
     setErrorMsg("");
 
     try {
-      const response = await fetch("http://127.0.0.1:5001/employee_login", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier, password }),
-      });
+      const data = await loginRequest(identifier, password);
 
-      const data = await response.json();
-      if (response.ok) {
-        // ✅ Use standardized session management to store user data and tokens correctly
-        saveSession(data, "employee");
+      // ✅ Use standardized session management to store user data and tokens correctly
+      saveSession(data, "employee");
 
-        // ⭐ Remember Me logic (only store email for pre-fill, never password)
-        if (rememberMe) {
-          localStorage.setItem("remember_employee", "true");
-          localStorage.setItem("employee_email", identifier);
-          // Password is NOT stored — refresh token handles session persistence
-        } else {
-          localStorage.removeItem("remember_employee");
-          localStorage.removeItem("employee_email");
-        }
-        // Clean up any previously stored password (security fix)
-        localStorage.removeItem("employee_password");
-        localStorage.removeItem("remember_email");
-        localStorage.removeItem("remember_password");
-
-        navigate("/employee-dashboard");
+      // ⭐ Remember Me logic (only store email for pre-fill, never password)
+      if (rememberMe) {
+        localStorage.setItem("remember_employee", "true");
+        localStorage.setItem("employee_email", identifier);
+        // Password is NOT stored — refresh token handles session persistence
       } else {
-        setErrorMsg(data.message || "Login failed");
+        localStorage.removeItem("remember_employee");
+        localStorage.removeItem("employee_email");
       }
+      // Clean up any previously stored password (security fix)
+      localStorage.removeItem("employee_password");
+      localStorage.removeItem("remember_email");
+      localStorage.removeItem("remember_password");
+
+      navigate("/employee-dashboard");
     } catch (err) {
-      setErrorMsg("Network error. Check if backend is running.");
+      setErrorMsg(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -114,19 +105,9 @@ const EmployeeLogin = () => {
     flow: "implicit",
     onSuccess: async (tokenResponse) => {
       try {
-        const res = await fetch("http://127.0.0.1:5001/employee_google_login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            access_token: tokenResponse.access_token,
-            role: "employee",
-          }),
-        });
-
-        const data = await res.json();
+        const data = await googleLoginRequest(tokenResponse.access_token);
 
         if (data.user_id) {
-
           // ✅ Use standardized session management
           saveSession(data, "employee");
           navigate("/employee-dashboard");
@@ -169,40 +150,13 @@ const EmployeeLogin = () => {
   // -------------------------------------------------------------------
   useEffect(() => {
     const remember = localStorage.getItem("remember_employee");
-    const isGoogle = localStorage.getItem("remember_google") === "true";
+    if (remember !== "true") return;
 
-    if (remember === "true" && isGoogle) {
-      const idToken = localStorage.getItem("remember_google_token");
-      if (!idToken) return;
-
-      fetch("http://127.0.0.1:5001/employee_google_login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id_token: idToken,
-          role: "employee",
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.user_id) {
-
-            // ✅ Use standardized session management
-            saveSession(data, "employee");
-            navigate("/employee-dashboard");
-          }
-        });
-
-      return;
-    }
-
-    if (remember === "true" && !isGoogle) {
-      // Pre-fill email only (no password stored anymore)
-      setIdentifier(localStorage.getItem("employee_email") || "");
-      // If refresh token exists, auto-navigate (session still valid)
-      if (localStorage.getItem("refresh_token")) {
-        navigate("/employee-dashboard");
-      }
+    // Pre-fill email only (no password stored anymore)
+    setIdentifier(localStorage.getItem("employee_email") || "");
+    // If refresh token exists, auto-navigate (session still valid)
+    if (localStorage.getItem("refresh_token")) {
+      navigate("/employee-dashboard");
     }
   }, []);
 

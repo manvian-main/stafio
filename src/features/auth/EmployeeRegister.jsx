@@ -10,24 +10,24 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./AdminRegister.css";
+import "./EmployeeRegister.css";
 
-// Reuse same assets as login
 import BGShape from "../../assets/BGShape.png";
 import teampluslogo from "../../assets/stafioimg.png";
 import Registerlogo from "../../assets/registerlogo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import apiClient from "../../api/client";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
+import gicon from "../../assets/favicon.ico";
+import { register as registerRequest, googleLogin as googleLoginRequest } from "../../services/authService";
 
-const AdminRegister = () => {
+const EmployeeRegister = () => {
   const [formData, setFormData] = useState({
     username: "",
-    phone:"",
+    phone: "",
     password: "",
     confirmPassword: "",
     email: "",
-    role: "admin",
+    role: "employee",
   });
 
   const [message, setMessage] = useState("");
@@ -35,10 +35,8 @@ const AdminRegister = () => {
   const [strength, setStrength] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [showOtpInput, setShowOtpInput] = useState(false);
-  const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agree, setAgree] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,6 +51,12 @@ const AdminRegister = () => {
     return score;
   };
 
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setFormData({ ...formData, password: value });
+    setStrength(evaluatePasswordStrength(value));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
@@ -64,10 +68,11 @@ const AdminRegister = () => {
       setError("Username and email are required.");
       return;
     }
+
     if (!formData.phone) {
-  setError("Phone number required.");
-  return;
-}
+      setError("Phone number is required.");
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
@@ -77,72 +82,39 @@ const AdminRegister = () => {
     try {
       setIsSubmitting(true);
 
-      if (!isOtpSent) {
-        // Step 1: send OTP
-        const res = await apiClient.post("/send_otp", {
-          email: formData.email,
-          username: formData.username,
-        });
-        setMessage(res.data?.message || "OTP sent successfully.");
-        setShowOtpInput(true);
-        setIsOtpSent(true);
-      } else {
-        // Step 2: verify OTP & register
-        const res = await apiClient.post("/verify_otp_register", {
-          email: formData.email,
-          username: formData.username,
-          phone: formData.phone,
-          password: formData.password,
-          otp,
-          role: formData.role,
-        });
+      const data = await registerRequest({
+        username: formData.username,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+        role: "employee",
+      });
 
-        setMessage(
-          res.data?.message || "Registration successful! You can now log in."
-        );
-        setShowOtpInput(false);
-        setIsOtpSent(false);
-        setOtp("");
-        setFormData({
-          username: "",
-          password: "",
-          phone:"",
-          confirmPassword: "",
-          email: "",
-          role: "admin",
-        });
-        setStrength(0);
-      }
+      setMessage(data?.message || "Registration successful!");
+
+      setFormData({
+        username: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+        role: "employee",
+      });
+      setStrength(0);
     } catch (err) {
-      const apiMessage =
-        err.response?.data?.message ||
-        (isOtpSent ? "Registration failed." : "Failed to send OTP.");
+      const apiMessage = err.response?.data?.message || "Registration failed.";
       setError(apiMessage);
-      // eslint-disable-next-line no-console
-      console.error("AdminRegister error:", err.response || err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setFormData({ ...formData, password: value });
-    setStrength(evaluatePasswordStrength(value));
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    const value = e.target.value;
-    setFormData({ ...formData, confirmPassword: value });
-  };
-
-  // Determine progress bar color and label
   const getVariant = () => {
-    if (strength === 1) return "danger"; // Red
-    if (strength === 2) return "warning"; // Yellow
-    if (strength === 3) return "ok"; // orange
-    if (strength === 4) return "success"; // Green
-    return "secondary"; // Grey (empty)
+    if (strength === 1) return "danger";
+    if (strength === 2) return "warning";
+    if (strength === 3) return "ok";
+    if (strength === 4) return "success";
+    return "secondary";
   };
 
   const getLabel = () => {
@@ -153,32 +125,11 @@ const AdminRegister = () => {
     return "";
   };
 
-  // ---------------------------
-  // ⭐ Google Register
-  // ---------------------------
-  const handleGoogleRegister = async (tokenResponse) => {
+  // ⭐ Employee Google Register
+  const handleGoogleEmployeeRegister = async (tokenResponse) => {
     try {
-      // Get Google profile
-      const userInfoRes = await fetch(
-        "https://www.googleapis.com/oauth2/v3/userinfo",
-        {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        }
-      );
-
-      const profile = await userInfoRes.json();
-
-      const googleEmail = profile.email;
-      const googleName = profile.name;
-
-      // Send to backend for registration
-      const res = await apiClient.post("/admin_google_register", {
-        email: googleEmail,
-        username: googleName,
-        role: "admin",
-      });
-
-      setMessage(res.data?.message || "Google registration successful!");
+      const data = await googleLoginRequest(tokenResponse.access_token, "employee");
+      setMessage(data?.message || "Google registration successful!");
       setError("");
     } catch (err) {
       setError("Google registration failed.");
@@ -186,34 +137,29 @@ const AdminRegister = () => {
   };
 
   const googleRegister = useGoogleLogin({
-    onSuccess: handleGoogleRegister,
+    onSuccess: handleGoogleEmployeeRegister,
     onError: () => setError("Google registration failed."),
   });
 
   return (
     <Container fluid className="admin-register-container">
       <Row className="vh-100">
-        {/* ===== LEFT SIDE ===== */}
+        {/* LEFT SIDE */}
         <Col
           md={6}
           className="register-left d-flex flex-column align-items-center justify-content-center"
         >
-          <img src={BGShape} alt="Background Shape" className="bg-shape" />
-
+          <img src={BGShape} alt="Background" className="bg-shape" />
           <div className="register-left-content text-center">
             <div className="register-logos mb-3">
-              <img
-                src={teampluslogo}
-                alt="Team Plus Logo"
-                className="teamplus-logo"
-              />
+              <img src={teampluslogo} alt="Logo" className="teamplus-logo" />
             </div>
 
             <h2 className="register-heading">One Portal,</h2>
             <h4 className="register-subheading">Unlimited Potential</h4>
 
             <p className="register-description">
-              Create your account — It only takes a minute!
+              Create your employee account — It only takes a minute!
             </p>
           </div>
 
@@ -224,14 +170,14 @@ const AdminRegister = () => {
           />
         </Col>
 
-        {/* ===== RIGHT SIDE ===== */}
+        {/* RIGHT SIDE */}
         <Col
           md={6}
           className="d-flex align-items-center justify-content-left bg-white"
         >
           <div className="register-form-wrapper">
             <h5 className="mb-2">Just a Few Details to Begin</h5>
-            <h3 className="mb-4">Admin Sign Up</h3>
+            <h3 className="mb-4">Employee Sign Up</h3>
 
             {message && <Alert variant="success">{message}</Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
@@ -242,14 +188,15 @@ const AdminRegister = () => {
                 <Form.Control
                   type="text"
                   name="username"
-                  placeholder="Enter username"
+                  placeholder="Please enter your name"
                   value={formData.username}
                   onChange={handleChange}
                   required
                 />
               </Form.Group>
+
               <Form.Group className="mb-3">
-                <Form.Label>Phone Nunber</Form.Label>
+                <Form.Label>Phone Number</Form.Label>
                 <Form.Control
                   type="tel"
                   name="phone"
@@ -259,22 +206,22 @@ const AdminRegister = () => {
                   required
                 />
               </Form.Group>
+
               <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="Enter email"
+                  placeholder="Please enter your email"
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
               </Form.Group>
+
               <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
-
-                {/* Input with eye toggle */}
-                <InputGroup className="align-items-center">
+                <InputGroup>
                   <div style={{ position: "relative" }}>
                     <Form.Control
                       type={showPassword ? "text" : "password"}
@@ -283,7 +230,7 @@ const AdminRegister = () => {
                       value={formData.password}
                       onChange={handlePasswordChange}
                       required
-                      style={{ paddingRight: "40px" }} // add space for the eye icon
+                      style={{ paddingRight: "40px" }}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -296,16 +243,11 @@ const AdminRegister = () => {
                         color: "#6c757d",
                       }}
                     >
-                      {showPassword ? (
-                        <FaEye size={18} />
-                      ) : (
-                        <FaEyeSlash size={18} />
-                      )}
+                      {showPassword ? <FaEye /> : <FaEyeSlash />}
                     </span>
                   </div>
                 </InputGroup>
 
-                {/* Progress bar */}
                 {formData.password && (
                   <div style={{ marginTop: "8px" }}>
                     <ProgressBar
@@ -314,37 +256,25 @@ const AdminRegister = () => {
                       animated
                       label={getLabel()}
                     />
-                    <div style={{ fontSize: "13px", marginTop: "4px" }}>
-                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
-                        • At least one uppercase
-                      </span>
-                      <br />
-                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
-                        • At least one number
-                      </span>
-                      <br />
-                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
-                        • Minimum 8 characters
-                      </span>
-                      <br />
-                      <span style={{ color: strength >= 4 ? "green" : "red" }}>
-                        • At least one special character
-                      </span>
-                    </div>
                   </div>
                 )}
               </Form.Group>
 
               <Form.Group className="mb-3">
                 <Form.Label>Confirm Password</Form.Label>
-                <InputGroup className="align-items-center">
+                <InputGroup>
                   <div style={{ position: "relative" }}>
                     <Form.Control
                       type={showConfirmPassword ? "text" : "password"}
                       name="confirmPassword"
-                      placeholder="Confirm password"
+                      placeholder="Enter confirm password"
                       value={formData.confirmPassword}
-                      onChange={handleConfirmPasswordChange}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          confirmPassword: e.target.value,
+                        })
+                      }
                       required
                       style={{ paddingRight: "40px" }}
                     />
@@ -361,36 +291,31 @@ const AdminRegister = () => {
                         color: "#6c757d",
                       }}
                     >
-                      {showConfirmPassword ? (
-                        <FaEye size={18} />
-                      ) : (
-                        <FaEyeSlash size={18} />
-                      )}
+                      {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
                     </span>
                   </div>
                 </InputGroup>
               </Form.Group>
-              {showOtpInput && (
-                <Form.Group className="mb-3">
-                  <Form.Label>OTP Code</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter 6-digit OTP sent to your email"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    maxLength="6"
-                    required
-                  />
-                  <Form.Text className="text-muted">
-                    Enter the 6-digit code sent to {formData.email}
-                  </Form.Text>
-                </Form.Group>
-              )}
+              <div className="terms-container">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  className="terms-checkbox"
+                  checked={agree}
+                  onChange={(e) => setAgree(e.target.checked)}
+                  required
+                />
+                <label htmlFor="terms" className="terms-label">
+                  I agree to all the{" "}
+                  <span className="terms-link">Terms & Conditions</span>
+                </label>
+              </div>
+
               <Button variant="primary" type="submit" className="register-btn">
-                {isOtpSent ? "Verify & Register" : "Send OTP"}
+                Sign Up
               </Button>
-              
-              {/* -------- Google Register Button -------- */}
+
+              {/* Google Register Button */}
               <div className="text-center my-3">
                 <button
                   type="button"
@@ -398,11 +323,17 @@ const AdminRegister = () => {
                   className="google-btn"
                 >
                   <img
-                    src="https://developers.google.com/identity/images/g-logo.png"
+                    src={gicon}
                     alt="Google"
                     style={{ width: "20px", marginRight: "10px" }}
                   />
-                  <span style={{ color: "#19bde9", fontWeight: 500 }}>
+                  <span
+                    style={{
+                      color: "#19bde9",
+                      fontWeight: 600,
+                      fontSize: 18,
+                    }}
+                  >
                     Continue with Google
                   </span>
                 </button>
@@ -411,7 +342,7 @@ const AdminRegister = () => {
               <div className="text-center mt-3">
                 <small>
                   Already have an account?{" "}
-                  <Link to="/" className="login-link">
+                  <Link to="/employee-login" className="login-link">
                     Log in
                   </Link>
                 </small>
@@ -424,4 +355,4 @@ const AdminRegister = () => {
   );
 };
 
-export default AdminRegister;
+export default EmployeeRegister;
