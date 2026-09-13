@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { SettingsContext } from "../Employee-Section/Settings-/SettingsContext";
+import { SettingsContext } from "../../context/SettingsContext";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";

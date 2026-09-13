@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 
-import { SettingsProvider } from "./Components/Employee-Section/Settings-/SettingsContext";
+import { SettingsProvider } from "./context/SettingsContext";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RoleRoute from "./routes/RoleRoute";
@@ -26,46 +26,46 @@ import EmployeeLogin from "./features/auth/EmployeeLogin";
 import EmployeeRegister from "./features/auth/EmployeeRegister";
 
 // Admin Components
-import Dashboard from "./Components/Admin-Section/Dashboard/Dashboard";
+import Dashboard from "./features/dashboard/Dashboard";
 import AdminLetterGeneration from "./Components/Admin-Section/AdminLetterGeneration";
-import AdminAttendance from "./Components/Admin-Section/Attendance/Attendance";
-import EmployeesList from "./Components/Admin-Section/Organization/Employees";
-import EmployeesMyTeam from "./Components/Admin-Section/Organization/EmployeesMyTeam";
-import Payroll from "./Components/Admin-Section/PayrollDashboard";
-import AdminBroadcast from "./Components/Admin-Section/AdminBroadCast";
-import AdminProfile from "./Components/Admin-Section/Organization/AdminProfile";
-import AddLeave from "./Components/Admin-Section/AddLeaveType";
-import LeavePolicies from "./Components/Admin-Section/Approval/LeavePolicies";
-import PerformancePage from "./Components/Admin-Section/Performance";
+import AdminAttendance from "./features/attendance/AdminAttendance";
+import EmployeesList from "./features/employees/Employees";
+import EmployeesMyTeam from "./features/employees/EmployeesMyTeam";
+import Payroll from "./features/payroll/PayrollDashboard";
+import AdminBroadcast from "./features/notifications/AdminBroadCast";
+import AdminProfile from "./features/employees/AdminProfile";
+import AddLeave from "./features/leave/AddLeaveType";
+import LeavePolicies from "./features/leave/LeavePolicies";
+import PerformancePage from "./features/performance/Performance";
 import AdminSidebar from "./Components/Admin-Section/AdminSidebar";
-import Myholiday from "./Components/Admin-Section/leave/MyHoliday";
-import MyLeave from "./Components/Admin-Section/leave/MyLeave";
-import Myregularization from "./Components/Admin-Section/leave/MyRegularization";
-import LeaveApproval from "./Components/Admin-Section/Approval/LeaveApproval";
-import MyTeamLeaveApproval from "./Components/Admin-Section/Approval/MyTeamLeaveApproval";
-import RegularizationApproval from "./Components/Admin-Section/Approval/RegularizationApproval";
-import RAMyTean from "./Components/Admin-Section/Approval/RAMyTeam";
-import WhoIsOnLeave from "./Components/Admin-Section/Attendance/WhoIsOnLeave";
-import AdminSettings from "./Components/Admin-Section/settings-/admin-settings";
-import AttendanceReport from "./Components/Admin-Section/Reports-/AttendanceReport";
-import LeaveReport from "./Components/Admin-Section/Reports-/LeaveReport";
+import Myholiday from "./features/leave/AdminMyHoliday";
+import MyLeave from "./features/leave/AdminMyLeave";
+import Myregularization from "./features/regularization/AdminMyRegularization";
+import LeaveApproval from "./features/leave/LeaveApproval";
+import MyTeamLeaveApproval from "./features/leave/MyTeamLeaveApproval";
+import RegularizationApproval from "./features/regularization/RegularizationApproval";
+import RAMyTean from "./features/regularization/RAMyTeam";
+import WhoIsOnLeave from "./features/attendance/WhoIsOnLeave";
+import AdminSettings from "./features/settings/AdminSettings";
+import AttendanceReport from "./features/reports/AttendanceReport";
+import LeaveReport from "./features/reports/LeaveReport";
 
 // Employee Components
-import EmployeeDashboard from "./Components/Employee-Section/Dashboard/EmployeeDashboard";
-import ApplyLeave from "./Components/Employee-Section/leave/ApplyLeave";
-import Attendance from "./Components/Employee-Section/Attendance/Attendance";
-import ProfileBanner from "./Components/Employee-Section/Profile/EmployeeProfile";
-import EmployeePerformanceTracker from "./Components/Employee-Section/EmployeePerformanceTracker";
-import EmployeePayroll from "./Components/Employee-Section/EmployeePayroll";
-import EmployeeDocuments from "./Components/Employee-Section/EmployeeDocuments";
-import Settings from "./Components/Employee-Section/Settings-/Settings";
-import Myleave from "./Components/Employee-Section/leave/MyLeave";
-import MyRegularization from "./Components/Employee-Section/leave/MyRegularization";
-import MyHoliday from "./Components/Employee-Section/leave/MyHoliday";
+import EmployeeDashboard from "./features/dashboard/EmployeeDashboard";
+import ApplyLeave from "./features/leave/ApplyLeave";
+import Attendance from "./features/attendance/EmployeeAttendance";
+import ProfileBanner from "./features/employees/EmployeeProfile";
+import EmployeePerformanceTracker from "./features/performance/EmployeePerformanceTracker";
+import EmployeePayroll from "./features/payroll/EmployeePayroll";
+import EmployeeDocuments from "./features/documents/EmployeeDocuments";
+import Settings from "./features/settings/Settings";
+import Myleave from "./features/leave/EmployeeMyLeave";
+import MyRegularization from "./features/regularization/EmployeeMyRegularization";
+import MyHoliday from "./features/leave/EmployeeMyHoliday";
 
 // Employee Report Components
-import EmployeeAttendanceReport from "./Components/Employee-Section/Reports/EmployeeAttendanceReport";
-import EmployeeLeaveReport from "./Components/Employee-Section/Reports/EmployeeLeaveReport";
+import EmployeeAttendanceReport from "./features/reports/EmployeeAttendanceReport";
+import EmployeeLeaveReport from "./features/reports/EmployeeLeaveReport";
 
 const App = () => {
   return (
